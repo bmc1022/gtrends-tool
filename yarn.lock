@@ -2,7 +2,14 @@
 # yarn lockfile v1
 
 
-google-trends-api@^4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/google-trends-api/-/google-trends-api-4.9.0.tgz#907ad9f02df6c10596dfe887f5e16517b8510f60"
-  integrity sha512-ujOLHM98bE7Igy8YA4Lrb5naDpaY1wGt215zgHXPznCDwHmMjMK1FW8yW//dHQ9CKyG/HzaNBDfF7jEAUk8Kkw==
+jquery-ujs@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/jquery-ujs/-/jquery-ujs-1.2.2.tgz#6a8ef1020e6b6dda385b90a4bddc128c21c56397"
+  integrity sha1-ao7xAg5rbdo4W5CkvdwSjCHFY5c=
+  dependencies:
+    jquery ">=1.8.0"
+
+jquery@>=1.8.0, jquery@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==

@@ -1,0 +1,3 @@
+class Gtrend < ApplicationRecord
+  
+end

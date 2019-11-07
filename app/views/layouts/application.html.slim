@@ -1,0 +1,6 @@
+== render 'shared/html_head'
+body class="#{controller_name} #{action_name}"
+  #main
+    .container
+      == render 'shared/flash'
+      == yield

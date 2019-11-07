@@ -1,3 +1,10 @@
-= form_with model: @gtrend do |f|
-  = f.text_area :keywords
-  = f.submit
+#search
+.row.justify-content-center
+  .col-sm-10
+    = form_with model: @gtrend do |f|
+      = f.text_area :keywords, size: '20x10'
+      = f.submit
+  - 5.times do
+    .col-sm-10
+      div.flex-grow-1.w-100.h-100.bg-primary.mx-3.px-2
+#pagination

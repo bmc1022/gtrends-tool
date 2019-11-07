@@ -9,7 +9,7 @@ class GtrendsController < ApplicationController
   def show; end
     
   def new
-    @gtrend = Gtrend.new
+    @gtrend = Gtrend.new(params[:keywords])
   end
     
   def create

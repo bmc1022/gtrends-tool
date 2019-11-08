@@ -4,8 +4,8 @@ class DataGenerator
     
     pests = ['ant', 'fire ant', 'sugar ant', 'aphid', 'bed bug', 'bee', 'beetle', 
             'centipede', 'cricket', 'earwig', 'flea', 'gnat', 'millipede', 'mite', 
-            'moth', 'scorpion', 'silverfish', 'slug', 'snail', 'spider', 'springtail', 
-            'stink bug', 'termite', 'tick', 'wasp']
+            'moth', 'scorpion', 'slug', 'snail', 'spider', 'springtail', 'stink bug', 
+            'termite', 'tick', 'wasp']
     
     pests.each do |pest|
       kws = ["how to get rid of #{pest}s", "get rid of #{pest}s", "kill #{pest}s", 

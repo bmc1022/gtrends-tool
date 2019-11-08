@@ -1,18 +1,18 @@
 $grid-columns: 30;
-// $grid-gutter-width: 30px;
+$grid-gutter-width: 20px;
 
-// $grid-breakpoints: (
-//   xs: 0,
-//   sm: 480px,
-//   md: 768px,
-//   lg: 1020px
-// );
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 1020px
+);
 
-// $container-max-widths: (
-//   sm: (600px + $grid-gutter-width),
-//   md: (730px + $grid-gutter-width),
-//   lg: (940px + $grid-gutter-width)
-// );
+$container-max-widths: (
+  sm: (600px + $grid-gutter-width),
+  md: (730px + $grid-gutter-width),
+  lg: (940px + $grid-gutter-width)
+);
 
 // $primary:    #3f812a;
 // $secondary:  #42515a;
@@ -24,7 +24,7 @@ $grid-columns: 30;
 // $dark:       $gray-800 !default;
 
 // $body-color: #444;
-// $font-family-base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 // $font-size-base: 0.85rem;
 // $h1-font-size: $font-size-base * 2.2;
 // $h2-font-size: $font-size-base * 1.8;
@@ -34,14 +34,14 @@ $grid-columns: 30;
 // $h6-font-size: $font-size-base;
 // $headings-font-weight: 600;
 
-// $spacer: 1rem;
-// $spacers: ();
-// $spacers: map-merge((
-//   0: 0,
-//   1: ($spacer * 0.25),
-//   2: ($spacer * 0.5),
-//   3: $spacer,
-//   4: ($spacer * 1.5),
-//   5: ($spacer * 3),
-//   6: ($spacer * 7)
-// ), $spacers);
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge((
+  0: 0,
+  1: ($spacer * 0.25),
+  2: ($spacer * 0.5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 7)
+), $spacers);

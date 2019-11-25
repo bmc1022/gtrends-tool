@@ -1,20 +1,76 @@
 /*---- INDEX -----------------------------------------------------------------*/
 /*////////////////////////////////////////////////////////////////////////////*/
 
+body { background: #f5f5f5; }
+
 #trend-results {
-  .trend-wrapper {
-    background: #f7f7f7;
-    margin: 10px 0;
-    padding: 15px 11px 15px 15px;
-    span {
-      display: block;
-      margin-bottom: 2px;
+  .new-trend {
+    margin: 10px 0 0;
+    textarea {
+      width: 100%;
+      padding: 5px 10px 7px;
+      font-size: 14px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 0 0 8px 8px;
+      resize: unset;
+      &::placeholder {
+        opacity: 0.6;
+        font-style: italic;
+      }
+    }
+    input {
+      width: 100%;
+      background: #4c4c4c;
+      color: #fff;
       font-weight: 800;
       text-transform: uppercase;
+      border: none;
+      border-radius: 0 8px 0 0;
+    }
+  }
+  .trend-wrapper {
+    background: #fff;
+    margin: 10px 0;
+    padding: 8px 14px 14px 14px;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 8px;
+    .trend-header {
+      margin-bottom: 5px;
+      padding-bottom: 4px;
+      border-bottom: 3px solid #f1f1f1;
+      span {
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      .close-btn {
+        float: right;
+        color: #444;
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 20px;
+        text-decoration: none;
+      }
     }
     .trend-list {
-      height: 300px;
+      height: 203px;
       font-size: 12px;
+      overflow-x: hidden;
+      .list-wrapper { margin-right: 2px; }
+      .table { margin-bottom: 0; }
+      tr {
+        display: block;
+        border-bottom: 1px dotted #dfe3e4; 
+        padding: 1px 0;
+        &:last-child { border-bottom: none; }
+      }
+    }
+    .table-sm td { padding: 0.1rem 0.6rem 0.1rem 0; }
+    .simplebar-scrollbar {
+      width: 6px;
+      &:before { 
+        background: #e6e6e6; 
+        opacity: 1;
+      }
     }
   }
 }

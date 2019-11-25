@@ -1,15 +1,24 @@
 #search
 #trend-results.row.justify-content-center
-  .col-sm-10
-    = form_with model: @gtrend do |f|
-      = f.text_area :keywords, size: '20x10'
-      = f.submit
+  .col-lg-10
+    .new-trend
+      = form_with model: @gtrend do |f|
+        = f.submit
+        = f.text_area :keywords, placeholder: "Enter a list of keywords, delimited \
+                                               by either commas or new lines."
   - @gtrends.each do |list|
-    .col-sm-10
+    .col-md-15.col-lg-10
       .trend-wrapper
-        span= list.name
+        .trend-header
+          span= list.name
+          = link_to '×', gtrend_path(list), class: 'close-btn', 
+                         data: {:confirm => 'Are you sure?'}, :method => :delete
         .trend-list*{'data-simplebar'=>'', 'data-simplebar-auto-hide'=>'false'}
-          ul.list-unstyled
-            - list.results.each do |kw,avg|
-              li= kw
+          .list-wrapper
+            table.table.table-sm.table-borderless
+              tbody
+                - list.results.sort_by{|_,v| -v}.each do |kw,avg|
+                  tr
+                    td.trend-avg.text-right= avg
+                    td.trend-keyword= kw
 #pagination

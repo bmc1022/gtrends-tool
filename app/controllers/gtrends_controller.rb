@@ -9,14 +9,14 @@ class GtrendsController < ApplicationController
   def show; end
     
   def new
-    @gtrend = Gtrend.new(params[:keywords])
+    @gtrend = Gtrend.new
   end
     
   def create
     @gtrend = Gtrend.new(gtrend_params)
     if @gtrend.save
       flash[:success] = 'Item was successfully created'
-      redirect_to @item
+      redirect_to @gtrend
     else
       render 'new'
     end

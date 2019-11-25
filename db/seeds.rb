@@ -29,8 +29,8 @@ class DataGenerator
              "how to get rid of #{pest}s in the garden", "homemade #{pest} bait",
              "how to get rid of #{pest}s permanently"]
       
-      res = kws.shuffle.each_with_object({}) do |kw, hash|
-        hash[kw] = rand(100).to_s
+      res = kws.shuffle.sample(rand(10..kws.size)).each_with_object({}) do |kw, hash|
+        hash[kw] = weighted_rand
       end
       
       opts = {
@@ -39,6 +39,15 @@ class DataGenerator
         results: res
       }
       Gtrend.create!(opts)
+    end
+  end
+  
+  def weighted_rand
+    roll = rand(1..100)
+    case roll
+      when 1..80   then rand(1..6)
+      when 81..95  then rand(7..20)
+      when 96..100 then rand(30..40)
     end
   end
 end

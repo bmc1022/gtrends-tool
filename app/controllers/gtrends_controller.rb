@@ -3,7 +3,7 @@ class GtrendsController < ApplicationController
   before_action :set_gtrend, only: [:show, :destroy]
   
   def index
-    @gtrends = Gtrend.all
+    @pagy, @gtrends = pagy(Gtrend.all)
   end
   
   def show; end

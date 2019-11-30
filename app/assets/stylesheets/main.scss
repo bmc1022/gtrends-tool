@@ -57,14 +57,18 @@ body { background: #f5f5f5; }
       overflow-x: hidden;
       .list-wrapper { margin-right: 2px; }
       .table { margin-bottom: 0; }
-      tr {
-        display: block;
-        border-bottom: 1px dotted #dfe3e4; 
-        padding: 1px 0;
-        &:last-child { border-bottom: none; }
+      tr:not(:last-child) { border-bottom: 1px dotted #dfe3e4; }
+      .trend-avg {
+        padding-right: 10px;
+        color: #444;
+        font-weight: 700;
+        text-align: right;
+        &.high-avg { color: #26b8b8 !important; }
+        &.mid-avg  { color: #7226b8 !important; }
+        &.low-avg  { color: #444444 !important; }
       }
     }
-    .table-sm td { padding: 0.1rem 0.6rem 0.1rem 0; }
+    .table-sm td { padding: 1px 0; }
     .simplebar-scrollbar {
       width: 6px;
       &:before { 

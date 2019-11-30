@@ -1,6 +1,6 @@
-#search
+#search.mb-5
 #trend-results.row.justify-content-center
-  .col-lg-10
+  .col-md-15.col-lg-10
     .new-trend
       = form_with model: @gtrend do |f|
         = f.submit
@@ -19,6 +19,7 @@
               tbody
                 - list.results.sort_by{|_,v| -v}.each do |kw,avg|
                   tr
-                    td.trend-avg.text-right= avg
+                    = content_tag(:td, avg, class: trend_strength(list, avg))
                     td.trend-keyword= kw
 #pagination
+  == pagy_nav(@pagy)

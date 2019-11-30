@@ -15,6 +15,7 @@ gem 'coffee-rails',        '~> 4.2.1'      # use coffeescript for assets and vie
 gem 'uglifier',            '>= 3.1.13'     # javascript compression
 gem 'jbuilder',            '~> 2.6.3'      # build json apis with ease
 gem 'http',                '~> 4.2.0'      # http client
+gem 'pagy',                '~> 3.5'        # pagination
 
 group :development, :test do
   gem 'byebug', platform: :mri             # standard ruby debugger

@@ -1,10 +1,12 @@
-#search.mb-5
-#trend-results.row.justify-content-center
+#search.mt-5
+  input type="text" placeholder="Search..."
+#trend-results.row.justify-content-center.my-3
   .col-md-15.col-lg-10
     .new-trend
       = form_with model: @gtrend do |f|
-        = f.submit
-        = f.text_area :keywords, placeholder: "Enter a list of keywords, delimited \
+        .new-trend-head New Trend
+        = f.submit "Go ➜"
+        = f.text_area :keywords, placeholder: "Enter a list of keywords, separated \
                                                by either commas or new lines."
   - @gtrends.each do |list|
     .col-md-15.col-lg-10
@@ -21,5 +23,5 @@
                   tr
                     = content_tag(:td, avg, class: trend_strength(list, avg))
                     td.trend-keyword= kw
-#pagination
-  == pagy_nav(@pagy)
+#pagination.mb-5
+  == pagy_bootstrap_nav(@pagy)

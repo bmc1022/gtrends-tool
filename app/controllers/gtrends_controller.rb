@@ -15,7 +15,7 @@ class GtrendsController < ApplicationController
   def create
     @gtrend = Gtrend.new(gtrend_params)
     if @gtrend.save
-      flash[:success] = 'Item was successfully created'
+      flash[:success] = 'List was successfully created'
       redirect_to @gtrend
     else
       render 'new'
@@ -24,7 +24,7 @@ class GtrendsController < ApplicationController
     
   def destroy
     @gtrend.destroy
-    flash[:danger] = 'Item was successfully deleted'
+    flash[:danger] = 'List was successfully deleted'
     redirect_to root_path
   end
     

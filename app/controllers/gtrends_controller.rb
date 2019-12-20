@@ -1,22 +1,17 @@
 class GtrendsController < ApplicationController
   
-  before_action :set_gtrend, only: [:show, :destroy]
+  before_action :set_gtrend, only: [:destroy]
   
   def index
-    @pagy, @gtrends = pagy(Gtrend.all)
-  end
-  
-  def show; end
-    
-  def new
     @gtrend = Gtrend.new
+    @pagy, @gtrends = pagy(Gtrend.all)
   end
     
   def create
     @gtrend = Gtrend.new(gtrend_params)
     if @gtrend.save
       flash[:success] = 'List was successfully created'
-      redirect_to @gtrend
+      redirect_to root_path
     else
       render 'new'
     end
@@ -35,7 +30,7 @@ class GtrendsController < ApplicationController
     end
 
     def gtrend_params
-      params.require(:gtrend).permit(:name, keywords: [], results: {})
+      params.require(:gtrend).permit(:name, keywords: [])
     end
   
 end

@@ -9,9 +9,8 @@ module ApplicationHelper
   end
   
   # conditional css classes for colorizing trend averages
-  def trend_strength(list, avg)
-    highest = list.results.values.max
-    rel_to_highest = avg.to_f / highest
+  def trend_strength(max, avg)
+    rel_to_highest = avg.to_f / max
     base_class = 'trend-avg'
     
     str_class = case rel_to_highest

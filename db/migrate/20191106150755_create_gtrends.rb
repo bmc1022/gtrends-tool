@@ -3,9 +3,7 @@ class CreateGtrends < ActiveRecord::Migration[5.2]
     create_table :gtrends do |t|
       t.timestamps null: false
       
-      t.string :name,     default: ""
-      t.text   :keywords, default: ""
-      t.text   :results,  default: ""
+      t.string :name
     end
   end
 end

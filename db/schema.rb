@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_150755) do
+ActiveRecord::Schema.define(version: 2019_12_07_075212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,16 @@ ActiveRecord::Schema.define(version: 2019_11_06_150755) do
   create_table "gtrends", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", default: ""
-    t.text "keywords", default: ""
-    t.text "results", default: ""
+    t.string "name"
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "gtrend_id"
+    t.string "kw"
+    t.integer "avg_5y", default: 0
+    t.index ["gtrend_id"], name: "index_keywords_on_gtrend_id"
   end
 
 end

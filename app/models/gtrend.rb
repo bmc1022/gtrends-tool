@@ -1,4 +1,8 @@
 class Gtrend < ApplicationRecord
-  serialize :keywords, Array
-  serialize :results, Hash
+  
+  has_many :keywords, :dependent => :destroy
+  
+  validates :name, presence: true, uniqueness: { case_sensitive: false },
+                   length: { minimum: 2, maximum: 100 }
+
 end

@@ -117,3 +117,17 @@ body { background: #f5f5f5; }
   float: right;
   font-size: 14px;
 }
+
+.alert {
+  padding: .5em .75em;
+  font-size: .95em;
+  &.alert-danger {
+    color: #e20e21;
+    background-color: #fff0f1;
+    border-color: #f5c6cb;
+  }
+  .close {
+    color: #e20e21;
+    text-shadow: none;
+  }
+}

@@ -4,7 +4,7 @@ class GtrendsController < ApplicationController
   
   def index
     @gtrend = Gtrend.new
-    @pagy, @gtrends = pagy(Gtrend.all)
+    @pagy, @gtrends = pagy(Gtrend.includes(:keywords))
   end
     
   def create

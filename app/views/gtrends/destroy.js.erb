@@ -1,0 +1,8 @@
+$('.trend-header .close-btn').bind('ajax:success', function() {
+  $(this).parents('[class^=col]').fadeOut(400, function() {
+    $(this).remove();
+    $('#trend-results').append("<%= j render partial: 'gtrend', \
+                                    object: @js_replacement_trend %>");
+    $('[class^=col]').last().hide().fadeIn(400);
+  });
+});

@@ -13,7 +13,7 @@ body { background: #f5f5f5; }
 }
 
 #trend-results {
-  .new-trend {
+  #new-trend {
     margin: 10px 0 0;
     textarea {
       width: 100%;
@@ -37,6 +37,7 @@ body { background: #f5f5f5; }
         padding: 8px 10px 4px;
         background: #fff;
         border: 1px solid rgba(0,0,0,.12);
+        border-right: none;
         border-bottom: 3px solid #f1f1f1;
         border-radius: 8px 0 0 0;
         font-weight: 800;
@@ -49,16 +50,18 @@ body { background: #f5f5f5; }
       width: 25%;
       input {
         width: 100%;
-        padding: 8px 0 4px;
         background: rgb(47,47,47);
-        background: linear-gradient(180deg, rgba(47,47,47,1) 0%, rgba(73,73,73,1) 100%);
+        background: linear-gradient(#3b3b3b 0%, #303030 100%);
         border: 1px solid #333;
-        border-bottom: 3px solid #333;
+        border-bottom: 3px solid #202020;
         border-radius: 0 8px 0 0;
-        color: #fff;
-        font-weight: 700;
+        color: #181818;
+        font-size: 34px;
+        font-weight: 900;
+        line-height: 34px;
         text-align: center;
-        text-transform: uppercase;
+        text-shadow: 0 0.6px 1px rgba(255,255,255,0.15);
+        box-shadow: inset 0 20px 4px -21px rgba(255,255,255,0.4);
       }
     }
   }
@@ -83,6 +86,8 @@ body { background: #f5f5f5; }
         font-weight: 600;
         line-height: 20px;
         text-decoration: none;
+        opacity: 70%;
+        &:hover { opacity: 100%; }
       }
     }
     .trend-list {
@@ -94,6 +99,7 @@ body { background: #f5f5f5; }
       tr:not(:last-child) { border-bottom: 1px dotted #dfe3e4; }
       .trend-avg {
         padding-right: 10px;
+        width: 25px;
         color: #444;
         font-weight: 700;
         text-align: right;
@@ -105,10 +111,7 @@ body { background: #f5f5f5; }
     .table-sm td { padding: 1px 0; }
     .simplebar-scrollbar {
       width: 6px;
-      &:before { 
-        background: #e6e6e6; 
-        opacity: 1;
-      }
+      &:before { background: #999; }
     }
   }
 }
@@ -116,18 +119,4 @@ body { background: #f5f5f5; }
 #pagination {
   float: right;
   font-size: 14px;
-}
-
-.alert {
-  padding: .5em .75em;
-  font-size: .95em;
-  &.alert-danger {
-    color: #e20e21;
-    background-color: #fff0f1;
-    border-color: #f5c6cb;
-  }
-  .close {
-    color: #e20e21;
-    text-shadow: none;
-  }
 }

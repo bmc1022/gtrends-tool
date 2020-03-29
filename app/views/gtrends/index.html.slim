@@ -1,32 +1,12 @@
 #search.mt-5
   input.w-50 type="text" placeholder="Search..."
 == render 'shared/flash'
-#trend-results.row.justify-content-center.my-4
+#trend-results.row.my-4
   .col-md-15.col-lg-10
-    .new-trend
-      = form_with model: @gtrend do |f|
-        .new-trend-head
-          = f.text_field :name, placeholder: "New Trend"
-        .submit-btn
-          = f.submit "Go ➜"
-        = f.text_area :keywords, placeholder: "Enter a list of keywords, \
-                                  separated by either commas or new lines."
-  - @gtrends.each do |list|
-    .col-md-15.col-lg-10
-      .trend-wrapper
-        .trend-header
-          span= list.name
-          = link_to '×', gtrend_path(list), class: 'close-btn', 
-                         data: {:confirm => 'Are you sure?'}, :method => :delete
-        .trend-list*{'data-simplebar'=>'', 'data-simplebar-auto-hide'=>'false'}
-          .list-wrapper
-            table.table.table-sm.table-borderless
-              tbody
-                - sorted_kws = list.keywords.sort_by(&:avg_5y).reverse!
-                - sorted_kws.each do |kw|
-                  tr
-                    = content_tag(:td, kw.avg_5y, 
-                        class: trend_strength(sorted_kws[0].avg_5y, kw.avg_5y))
-                    td.trend-keyword= kw.kw
+    == render 'new'
+  == render @gtrends
 #pagination.mb-5
   == pagy_bootstrap_nav(@pagy)
+  
+- page = params[:page].to_i.zero? ? 1 : params[:page].to_i
+= page * 6

@@ -1,7 +1,7 @@
-class GtrendCalculator < ApplicationService
-  attr_reader :keywords
-  
-  def initialize(keywords)
+class GtrendsApi < ApplicationService
+
+  def initialize(name, keywords)
+    @name = name
     @keywords = keywords
   end
   

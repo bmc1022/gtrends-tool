@@ -1,0 +1,9 @@
+#new-trend
+  = form_with model: @gtrend do |f|
+    .new-trend-head
+      = f.text_field :name, placeholder: "New Trend"
+    .submit-btn
+      = f.submit "+"
+    = f.fields_for :keywords do |k|
+      = k.text_area :kw, placeholder: "Enter a list of keywords, separated \
+                                             by either commas or new lines."

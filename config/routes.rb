@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  root 'gtrends#index'
-  
-  resources :gtrends, only: [:create, :destroy]
+  resources :gtrends, only: [:index, :create, :destroy], path: '/'
   
 end

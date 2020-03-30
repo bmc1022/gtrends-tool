@@ -48,7 +48,7 @@ class GtrendsController < ApplicationController
     end
 
     def gtrend_params
-      params.require(:gtrend).permit(:name, keywords_attributes: [:id, :kw])
+      params.require(:gtrend).permit(:name, :add_keywords)
     end
   
 end

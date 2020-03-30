@@ -2,8 +2,8 @@ class Keyword < ApplicationRecord
   
   belongs_to :gtrend, inverse_of: :keywords
   
-  validates :gtrend, presence: true
-  validates :kw, presence: true, uniqueness: { case_sensitive: false }, 
-                 length: { minimum: 2, maximum: 300 }
+  validates :kw, presence: true, length: { minimum: 2, maximum: 300 }, 
+                 uniqueness: { case_sensitive: false, scope: :gtrend, 
+                               message: "'%{value}' has already been taken" }
   
 end

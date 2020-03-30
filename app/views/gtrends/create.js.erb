@@ -1,1 +1,3 @@
-$('#trend-results div:first').after("<%= j render @gtrend %>").animate({"margin-right": '+=200'})
+$('#trend-results div:first').after("<%= j render @gtrend %>").bind('ajax:success', function() {
+  $('#new-trend input, #new-trend textarea').val('');
+});

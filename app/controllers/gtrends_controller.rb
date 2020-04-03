@@ -25,11 +25,10 @@ class GtrendsController < ApplicationController
     @gtrend.destroy
     page = params[:page].to_i.zero? ? 1 : params[:page].to_i
     @js_replacement_trend = Gtrend.includes(:keywords).order("created_at DESC")
-                                  .offset(page * 6).limit(1).first
+                                  .offset((page * 5)-1).limit(1).first
     
     ## different page offset
     ## less than 6 records
-    ## reload pagination partial on ajax success
     
     respond_to do |format|
       format.js
@@ -44,7 +43,7 @@ class GtrendsController < ApplicationController
     end
     
     def all_gtrends
-      @pagy, @gtrends = pagy(Gtrend.includes(:keywords).order("created_at DESC"))
+      @pagy, @gtrends = pagy(Gtrend.includes(:keywords).order("created_at DESC"))#, link_extra: 'data-remote="true"')
     end
 
     def gtrend_params

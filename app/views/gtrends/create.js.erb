@@ -1,3 +1,34 @@
-$('#trend-results div:first').after("<%= j render @gtrend %>").bind('ajax:success', function() {
+$(document).ajaxSuccess(function() {
   $('#new-trend input, #new-trend textarea').val('');
+  $('[class^=col]').last().fadeOut(400, function() {
+    $(this).remove();
+    $('#trend-results div:first').after("<%= j render @gtrend %>");
+  });
+  //$('#pagination').html("<%= j render 'gtrends/pagination', pagy: @pagy %>");
 });
+
+
+// var calls = $.when(("<%= j render @gtrend %>"), 
+//                   ("<%= j render 'gtrends/pagination', pagy: @pagy %>"));
+// calls.done(function(response_a, response_b){
+//   $('#new-trend input, #new-trend textarea').val('');
+//   $('#pagination').html(response_b);
+// });
+
+
+
+// $('#trend-results div:first').after("<%= j render @gtrend %>").on('ajax:success', function() {
+//   $('#new-trend input, #new-trend textarea').val('');
+//   $('#pagination').html("<%= j render 'gtrends/pagination', pagy: @pagy %>");
+//   // $('#pagination').load(' #pagination > *');
+// });
+
+
+// $(document).ajaxSuccess(function() {
+//   $('#new-trend input, #new-trend textarea').val('');
+//   $('#pagination').load(' #pagination > *');
+//   $('[class^=col]').last().fadeOut(400, function() {
+//     $(this).remove();
+//     $('#trend-results div:first').after("<%= j render @gtrend %>");
+//   });
+// });

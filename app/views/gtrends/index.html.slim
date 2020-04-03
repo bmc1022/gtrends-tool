@@ -5,8 +5,5 @@
   .col-md-15.col-lg-10
     == render 'new'
   == render @gtrends
-#pagination.mb-5
-  == pagy_bootstrap_nav(@pagy)
-  
-- page = params[:page].to_i.zero? ? 1 : params[:page].to_i
-= page * 6
+#pagination.d-flex.justify-content-center.mb-5
+  == render partial: 'gtrends/pagination', locals: { pagy: @pagy }

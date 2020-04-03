@@ -1,4 +1,6 @@
-$('.trend-header .close-btn').bind('ajax:success', function() {
+$('.trend-header .close-btn').on('ajax:success', function() {
+  // $('#pagination').load(' #pagination > *');
+  // $('#pagination').html("<%= j render 'gtrends/pagination', pagy: @pagy %>");
   $(this).parents('[class^=col]').fadeOut(400, function() {
     $(this).remove();
     $('#trend-results').append("<%= j render partial: 'gtrend', \

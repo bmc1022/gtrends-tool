@@ -95,10 +95,10 @@ GEM
       rake
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http (4.2.0)
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 2.0)
+      http-form_data (~> 2.2)
       http-parser (~> 1.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -245,11 +245,12 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2.1)
   factory_bot_rails
-  http (~> 4.2.0)
+  http (~> 4.4.1)
   jbuilder (~> 2.6.3)
   listen
   minitest-reporters
   mocha
+  nokogiri (~> 1.10)
   pagy (~> 3.7)
   pg (>= 1.1.4)
   pry-byebug

@@ -15,6 +15,7 @@ class GtrendsController < ApplicationController
       if @gtrend.save
         format.js
         format.html { redirect_to '/', notice: 'List successfully created' }
+        FetchGtrendDataJob.perform_later(@gtrend, @gtrend.keywords.pluck(:kw))
       else
         format.html { render :index }
       end

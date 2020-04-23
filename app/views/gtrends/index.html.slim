@@ -1,10 +1,11 @@
 == render 'shared/icons'
 #search.mt-5
   input.w-50 type="text" placeholder="Search..."
-== render 'shared/flash'
+#error-messages
+  = errors_for(@gtrend)
 #trend-results.row.my-4
   .col-md-15.col-lg-10
     == render 'new'
   == render @gtrends
-#pagination.d-flex.justify-content-center.mb-5
+#pagination.d-flex.justify-content-end.mb-5
   == render partial: 'gtrends/pagination', locals: { pagy: @pagy }

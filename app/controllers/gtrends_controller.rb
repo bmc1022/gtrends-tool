@@ -14,8 +14,8 @@ class GtrendsController < ApplicationController
     respond_to do |format|
       if @gtrend.save
         format.js
-        format.html { redirect_to '/', notice: 'List successfully created' }
-        FetchGtrendDataJob.perform_later(@gtrend, @gtrend.keywords.pluck(:kw))
+        format.html { redirect_to '/' }
+        # FetchGtrendDataJob.perform_later(@gtrend, @gtrend.keywords.pluck(:kw))
       else
         format.html { render :index }
       end
@@ -33,7 +33,7 @@ class GtrendsController < ApplicationController
     
     respond_to do |format|
       format.js
-      format.html { redirect_to '/', alert: 'List successfully deleted' }
+      format.html { redirect_to '/' }
     end
   end
     
@@ -44,7 +44,7 @@ class GtrendsController < ApplicationController
     end
     
     def all_gtrends
-      @pagy, @gtrends = pagy(Gtrend.includes(:keywords).order("created_at DESC"))#, link_extra: 'data-remote="true"')
+      @pagy, @gtrends = pagy(Gtrend.includes(:keywords).order("created_at DESC"))
     end
 
     def gtrend_params

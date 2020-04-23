@@ -2,6 +2,11 @@ module ApplicationHelper
   
   include Pagy::Frontend
   
+  # displays form errors
+  def errors_for(obj=nil)
+    render('shared/form_errors', obj: obj) if obj.errors.any?
+  end
+  
   # returns the full title on a per-page basis
   def full_title(page_title='')
     base_title = "Google Trends Keyword Comparison Tool"

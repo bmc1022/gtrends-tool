@@ -80,6 +80,7 @@ body {
       padding-bottom: 4px;
       border-bottom: 3px solid #f1f1f1;
       span {
+        color: #595a5a;
         font-weight: 800;
         text-transform: uppercase;
       }
@@ -128,4 +129,13 @@ body {
 
 #pagination {
   font-size: 14px;
+  .page-item.active .page-link {
+    background-color: #39bebe;
+    border-color: #39afaf;
+    color: #fff;
+  }
+  .page-link {
+    color: #39bebe;
+    &:hover { color: #329292; }
+  }
 }

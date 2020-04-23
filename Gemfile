@@ -11,7 +11,6 @@ gem 'turbolinks',          '>= 5.0.1'      # makes navigating faster
 gem 'autoprefixer-rails',  '~> 6.7.7.1'    # add vendor prefixes to css rules
 gem 'slim-rails',          '~> 3.1.2'      # provides generator required to use slim
 gem 'sassc-rails',         '~> 2.1.0'      # use scss for stylesheets
-gem 'coffee-rails',        '~> 4.2.1'      # use coffeescript for assets and views
 gem 'uglifier',            '>= 3.1.13'     # javascript compression
 gem 'jbuilder',            '~> 2.6.3'      # build json apis with ease
 gem 'http',                '~> 4.4.1'      # http client

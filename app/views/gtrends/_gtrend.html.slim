@@ -2,8 +2,15 @@
   .trend-wrapper
     .trend-header
       span= gtrend.name
-      = link_to '×', gtrend_path(gtrend), class: 'close-btn', \
-              data: { method: :delete, confirm: 'Are you sure?', remote: true }
+      .options
+        button.clipboard*{'data-toggle'=>'tooltip', 'title'=>'keywords copied!',
+                  'data-clipboard-text'=>gtrend.keywords.pluck(:kw).join(', ')}
+          svg.icon
+            use xlink:href='#clipboard'
+        = link_to(gtrend_path(gtrend), class: 'close-btn', 
+            data: {remote: true, method: :delete, confirm: 'Are you sure?'}) do
+            svg.icon
+              use xlink:href='#close'
     .trend-list*{'data-simplebar'=>''}
       .list-wrapper
         table.table.table-sm.table-borderless

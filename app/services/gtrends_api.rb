@@ -93,9 +93,16 @@ class GtrendsApi < ApplicationService
       return over_time_averages(kws, JSON.parse(over_time_data))
     end
   
-    def update_keywords(list)
-      list.each do |k, v|
-        Keyword.find_by!(gtrend: @gtrend, kw: k).update(avg_5y: v)
+    def create_keywords(list)
+      kw_params = list.map do |k, v|
+        { gtrend: @gtrend, kw: k, avg_5y: v }
+      end
+      
+      @gtrend.keywords.build(kw_params)
+      
+      # create all keywords using the same database connection
+      Gtrend.transaction do 
+        @gtrend.save!
       end
     end
   
@@ -112,8 +119,6 @@ class GtrendsApi < ApplicationService
         top_kws = res.max_by(n){|k,v| v}.to_h
       end
       
-      update_keywords(top_kws)
-      
       return top_kws
     end
     
@@ -127,8 +132,7 @@ class GtrendsApi < ApplicationService
         results.merge!(interest_over_time_data(top_kws.keys + slice))
       end
       
-      # remove top_kws from results hash
-      update_keywords(results.dup.delete_if { |k,_| top_kws.key?(k) })
+      create_keywords(results)
       
       return
     end

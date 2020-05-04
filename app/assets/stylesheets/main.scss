@@ -50,6 +50,11 @@ body {
         border-radius: 8px 0 0 0;
         font-weight: 800;
         text-transform: uppercase;
+        &:focus {
+          outline: none;
+          border: 1px solid #81caca;
+          box-shadow: inset 0 0 2pt 1pt rgba(57, 190, 190, 0.55);
+        }
       }
     }
     .submit-btn {

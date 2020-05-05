@@ -4,7 +4,6 @@
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require simplebar/dist/simplebar.js
 //= require clipboard/dist/clipboard.min.js
-//= require pagy
 //= require turbolinks
 //= require init
 //= require tooltip

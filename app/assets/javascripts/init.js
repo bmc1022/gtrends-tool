@@ -1,7 +1,6 @@
 window.App || (window.App = {});
 
 App.init = () => {
-  Pagy.init(); // pagination
   new ClipboardJS('.clipboard'); // copy text to clipboard
 }
 

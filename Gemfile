@@ -14,7 +14,7 @@ gem 'sassc-rails',         '~> 2.1.0'      # use scss for stylesheets
 gem 'uglifier',            '>= 3.1.13'     # javascript compression
 gem 'jbuilder',            '~> 2.6.3'      # build json apis with ease
 gem 'http',                '~> 4.4.1'      # http client
-gem 'pagy',                '~> 3.7'        # pagination
+gem 'pagy',                '~> 3.8'        # pagination
 
 group :development, :test do
   gem 'byebug', platform: :mri             # standard ruby debugger

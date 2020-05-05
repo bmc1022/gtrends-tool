@@ -11,30 +11,17 @@ class GtrendsController < ApplicationController
   def create
     @gtrend = Gtrend.new(gtrend_params)
     
-    respond_to do |format|
-      if @gtrend.save
-        FetchGtrendDataJob.perform_later(@gtrend, @gtrend.kws)
-        format.js
-        format.html { redirect_to '/' }
-      else
-        format.html { render :index }
-      end
+    if @gtrend.save
+      #FetchGtrendDataJob.perform_later(@gtrend, @gtrend.kws)
+      redirect_to gtrends_url
+    else
+      render :index
     end
   end
     
   def destroy
     @gtrend.destroy
-    page = params[:page].to_i.zero? ? 1 : params[:page].to_i
-    @js_replacement_trend = Gtrend.includes(:keywords).order("created_at DESC")
-                                  .offset((page * 5)-1).limit(1).first
-    
-    ## different page offset
-    ## less than 6 records
-    
-    respond_to do |format|
-      format.js
-      format.html { redirect_to '/' }
-    end
+    redirect_to gtrends_url
   end
     
   private

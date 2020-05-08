@@ -1,13 +1,17 @@
 == render 'shared/icons'
-#search.mt-5
-  input.w-50 type="text" placeholder="Search..."
-    svg.icon
-      use xlink:href='#search'
+
+#search.d-flex.justify-content-center.mt-5
+  .input-group.w-50
+    input.form-control type="text" placeholder="Search..."
+    .input-group-append
+      button.btn.btn-outline-secondary
+        svg.icon
+          use xlink:href='#search'
 #error-messages
   = errors_for(@gtrend)
 #trend-results.row.my-4
   .col-md-15.col-lg-10
     == render 'new'
   == render @gtrends
-#pagination.d-flex.justify-content-end.mb-5
-  == render partial: 'gtrends/pagination', locals: { pagy: @pagy }
+#pagination.d-flex.justify-content-end.mb-4
+    == render partial: 'gtrends/pagination', locals: { pagy: @pagy }

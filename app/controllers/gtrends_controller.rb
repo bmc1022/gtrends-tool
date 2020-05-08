@@ -12,7 +12,7 @@ class GtrendsController < ApplicationController
     @gtrend = Gtrend.new(gtrend_params)
     
     if @gtrend.save
-      #FetchGtrendDataJob.perform_later(@gtrend, @gtrend.kws)
+      FetchGtrendDataJob.perform_later(@gtrend, @gtrend.kws)
       redirect_to gtrends_url
     else
       render :index

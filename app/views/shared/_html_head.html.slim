@@ -2,12 +2,9 @@ doctype html
 html lang="en"
   head
     meta charset="utf-8"
-    meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
     title = full_title(yield(:title))
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_packs_with_chunks_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
     = csp_meta_tag
-    /[if lt IE 9]
-      | <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>

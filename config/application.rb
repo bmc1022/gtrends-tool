@@ -9,11 +9,13 @@ Bundler.require(*Rails.groups)
 module GtrendsTool
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.0
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    # Generator configuration.
+    config.generators do |g| 
+      g.assets = false # skip generating asset files
+      g.test_framework :minitest, spec: false, fixture: false
+      g.fixture_replacement :factory_bot
+    end
   end
 end

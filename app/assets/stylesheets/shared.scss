@@ -1,20 +1,22 @@
 a { transition: all 0.3s ease; }
 
+input:focus::placeholder { color: transparent !important; }
+
 .alert {
   padding: .5em .75em;
   font-size: .95em;
-  &.alert-notice, &.alert-success {
-    color: #5ac75e;
-    background-color: #f5fdf8;
-    border-color: #90d692;
+  &.alert-notice {
+    color: #39afaf;
+    background-color: #edf5f5;
+    border-color: #39afaf;
   }
-  &.alert-alert, &.alert-danger {
+  &.alert-error {
     color: #e20e21;
     background-color: #fff0f1;
     border-color: #f5c6cb;
   }
   .close {
-    color: #000;
+    color: rgba(0, 0, 0, 0.75);
     text-shadow: none;
   }
 }

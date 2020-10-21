@@ -10,6 +10,7 @@ gem 'bootsnap',            '>= 1.4.4', require: false  # boot ruby/rails apps fa
 gem 'slim-rails',          '~> 3.2.0'                  # provides generator required to use slim
 gem 'webpacker',           '~> 5.2.1'                  # transpile app-like javascript
 gem 'jbuilder',            '~> 2.7'                    # build json apis with ease
+gem 'devise',              '~> 4.7.3'                  # authentication
 gem 'http',                '~> 4.4.1'                  # http client
 gem 'pagy',                '~> 3.8.3'                  # pagination
 

@@ -1,4 +1,11 @@
 class DataGenerator
+  def admin
+    Admin.first_or_create({ 
+      email: "bmc1022@gmail.com",
+      password: "password"
+    })
+  end
+  
   def weighted_rand
     roll = rand(1..100)
     case roll
@@ -47,10 +54,12 @@ class DataGenerator
          'termite', 'tick', 'wasp']
     
     pests.each do |pest|
-      trend = Gtrend.create!(name: "#{pest.titleize}s")
+      trend = Gtrend.new(name: "#{pest.titleize}s")
+      trend.save(validate: false)
       keywords(pest, trend)
     end
   end
 end
 
+DataGenerator.new.admin
 DataGenerator.new.trend_lists

@@ -62,4 +62,7 @@ Rails.application.configure do
   
   # Whitelist AWS Cloud9 host.
   config.hosts << /[a-z0-9.]+cloud9[a-z0-9.-]+amazonaws\.com/
+  
+  # Set up default URL options for the Devise mailer.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

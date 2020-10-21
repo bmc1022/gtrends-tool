@@ -1,0 +1,19 @@
+$('#notice').html('<%= j render partial: "shared/flash" %>').hide().fadeIn(400);
+
+setTimeout(function() {
+  $('#notice .alert').alert('close');
+}, 5000);
+
+$('.trend-header .close-btn').on('ajax:success', function() {
+  $(this).parents('[class^=col]').fadeOut(400, function() {
+    $(this).remove();
+    <% if @replacement_gtrend.present? %>
+      $('#trend-results').append("<%= j render partial: 'gtrend', object: @replacement_gtrend %>");
+      $('[class^=col]').last().hide().fadeIn(400);
+    <% end %>
+  });
+});
+
+<%= puts '@replacement_gtrend: ' + @replacement_gtrend.to_s %>
+<%= puts 'params[:page ]: ' + params[:page].to_s %>
+<%= puts '@pagy.page: ' + @pagy.page.to_s %>

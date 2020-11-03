@@ -1,3 +1,6 @@
+import $ from 'jquery'
+global.$ = $
+
 // javascripts
 require('@rails/ujs').start()
 require('turbolinks').start()

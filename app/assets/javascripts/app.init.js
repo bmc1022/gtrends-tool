@@ -1,3 +1,6 @@
+import $ from 'jquery'
+import ClipboardJS from 'clipboard'
+
 window.App || (window.App = {});
 
 App.init = () => {

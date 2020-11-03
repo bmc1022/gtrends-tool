@@ -1,8 +1,6 @@
 // javascripts
 require('@rails/ujs').start()
 require('turbolinks').start()
-require('@rails/activestorage').start()
-require('channels')
 
 import 'jquery'
 import 'popper.js'
@@ -13,7 +11,7 @@ import 'javascripts/app.init'
 import 'javascripts/app.tooltip'
 
 // stylesheets
-import '../stylesheets/application'
+import 'stylesheets/application'
 
 // images
 const images = require.context('../images', true)

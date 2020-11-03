@@ -237,6 +237,9 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -292,6 +295,7 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   slim-rails (~> 3.2.0)
+  turbolinks (~> 5.2.1)
   web-console
   webdrivers
   webpacker (~> 5.2.1)

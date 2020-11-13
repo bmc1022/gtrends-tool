@@ -1,1 +1,1 @@
-$('#notice').html('<%= j render partial: "shared/form_errors", locals: { obj: @gtrend } %>');
+$('#notice').html('<%= j errors_for(@gtrend) %>');

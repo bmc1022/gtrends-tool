@@ -8,7 +8,7 @@ class GtrendsApi < ApplicationService
 
   def initialize(gtrend, keywords)
     @gtrend = gtrend
-    @keywords = keywords
+    @keywords = JSON.parse(keywords)
     @cookie = get_google_cookie
     @over_time_req = {}
     @over_time_token = {}

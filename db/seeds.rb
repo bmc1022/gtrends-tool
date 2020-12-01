@@ -62,4 +62,4 @@ class DataGenerator
 end
 
 DataGenerator.new.admin
-DataGenerator.new.trend_lists
+DataGenerator.new.trend_lists if Rails.env.development?

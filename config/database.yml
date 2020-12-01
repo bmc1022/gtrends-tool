@@ -15,5 +15,4 @@ test:
   database: gtrends_tool_test
 
 production:
-  <<: *default
-  database: gtrends_tool_production
+  url: <%= ENV['DATABASE_URL'] %>

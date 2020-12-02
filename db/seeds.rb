@@ -1,4 +1,6 @@
 class DataGenerator
+  require 'csv'
+  
   def admin
     Admin.first_or_create({ 
       email: "bmc1022@gmail.com",
@@ -45,21 +47,37 @@ class DataGenerator
     Keyword.create!(opts)
   end
     
-  def trend_lists
-    Gtrend.destroy_all
-    
+  def dev_trend_lists
     pests = ['ant', 'fire ant', 'sugar ant', 'aphid', 'bed bug', 'bee', 'beetle', 
          'centipede', 'cricket', 'earwig', 'flea', 'gnat', 'millipede', 'mite', 
          'moth', 'scorpion', 'slug', 'snail', 'spider', 'springtail', 'stink bug', 
-         'termite', 'tick', 'wasp']
+         'termite', 'tick', 'wasp'].reverse!
     
     pests.each do |pest|
-      trend = Gtrend.new(name: "#{pest.titleize}s")
-      trend.save(validate: false)
-      keywords(pest, trend)
+      Gtrend.skip_callback(:save, :before, :convert_kws_to_list)
+      gtrend = Gtrend.new(name: "#{pest.titleize}s")
+      gtrend.save(validate: false)
+      Gtrend.set_callback(:save, :before, :convert_kws_to_list)
+      keywords(pest, gtrend)
+    end
+  end
+  
+  def prod_trend_lists
+    file = Rails.root.join('db', 'files', 'commonpests_gtrend_queries.csv')
+    CSV.foreach(file, headers: true) do |row|
+      Gtrend.skip_callback(:save, :before, :convert_kws_to_list)
+      gtrend = Gtrend.find_or_initialize_by(name: row['Section'])
+      gtrend.save(validate: false)
+      Gtrend.set_callback(:save, :before, :convert_kws_to_list)
+      Keyword.create!(
+        gtrend: gtrend, 
+        kw: row['Title'], 
+        avg_5y: row['Score'])
     end
   end
 end
 
 DataGenerator.new.admin
-DataGenerator.new.trend_lists if Rails.env.development?
+Gtrend.destroy_all
+DataGenerator.new.dev_trend_lists if Rails.env.development?
+DataGenerator.new.prod_trend_lists

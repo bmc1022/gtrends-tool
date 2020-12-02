@@ -9,7 +9,7 @@ class Gtrend < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2, maximum: 100 }, 
                    uniqueness: { case_sensitive: false }
   validates :kws,  presence: true, unless: :skip_kws?
-  
+
   private
 
     def convert_kws_to_list

@@ -1,5 +1,6 @@
-p= @page_num.inspect
-p= @replacement.inspect
+- if Rails.env.development?
+  p= @page_num.inspect
+  p= @replacement.inspect
 #main-head
   #notice
     = errors_for(@gtrend)

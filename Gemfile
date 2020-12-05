@@ -34,4 +34,5 @@ group :development do
   gem 'web-console'                                    # use <%= console %> in views to access a console
   gem 'listen'                                         # notifies about file modifications
   gem 'awesome_print', require: 'ap'                   # pretty print ruby objects
+  gem 'derailed'                                       # output the memory use of gems
 end

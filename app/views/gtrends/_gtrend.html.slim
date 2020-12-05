@@ -5,12 +5,10 @@
       .options
         button.clipboard*{'data-toggle'=>'tooltip', 'title'=>'keywords copied!',
                   'data-clipboard-text'=>gtrend.keywords.pluck(:kw).join(', ')}
-          svg.icon
-            use xlink:href='#clipboard'
+          = svg_icon('#clipboard')
         = link_to(gtrend_path(gtrend), class: 'close-btn', 
             data: {remote: true, method: :delete, confirm: 'Are you sure?'}) do
-            svg.icon
-              use xlink:href='#close'
+            = svg_icon('#close')
     .trend-list*{'data-simplebar'=>''}
       .list-wrapper
         table.table.table-sm.table-borderless
@@ -18,6 +16,6 @@
             - sorted_kws = gtrend.keywords.sort_by(&:avg_5y).reverse!
             - sorted_kws.each do |kw|
               tr
-                = content_tag(:td, kw.avg_5y, 
+                = tag.td(kw.avg_5y, 
                     class: trend_strength(sorted_kws[0].avg_5y, kw.avg_5y))
                 td.trend-keyword= kw.kw

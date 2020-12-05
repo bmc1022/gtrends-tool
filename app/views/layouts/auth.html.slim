@@ -3,9 +3,8 @@
 body.d-flex.justify-content-center
   .auth-container.d-flex.flex-column.mt-4
     #auth-header
-      =link_to('/', class: 'auth-logo') do
-        svg.icon
-          use xlink:href='#logo'
+      = link_to('/', class: 'auth-logo') do
+        = svg_icon('#logo')
       == yield(:header_title) if content_for?(:header_title)
     #auth-main
       == yield

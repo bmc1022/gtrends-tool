@@ -2,6 +2,13 @@ module ApplicationHelper
   
   include Pagy::Frontend
   
+  # displays an inline svg reference
+  def svg_icon(reference, class_name='icon')
+    tag.svg(class: class_name) do
+      concat(tag.use('xlink:href': reference))
+    end
+  end
+  
   # displays form errors
   def errors_for(obj=nil)
     render('shared/form_errors', obj: obj) if obj.errors.any?

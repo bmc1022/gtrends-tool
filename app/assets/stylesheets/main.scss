@@ -122,14 +122,14 @@ body {
         .clipboard {
           background: none;
           border: none;
-          opacity: 70%;
-          &:hover { opacity: 100%; }
+          opacity: 0.7;
+          &:hover { opacity: 1.0; }
           &:focus { outline: none; }
         }
         .close-btn {
           color: #444;
-          opacity: 70%;
-          &:hover { opacity: 100%; }
+          opacity: 0.7;
+          &:hover { opacity: 1.0; }
         }
       }
     }

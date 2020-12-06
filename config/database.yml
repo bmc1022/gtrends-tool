@@ -15,7 +15,6 @@ test:
   database: gtrends_tool_test
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <<: *default
+  database: gtrends_tool_production
   url: <%= ENV['DATABASE_URL'] %>

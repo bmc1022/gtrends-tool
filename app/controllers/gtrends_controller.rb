@@ -20,10 +20,10 @@ class GtrendsController < ApplicationController
       if @gtrend.save
         FetchGtrendDataJob.perform_later(@gtrend, @gtrend.kws)
         format.html { redirect_to gtrends_url }
-        format.js
+        # format.js
       else
         format.html { render :index }
-        format.js
+        # format.js
       end
     end
   end
@@ -36,7 +36,7 @@ class GtrendsController < ApplicationController
     respond_to do |format|
       @gtrend.destroy
       format.html { redirect_to gtrends_url }
-      format.js { flash.now[:notice] = 'Trend successfully deleted.' }
+      # format.js { flash.now[:notice] = 'Trend successfully deleted.' }
     end
   end
     

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_141256) do
+ActiveRecord::Schema.define(version: 2021_05_17_171634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2020_10_21_141256) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
+    t.string "username"
     t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["username"], name: "index_admins_on_username", unique: true
   end
 
   create_table "gtrends", force: :cascade do |t|

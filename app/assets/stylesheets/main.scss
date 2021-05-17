@@ -161,10 +161,20 @@ body {
 
 #main-foot {
   #copyright {
+    padding-top: 8px;
     span {
       padding-left: 0.2rem;
       font-size: 0.9rem;
       color: #6b6b6b;
+    }
+    form.button_to { display: inline; }
+    [type="submit"] {
+      padding-left: 2px;
+      background: transparent;
+      font-size: 0.9rem;
+      color: #52a0e6;
+      border: none;
+      &:hover { text-decoration: underline; }
     }
     a {
       font-size: 0.9rem;

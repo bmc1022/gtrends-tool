@@ -3,8 +3,8 @@ class DataGenerator
   
   def admin
     Admin.first_or_create({ 
-      email: "bmc1022@gmail.com",
-      password: "password"
+      username: "demo_user",
+      password: "123demo"
     })
   end
   

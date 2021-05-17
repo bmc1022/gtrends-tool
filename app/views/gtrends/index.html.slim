@@ -1,7 +1,7 @@
 - if Rails.env.development?
   p= @page_num.inspect
   p= @replacement.inspect
-#main-head.pb-5
+#main-head.pb-2
   #notice
     = errors_for(@gtrend)
   - if Rails.env.development?
@@ -17,7 +17,7 @@
   == render @gtrends
 #main-foot.d-flex
   #copyright
-    span Gtrends Tool © #{Date.today.year} | 
-    = link_to('Sign Out', destroy_admin_session_path, method: :delete)
+    span GoogleTrends Keyword Planner © #{Date.today.year} | 
+    = button_to('Sign Out', destroy_admin_session_path, method: :delete)
   #pagination.ml-auto.mb-4
       == render partial: 'gtrends/pagination', locals: { pagy: @pagy }

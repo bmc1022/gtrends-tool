@@ -18,6 +18,16 @@ body { background: #f9f9f9; }
 }
 
 #auth-main {
+  .alert.alert-alert {
+    width: 300px;
+    background: #fff6f0;
+    color: #ec984b;
+    font-size: 14px;
+    border: 3px solid #ffb784;
+  }
+  .alert .close {
+    color: rgba(255, 109, 17, 75%);
+  }
   .auth-form {
     background: #fff;
     padding: 20px;

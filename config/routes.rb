@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  namespace :api do
+    namespace :v1 do
+      resources :gtrends, only: [:index, :create, :destroy]
+    end
+  end
+  
   devise_for :admins, skip: [:sessions], 
           controllers: { registrations: 'registrations', sessions: 'sessions' }
   devise_scope :admin do

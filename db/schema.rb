@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_171634) do
+ActiveRecord::Schema.define(version: 2021_05_28_053626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2021_05_17_171634) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "job_status", default: "queued"
+    t.index ["job_status"], name: "index_gtrends_on_job_status"
   end
 
   create_table "keywords", force: :cascade do |t|

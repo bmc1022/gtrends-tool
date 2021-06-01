@@ -15,10 +15,22 @@ class GtrendsApi < ApplicationService
   end
   
   def call
+    # the first argument denotes how many of the top keywords will be used as a 
+    # base to compare against each set of 5 - use 2 or 3 only
     gtrend_results(3, @keywords)
   end
   
   private
+  
+    def rescue_retry(req, n=3)
+      retries = 0
+      begin
+        req
+      rescue HTTP::Error
+        sleep(retries)
+        (retries += 1) <= n ? retry : raise
+      end
+    end
   
     def format_query(params)
       q = params.map do |k, v|
@@ -34,12 +46,23 @@ class GtrendsApi < ApplicationService
     end
   
     def get_google_cookie
-      res = HTTP.get(GTRENDS_URL)
-      return res['Set-Cookie'].split(';')[0]
+      res = rescue_retry(HTTP.timeout(3).get(GTRENDS_URL))
+      if res.is_a?(HTTP::Response)
+        return res['Set-Cookie'].split(';')[0]
+      else
+        Rails.logger.error {'Error fetching cookie from Google'}
+        @gtrend.job_status = 'failed'
+        return ''
+      end
     end
     
     def get_api_tokens(q)
       res = gtrend_data(GENERAL_API_URL + q)
+      unless res.is_a?(HTTP::Response)
+        Rails.logger.error {'Error fetching Google API tokens'}
+        @gtrend.job_status = 'failed'
+        return
+      end
       widget_data = res.to_s[4..-1] # strip leading junk characters
       widgets = JSON.parse(widget_data)['widgets']
       
@@ -72,7 +95,7 @@ class GtrendsApi < ApplicationService
     end
     
     def gtrend_data(url, **kwargs)
-      HTTP.headers(cookie: @cookie).get(url, **kwargs)
+      rescue_retry(HTTP.timeout(3).headers(cookie: @cookie).get(url, **kwargs))
     end
     
     def over_time_averages(kws, data)
@@ -87,9 +110,14 @@ class GtrendsApi < ApplicationService
       params_with_token = @over_time_req.merge(@over_time_token).merge(hl_tz)
       
       q = format_query(params_with_token)
-      res = HTTP.get(OVER_TIME_URL + q)
+      res = rescue_retry(HTTP.timeout(5).get(OVER_TIME_URL + q))
       over_time_data = res.to_s[6..-1] # strip leading junk characters
-      
+      unless res.is_a?(HTTP::Response)
+        Rails.logger.error {'Error fetching Interest Over Time data'}
+        @gtrend.job_status = 'failed'
+        return {}
+      end
+
       return over_time_averages(kws, JSON.parse(over_time_data))
     end
   
@@ -110,8 +138,8 @@ class GtrendsApi < ApplicationService
       # compare first five
       top_kws = interest_over_time_data(kws.take(5)).max_by(n){|k,v| v}.to_h
 
-      # cycle through each consecutive slice of (5-n) keywords, comparing to 
-      # and overwriting the previous top (n)
+      # cycle through each consecutive slice of [5-n] keywords (since there's a 
+      # 5 keyword limit), comparing to and overwriting the previous top (n)
       # there's a 1 second pause between each request to avoid rate limit
       kws.drop(5).each_slice(5 - n) do |slice|
         sleep(1)
@@ -122,7 +150,9 @@ class GtrendsApi < ApplicationService
       return top_kws
     end
     
-    def gtrend_results(n, kws)
+    # once the overall top [n] keywords are found from the list, use those as a 
+    # base and cycle through the remaining keywords again for the full results
+    def gtrend_results(n=3, kws)
       top_kws = find_top(n, kws)
       remaining_kws = kws - top_kws.keys
       results = {}

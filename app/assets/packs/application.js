@@ -1,17 +1,11 @@
-import $ from 'jquery'
-global.$ = $
-
 // javascripts
 require('@rails/ujs').start()
 require('turbolinks').start()
 
-import 'jquery'
-import 'popper.js'
-import 'bootstrap'
-import 'clipboard'
 import 'simplebar'
 import 'javascripts/app.init'
 import 'javascripts/app.tooltip'
+import 'javascripts/app.gtrends'
 
 // stylesheets
 import 'stylesheets/application'

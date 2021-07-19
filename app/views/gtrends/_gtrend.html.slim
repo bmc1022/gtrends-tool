@@ -1,14 +1,14 @@
-.col-md-15.col-lg-10
+.col-md-15.col-lg-10.trend*{'data-id'=>gtrend.id,'data-status'=>gtrend.job_status}
   .trend-wrapper
     .trend-header
       span= gtrend.name
       .options
-        button.clipboard*{'data-toggle'=>'tooltip', 'title'=>'keywords copied!',
-                  'data-clipboard-text'=>gtrend.keywords.pluck(:kw).join(', ')}
+        button.clipboard*{'data-bs-toggle'=>'tooltip', 'title'=>'Copy Keywords', \
+                          'data-clipboard-text'=>gtrend.keywords.pluck(:kw).join(', ')}
           = svg_icon('#clipboard')
-        = link_to(gtrend_path(gtrend), class: 'close-btn', 
-            data: {remote: true, method: :delete, confirm: 'Are you sure?'}) do
-            = svg_icon('#close')
+        = link_to(gtrend_path(gtrend), class: 'close-btn', title: 'Delete Trend',
+            data: {remote: true, method: :delete, confirm: 'Are you sure?', 'bs-toggle': 'tooltip'}) do
+          = svg_icon('#close')
     .trend-list*{'data-simplebar'=>''}
       .list-wrapper
         table.table.table-sm.table-borderless

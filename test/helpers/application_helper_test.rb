@@ -6,4 +6,16 @@ class ApplicationHelperTest < ActionView::TestCase
       
   end
   
+  test '' do
+    
+  end
+  
+  test '' do
+    
+  end
+  
+  test '' do
+    
+  end
+  
 end

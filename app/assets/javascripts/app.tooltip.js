@@ -1,22 +1,29 @@
-import $ from 'jquery'
+import { Tooltip } from 'bootstrap'
 
 App.Tooltip = {
   
   init() {
-    // add bootstrap tooltips
-    $('body').tooltip({
-      selector: '[data-toggle="tooltip"]',
-      trigger: 'click'
+    // initialize all bootstrap tooltips
+    new Tooltip(document.body, {
+      selector: '[data-bs-toggle="tooltip"]'
     });
   },
 
-  fade() {
-    setTimeout(() => {
-      $('[data-toggle="tooltip"]').tooltip('hide')
-    }, 1500);
+  keywords_copied() {
+    document.addEventListener('click', (e) => {
+      const clipboard = e.target.closest('.clipboard');
+      if (clipboard) {
+        clipboard.setAttribute('data-bs-original-title', 'Keywords Copied!');
+        const el = Tooltip.getInstance(clipboard);
+        el.show();
+        clipboard.setAttribute('data-bs-original-title', 'Copy Keywords');
+      }
+    });
   }
   
-}
+};
 
-$(document).on('turbolinks:load', () => { App.Tooltip.init() });
-$(document).on('click', 'button.clipboard', () => { App.Tooltip.fade() });
+document.addEventListener('turbolinks:load', () => { 
+  App.Tooltip.init();
+  App.Tooltip.keywords_copied();
+});

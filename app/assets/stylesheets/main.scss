@@ -106,6 +106,12 @@ body {
         font-size: 34px;
         line-height: 34px;
         text-align: center;
+        box-shadow: inset 0px 1px #75dada;
+        &:hover { background: #38b1b1; }
+        &:active { 
+          box-shadow: inset 0px 2px #2f9494;
+          border-bottom: 2px solid #90d6d6;
+        }
       }
     }
   }
@@ -164,7 +170,6 @@ body {
       .simplebar-content { height: 100%; }
     }
     .simplebar-scrollbar {
-      width: 6px;
       &:before { background: #999; }
     }
   }
@@ -199,6 +204,7 @@ body {
       background-color: #39bebe;
       border-color: #39afaf;
       color: #fff;
+      box-shadow: inset 0px 1px #75dada;
     }
     .page-link {
       color: #39bebe;

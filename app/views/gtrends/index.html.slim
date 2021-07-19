@@ -1,23 +1,19 @@
-- if Rails.env.development?
-  p= @page_num.inspect
-  p= @replacement.inspect
 #main-head.pb-2
   #notice
     = errors_for(@gtrend)
   - if Rails.env.development?
     #search.d-flex.justify-content-center.mt-5
       .input-group.w-50
-        input.form-control type="text" placeholder="Search..."
-        .input-group-append
-          button.btn.btn-outline-secondary
-            = svg_icon('#search')
+        input.form-control type='text' placeholder='Search...'
+        button.btn.btn-outline-secondary type='button'
+          = svg_icon('#search')
 #trend-results.row.my-4
-  .col-md-15.col-lg-10
+  #new-trend.col-md-15.col-lg-10
     == render 'new'
   == render @gtrends
 #main-foot.d-flex
   #copyright
     span GoogleTrends Keyword Planner © #{Date.today.year} | 
     = button_to('Sign Out', destroy_admin_session_path, method: :delete)
-  #pagination.ml-auto.mb-4
+  #pagination.ms-auto.mb-4
       == render partial: 'gtrends/pagination', locals: { pagy: @pagy }

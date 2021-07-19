@@ -1,4 +1,4 @@
-- content_for(:header_title, '<h2>GTrends Tool</h2>'.html_safe)
+- content_for(:header_title, '<h2>GoogleTrends Keyword Planner</h2>'.html_safe)
 
 == render 'shared/flash'
 .auth-form
@@ -10,8 +10,4 @@
     .form-group
       = f.label :password
       = f.password_field :password, class: 'form-control', value: '123demo'
-    //- if devise_mapping.rememberable?
-    //  .form-group.form-check
-    //    = f.check_box :remember_me, class: 'form-check-input'
-    //    = f.label :remember_me, class: 'form-check-label'
     = f.submit 'Sign in', class: 'btn btn-success btn-block'

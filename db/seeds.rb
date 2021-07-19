@@ -1,8 +1,8 @@
 class DataGenerator
   require 'csv'
   
-  def admin
-    Admin.first_or_create({ 
+  def user
+    User.first_or_create({ 
       username: "demo_user",
       password: "123demo"
     })
@@ -77,7 +77,7 @@ class DataGenerator
   end
 end
 
-DataGenerator.new.admin
+DataGenerator.new.user
 Gtrend.destroy_all
 DataGenerator.new.dev_trend_lists if Rails.env.development?
 DataGenerator.new.prod_trend_lists

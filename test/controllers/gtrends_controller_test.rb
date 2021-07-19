@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class GtrendsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   include ActiveJob::TestHelper
+  
+  setup do
+    @user = create(:user)
+    sign_in(@user)
+  end
   
   test 'should get index' do
     get gtrends_url

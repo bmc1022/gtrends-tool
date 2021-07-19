@@ -6,15 +6,15 @@ Rails.application.routes.draw do
     end
   end
   
-  devise_for :admins, skip: [:sessions], 
+  devise_for :users, skip: [:sessions], 
           controllers: { registrations: 'registrations', sessions: 'sessions' }
-  devise_scope :admin do
-    get  'login' => 'sessions#new', :as => :new_admin_session
-    post 'login' => 'sessions#create', :as => :admin_session
-    delete 'logout' => 'sessions#destroy', :as => :destroy_admin_session
+  devise_scope :user do
+    get  'login' => 'sessions#new', :as => :new_user_session
+    post 'login' => 'sessions#create', :as => :user_session
+    delete 'logout' => 'sessions#destroy', :as => :destroy_user_session
   end
   
-  authenticate :admin do
+  authenticate :user do
     resources :gtrends, only: [:index, :create, :destroy], path: '/'
   end
   

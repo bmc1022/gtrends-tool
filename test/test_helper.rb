@@ -13,7 +13,8 @@ Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors)
+  # incompatible with simplecov for now
+  # parallelize(workers: :number_of_processors)
   
   include FactoryBot::Syntax::Methods
   ActiveRecord::Migration.check_pending!

@@ -14,7 +14,7 @@ class Gtrend < ApplicationRecord
   private
 
     def convert_kws_to_list
-      self.kws = self.kws.split(/[\n,]/).reject(&:empty?).map(&:strip)
+      self.kws = self.kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
     end
     
     def kw_count

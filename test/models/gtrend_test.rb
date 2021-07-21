@@ -9,8 +9,9 @@ class GtrendTest < ActiveSupport::TestCase
   end
   
   test 'keywords association' do
-    keyword = create(:keyword)
-    assert keyword.gtrend.present?
+    trend = create(:gtrend)
+    keyword = create(:keyword, gtrend: trend)
+    assert trend.keywords.present?
   end
   
   test 'associated keywords should be destroyed on gtrend deletion' do

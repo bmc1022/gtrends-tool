@@ -3,8 +3,9 @@
     .trend-header
       span= gtrend.name
       .options
-        button.clipboard*{'data-bs-toggle'=>'tooltip', 'title'=>'Copy Keywords', \
-                          'data-clipboard-text'=>gtrend.keywords.pluck(:kw).join(', ')}
+        - clipboard_kw_data = data_to_csv(desc_5y_avg(gtrend).pluck(:kw, :avg_5y))
+        button.clipboard*{'data-bs-toggle'=>'tooltip', 'title'=>'Copy Data (CSV)', \
+                          'data-clipboard-text'=>clipboard_kw_data}
           = svg_icon('#clipboard')
         = link_to(gtrend_path(gtrend), class: 'close-btn', title: 'Delete Trend',
             data: {remote: true, method: :delete, confirm: 'Are you sure?', 'bs-toggle': 'tooltip'}) do
@@ -13,7 +14,7 @@
       .list-wrapper
         table.table.table-sm.table-borderless
           tbody
-            - sorted_kws = gtrend.keywords.sort_by(&:avg_5y).reverse!
+            - sorted_kws = desc_5y_avg(gtrend)
             - sorted_kws.each do |kw|
               tr
                 = tag.td(kw.avg_5y, 

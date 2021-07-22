@@ -13,10 +13,10 @@ App.Tooltip = {
     document.addEventListener('click', (e) => {
       const clipboard = e.target.closest('.clipboard');
       if (clipboard) {
-        clipboard.setAttribute('data-bs-original-title', 'Keywords Copied!');
+        clipboard.setAttribute('data-bs-original-title', 'Data Copied!');
         const el = Tooltip.getInstance(clipboard);
         el.show();
-        clipboard.setAttribute('data-bs-original-title', 'Copy Keywords');
+        clipboard.setAttribute('data-bs-original-title', 'Copy Data');
       }
     });
   }

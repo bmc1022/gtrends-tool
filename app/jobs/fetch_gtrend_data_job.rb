@@ -1,16 +1,12 @@
 class FetchGtrendDataJob < ApplicationJob
   queue_as :default
+
+  # 'failed' or 'done' status is set within services/gtrends_api
   
-  # failed status is set within services/gtrends_api
-  
-  after_enqueue do |job| 
+  after_enqueue do |job|
     gtrend = job.arguments.first
     gtrend.job_status = 'queued'
-  end  
-  
-  after_perform do |job|
-    gtrend = job.arguments.first
-    gtrend.job_status = 'finished'
+    gtrend.save!
   end
 
   def perform(gtrend, keywords)

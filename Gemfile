@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'rails',               '6.0.3'
+gem 'rails',               '6.1.4'
 gem 'pg',                  '>= 1.2.3'                  # use postgresql as the database
 gem 'puma',                '~> 4.1'                    # use puma as the app server
 gem 'bootsnap',            '>= 1.4.4', require: false  # boot ruby/rails apps faster

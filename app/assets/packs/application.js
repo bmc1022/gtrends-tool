@@ -2,6 +2,7 @@
 require('@rails/ujs').start()
 require('turbolinks').start()
 
+import "controllers"
 import 'simplebar'
 import 'javascripts/app.init'
 import 'javascripts/app.tooltip'

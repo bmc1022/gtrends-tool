@@ -8,8 +8,9 @@ gem 'pg',                  '>= 1.2.3'                  # use postgresql as the d
 gem 'puma',                '~> 4.1'                    # use puma as the app server
 gem 'bootsnap',            '>= 1.4.4', require: false  # boot ruby/rails apps faster
 gem 'slim-rails',          '~> 3.2.0'                  # provides generator required to use slim
-gem 'webpacker',           '~> 5.2.1'                  # transpile app-like javascript
+gem 'webpacker',           '~> 5.4.0'                  # transpile app-like javascript
 gem 'turbolinks',          '~> 5.2.1'                  # spa-like navigation
+gem 'stimulus_reflex',     '~> 3.4'                    # craft modern, reactive web interfaces
 gem 'jbuilder',            '~> 2.7'                    # build json apis with ease
 gem 'devise',              '~> 4.7.3'                  # authentication
 gem 'http',                '~> 4.4.1'                  # http client

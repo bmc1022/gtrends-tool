@@ -9,14 +9,14 @@ App.Tooltip = {
     });
   },
 
-  keywords_copied() {
+  keywordsCopied() {
     document.addEventListener('click', (e) => {
       const clipboard = e.target.closest('.clipboard');
       if (clipboard) {
         clipboard.setAttribute('data-bs-original-title', 'Data Copied!');
         const el = Tooltip.getInstance(clipboard);
         el.show();
-        clipboard.setAttribute('data-bs-original-title', 'Copy Data');
+        clipboard.setAttribute('data-bs-original-title', 'Copy Data (CSV)');
       }
     });
   }
@@ -25,5 +25,5 @@ App.Tooltip = {
 
 document.addEventListener('turbolinks:load', () => { 
   App.Tooltip.init();
-  App.Tooltip.keywords_copied();
+  App.Tooltip.keywordsCopied();
 });

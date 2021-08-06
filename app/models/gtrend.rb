@@ -2,7 +2,7 @@ class Gtrend < ApplicationRecord
 
   has_many :keywords, dependent: :destroy, inverse_of: :gtrend
 
-  before_save :convert_kws_to_list, unless: :skip_kws?
+  before_save :update_kws, unless: :skip_kws?
 
   attribute :kws, :text
   
@@ -13,12 +13,18 @@ class Gtrend < ApplicationRecord
 
   private
 
-    def convert_kws_to_list
-      self.kws = self.kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
+    def kws_to_list
+      self.kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
     end
     
     def kw_count
-      errors.add(:kws, 'Keyword count must not exceed 100.') if self.kws.size > 100
+      if kws_to_list.size > 100
+        errors.add(:kws, 'Keyword count must not exceed 100.') 
+      end
+    end
+    
+    def update_kws
+      self.kws = kws_to_list
     end
     
     # kws is a non-persisted attribute and should be skipped on updates

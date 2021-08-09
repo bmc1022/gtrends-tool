@@ -1,8 +1,13 @@
 // start polling for processed results on newly created trends
 App.Gtrends = {
 
-  poll() {
-    setTimeout(this.request, 5000);
+  poll(status) {
+    let count = 0;
+    while (status !== 'done' || count <= 10) {
+      console.log(status);
+      count++;
+    }
+    // setTimeout(this.poll(), 1000);
   },
   
   updateTrend() {
@@ -12,24 +17,22 @@ App.Gtrends = {
     // if a 'done' status is found, change it to an empty string
     // if a 'failed' status is found, destroy trend and show a retry button
     // what happens when page is refreshed prematurely? if trend is blank, restart poll
-    const newTrend = document.getElementById('new-trend');
+    const newTrendForm = document.getElementById('new-trend');
     const activeTrends = document.querySelectorAll('.trend:not([data-status=""])');
-    newTrend.addEventListener('ajax:send', (e) => {
+    newTrendForm.addEventListener('ajax:send', (e) => {
       for (const trend of activeTrends) {
         const dataId = trend.getAttribute('data-id');
         let dataStatus = trend.getAttribute('data-status');
         
+        this.poll(dataStatus)
+        
+        
+        
         // let ajax = new XMLHttpRequest();
         // ajax.open('GET', )
         
-        let count = 0;
-        while (dataStatus !== 'done' || count >= 30) {
-          setTimeout(() => {
-            console.log(count);
-            count++;
-          }, 2000);
-        }
-        // start a poll that checks the status every 2 seconds for 2 minutes
+        
+        // start a poll that checks the status every 2 seconds for 5 minutes
         // if 'failed', 
         // if 'done', use data id to fetch trend data and replace html with gtrend partial
       }
@@ -41,5 +44,5 @@ App.Gtrends = {
 document.addEventListener('turbolinks:load', () => { 
   const index = document.querySelector('body.index');
   if (!index) { return }
-  App.Gtrends.updateTrend();
+  // App.Gtrends.updateTrend();
 });

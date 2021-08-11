@@ -14,8 +14,11 @@ Rails.application.routes.draw do
     delete 'logout' => 'sessions#destroy', :as => :destroy_user_session
   end
   
-  authenticate :user do
-    resources :gtrends, only: [:index, :create, :destroy], path: '/'
-  end
+  # # disabled for demo purposes
+  # authenticate :user do
+  #   resources :gtrends, only: [:index, :create, :destroy], path: '/'
+  # end
+  
+  resources :gtrends, only: [:index, :create, :destroy], path: '/'
   
 end

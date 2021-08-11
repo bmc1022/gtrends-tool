@@ -11,7 +11,8 @@
   == render @gtrends
 #main-foot.d-flex
   #copyright
-    span GoogleTrends Keyword Planner © #{Date.today.year} | 
-    = button_to('Sign Out', destroy_user_session_path, method: :delete)
+    span GoogleTrends Keyword Planner © #{Date.today.year}
+    // span GoogleTrends Keyword Planner © #{Date.today.year} | 
+    // = button_to('Sign Out', destroy_user_session_path, method: :delete)
   #pagination.ms-auto.mb-4
       == render partial: 'gtrends/pagination', locals: { pagy: @pagy }

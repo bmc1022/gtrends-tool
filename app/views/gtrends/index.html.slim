@@ -1,10 +1,19 @@
 #main-head.pb-2
-  - if Rails.env.development?
-    #search.d-flex.justify-content-center.mt-5
-      .input-group.w-50
-        input.form-control type='text' placeholder='Search...'
-        button.btn.btn-outline-secondary type='button'
-          = svg_icon('#search')
+  .callout.mt-4
+    h1 GoogleTrends Keyword Planner
+    .callout-body 
+      span 
+        | A keyword research tool created to bypass the 5 keyword limit imposed by 
+        = link_to('GoogleTrends', 'https://trends.google.com/trends', target: '_blank')
+        | . 
+      span Input up to 100 keywords to see how they rank relative to each other.
+    .callout-warning Trend results generally take less than 1 minute to process and require a page refresh for now.
+  /- if Rails.env.development?
+  /  #search.d-flex.justify-content-center.mt-5
+  /    .input-group.w-50
+  /      input.form-control type='text' placeholder='Search...'
+  /      button.btn.btn-outline-secondary type='button'
+  /        = svg_icon('#search')
 #trend-results.row.my-4
   #new-trend.col-md-15.col-lg-10
     == render 'new'

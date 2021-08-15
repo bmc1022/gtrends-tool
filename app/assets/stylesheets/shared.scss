@@ -1,4 +1,7 @@
-a { transition: all 0.3s ease; }
+a {
+  color: #52A0E6;
+  transition: all 0.3s ease;
+}
 
 input:focus::placeholder { color: transparent !important; }
 
@@ -8,6 +11,22 @@ svg {
     height: 1em;
   }
   &:active { filter: drop-shadow(0 0.09em 0.03em rgba(0, 0, 0, 0.4)); }
+}
+
+.callout {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #38BEBE;
+  }
+  .callout-body {
+    color: #6D6D6D;
+    span { display: block; }
+  }
+  .callout-warning { color: #f9965c; }
 }
 
 .tooltip {

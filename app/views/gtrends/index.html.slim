@@ -18,10 +18,10 @@
   #new-trend.col-md-15.col-lg-10
     == render 'new'
   == render @gtrends
-#main-foot.d-flex
-  #copyright
-    span GoogleTrends Keyword Planner © #{Date.today.year}
-    // span GoogleTrends Keyword Planner © #{Date.today.year} | 
-    // = button_to('Sign Out', destroy_user_session_path, method: :delete)
-  #pagination.ms-auto.mb-4
+#main-foot.row.d-flex.mb-4
+  #pagination.col-30.col-lg-15.d-flex.order-lg-2.mb-2.justify-content-center.justify-content-lg-end
       == render partial: 'gtrends/pagination', locals: { pagy: @pagy }
+  #copyright.col-30.col-lg-15.d-flex.order-lg-1.justify-content-center.justify-content-lg-start
+    span GoogleTrends Keyword Planner © #{Date.today.year}
+    / span GoogleTrends Keyword Planner © #{Date.today.year} | 
+    / = button_to('Sign Out', destroy_user_session_path, method: :delete)

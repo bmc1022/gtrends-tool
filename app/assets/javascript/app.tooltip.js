@@ -11,10 +11,10 @@ App.Tooltip = {
 
   keywordsCopied() {
     document.addEventListener('click', (e) => {
-      const clipboard = e.target.closest('.clipboard');
+      let clipboard = e.target.closest('.clipboard');
       if (clipboard) {
         clipboard.setAttribute('data-bs-original-title', 'Data Copied!');
-        const el = Tooltip.getInstance(clipboard);
+        let el = Tooltip.getInstance(clipboard);
         el.show();
         clipboard.setAttribute('data-bs-original-title', 'Copy Data (CSV)');
       }

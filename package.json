@@ -5,18 +5,19 @@
   "author": "Brandon Campbell <bmc1022@gmail.com>",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.9.2",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
+    "@popperjs/core": "^2.9.3",
+    "@rails/actioncable": "^6.1.4",
+    "@rails/activestorage": "^6.1.4",
+    "@rails/ujs": "^6.1.4",
     "@rails/webpacker": "^5.4.0",
-    "bootstrap": "^5.0.2",
-    "clipboard": "^2.0.6",
-    "simplebar": "^5.3.4",
+    "bootstrap": "5.0.2",
+    "clipboard": "^2.0.8",
+    "simplebar": "^5.3.5",
     "stimulus": "^2.0.0",
     "stimulus_reflex": "3.4.1",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.2"
   }
 }

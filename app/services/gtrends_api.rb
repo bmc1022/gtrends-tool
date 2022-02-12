@@ -47,11 +47,12 @@ class GtrendsApi < ApplicationService
   
     def get_google_cookie
       res = rescue_retry(HTTP.timeout(3).get(GTRENDS_URL))
-      if res.is_a?(HTTP::Response)
-        return res['Set-Cookie'].split(';')[0]
+      cookie = res['Set-Cookie'].split(';')[0]
+      if cookie.present?
+        return cookie
       else
         Rails.logger.error {'Error fetching cookie from Google'}
-        @gtrend.job_status = 'failed'
+        @gtrend.update(job_status: 'failed')
         return ''
       end
     end
@@ -60,7 +61,7 @@ class GtrendsApi < ApplicationService
       res = gtrend_data(GENERAL_API_URL + q)
       unless res.is_a?(HTTP::Response)
         Rails.logger.error {'Error fetching Google API tokens'}
-        @gtrend.job_status = 'failed'
+        @gtrend.update(job_status: 'failed')
         return
       end
       widget_data = res.to_s[4..-1] # strip leading junk characters
@@ -114,7 +115,7 @@ class GtrendsApi < ApplicationService
       over_time_data = res.to_s[6..-1] # strip leading junk characters
       unless res.is_a?(HTTP::Response)
         Rails.logger.error {'Error fetching Interest Over Time data'}
-        @gtrend.job_status = 'failed'
+        @gtrend.update(job_status: 'failed')
         return {}
       end
 
@@ -131,6 +132,7 @@ class GtrendsApi < ApplicationService
       
       # create all keywords using the same database connection
       Gtrend.transaction do 
+        @gtrend.job_status = 'done'
         @gtrend.save!
       end
     end
@@ -155,7 +157,7 @@ class GtrendsApi < ApplicationService
     # base and cycle through the remaining keywords again for the full results
     def gtrend_results(n=3, kws)
       top_kws = find_top(n, kws)
-      remaining_kws = kws - top_kws.keys
+      remaining_kws = kws.size > n ? kws - top_kws.keys : kws
       results = {}
       
       remaining_kws.each_slice(5 - n) do |slice|

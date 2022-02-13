@@ -1,20 +1,22 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '3.1.0'
 
-gem 'rails',               '6.1.4'
-gem 'pg',                  '>= 1.2.3'                  # use postgresql as the database
-gem 'puma',                '~> 4.1'                    # use puma as the app server
-gem 'bootsnap',            '>= 1.4.4', require: false  # boot ruby/rails apps faster
-gem 'slim-rails',          '~> 3.2.0'                  # provides generator required to use slim
-gem 'webpacker',           '~> 5.4.0'                  # transpile app-like javascript
-gem 'turbolinks',          '~> 5.2.1'                  # spa-like navigation
-gem 'stimulus_reflex',     '~> 3.4'                    # craft modern, reactive web interfaces
-gem 'jbuilder',            '~> 2.7'                    # build json apis with ease
-gem 'devise',              '~> 4.7.3'                  # authentication
-gem 'http',                '~> 4.4.1'                  # http client
-gem 'pagy',                '~> 3.8.3'                  # pagination
+gem 'rails',               '~> 7.0.2'
+gem 'pg',                  '>= 1.3.1'                  # use postgresql as the database
+gem 'puma',                '~> 5.6.2'                  # use puma as the app server
+gem 'bootsnap', require: false                         # boot ruby/rails apps faster
+gem "importmap-rails"                                  # use javascript with esm import maps                 
+gem 'turbo-rails'                                      # spa-like page accelerator
+gem 'stimulus-rails'                                   # a modest javascript framework
+gem 'redis',               '~> 4.6.0'                  # use redis adapter to run action cable in production
+gem 'jbuilder',            '~> 2.11.5'                 # build json apis with ease
+gem 'slim-rails',          '~> 3.3.0'                  # compile slim to html
+gem 'sassc-rails',         '~> 2.1.2'                  # compile scss to css
+gem 'devise',              '~> 4.8.1'                  # authentication
+gem 'http',                '~> 5.0.4'                  # http client
+gem 'pagy',                '~> 5.10.1'                 # pagination
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]  # standard ruby debugger

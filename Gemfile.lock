@@ -364,6 +364,7 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   slim-rails (~> 3.3.0)
+  sprockets-rails
   stimulus-rails
   turbo-rails
   web-console

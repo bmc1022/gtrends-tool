@@ -7,6 +7,7 @@ gem 'rails',               '~> 7.0.2'
 gem 'pg',                  '>= 1.3.1'                  # use postgresql as the database
 gem 'puma',                '~> 5.6.2'                  # use puma as the app server
 gem 'bootsnap', require: false                         # boot ruby/rails apps faster
+gem "sprockets-rails"                                  # asset pipeline
 gem "importmap-rails"                                  # use javascript with esm import maps                 
 gem 'turbo-rails'                                      # spa-like page accelerator
 gem 'stimulus-rails'                                   # a modest javascript framework

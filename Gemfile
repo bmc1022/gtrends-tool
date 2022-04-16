@@ -21,23 +21,39 @@ gem 'http',                '~> 5.0.4'                  # http client
 gem 'pagy',                '~> 5.10.1'                 # pagination
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]  # standard ruby debugger
+  gem 'debug', platforms: %i[ mri mingw x64_mingw ]    # standard ruby debugger
   gem 'pry-rails'                                      # use pry as the rails console
-  gem 'pry-byebug'                                     # adds step, next, continue commands to pry
-  gem 'minitest-reporters'                             # customizable minitest output formats
+  gem 'rspec-rails'                                    # use rspec testing framework
   gem 'capybara'                                       # acceptance test framework
   gem 'selenium-webdriver'                             # web browser automation
   gem 'webdrivers'                                     # mimic the behavior of actual users
   gem 'factory_bot_rails'                              # fixtures replacement
-  gem 'mocha'                                          # library for mocking and stubbing
   gem 'rubocop', require: false                        # enforces ruby style conventions
-  gem 'simplecov', require: false                      # code coverage analysis tool for ruby
-  gem 'brakeman'                                       # checks for security vulnerabilities
+  gem 'rubocop-performance'                            # rubocop performance rules
+  gem 'rubocop-rails'                                  # rubocop rails rules
+  gem 'rubocop-rspec'                                  # rubocop rspec rules
 end
 
 group :development do
   gem 'web-console'                                    # use <%= console %> in views to access a console
   gem 'listen'                                         # notifies about file modifications
+  gem "better_errors"                                  # replaces standard rails error page
+  gem "binding_of_caller"                              # extends better_errors (repl/variable inspection)
   gem 'awesome_print', require: 'ap'                   # pretty print ruby objects
+  gem 'guard-rspec', require: false                    # automatically run specs when files are modified
+  gem 'guard-rubocop'                                  # automatically run rubocop when files are modified
+  gem 'stackprof', require: false                      # sampling call-stack profiler for ruby
+  gem 'memory_profiler'                                # memory profiler for ruby
+  gem 'rack-mini-profiler'                             # profile page speed, db queries, memory usage, etc
+  gem 'bullet'                                         # identifies n+1 queries and unused eager loading
   gem 'derailed'                                       # output the memory use of gems
+  gem 'brakeman'                                       # checks for security vulnerabilities
+end
+
+group :test do
+  gem 'simplecov', require: false                      # code coverage analysis tool for ruby
+  gem 'rspec-collection_matchers'                      # collection matchers (e.g. have(n).items)
+  gem 'shoulda'                                        # one-liners to test common rails functionality
+  gem 'shoulda-callback-matchers'                      # shoulda matchers to test callbacks
+  gem 'test-prof'                                      # analyze test suite performance
 end

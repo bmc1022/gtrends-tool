@@ -46,7 +46,7 @@ group :development do
   gem 'memory_profiler'                                # memory profiler for ruby
   gem 'rack-mini-profiler'                             # profile page speed, db queries, memory usage, etc
   gem 'bullet'                                         # identifies n+1 queries and unused eager loading
-  gem 'derailed'                                       # output the memory use of gems
+  gem 'derailed_benchmarks'                            # output the memory use of gems
   gem 'brakeman'                                       # checks for security vulnerabilities
 end
 

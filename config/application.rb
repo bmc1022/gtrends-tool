@@ -20,7 +20,7 @@ module GtrendsTool
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Generator configuration.
-    config.generators do |g| 
+    config.generators do |g|
       g.assets = false # skip generating asset files
       g.test_framework :rspec
       g.fixture_replacement :factory_bot, dir: 'spec/factories'

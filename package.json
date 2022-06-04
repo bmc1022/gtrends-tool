@@ -1,0 +1,19 @@
+{
+  "name": "gtrends_tool",
+  "version": "1.0.0",
+  "repository": "git@github.com:bmc1022/gtrends-tool.git",
+  "author": "Brandon Campbell <bmc1022@gmail.com>",
+  "private": true,
+  "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/turbo-rails": "^7.1.3",
+    "@popperjs/core": "^2.11.5",
+    "bootstrap": "^5.1.3",
+    "clipboard": "^2.0.11",
+    "esbuild": "^0.14.42",
+    "simplebar": "^5.3.8"
+  },
+  "scripts": {
+    "build": "esbuild app/assets/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
+  }
+}

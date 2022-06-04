@@ -9,8 +9,6 @@ gem 'puma',                '~> 5.6.2'                  # use puma as the app ser
 gem 'bootsnap', require: false                         # boot ruby/rails apps faster
 gem "sprockets-rails"                                  # asset pipeline
 gem "jsbundling-rails"                                 # bundle and transpile javascript
-gem 'turbo-rails'                                      # spa-like page accelerator
-gem 'stimulus-rails'                                   # a modest javascript framework
 gem 'redis',               '~> 4.6.0'                  # use redis adapter to run action cable in production
 gem 'jbuilder',            '~> 2.11.5'                 # build json apis with ease
 gem 'slim-rails',          '~> 3.3.0'                  # compile slim to html

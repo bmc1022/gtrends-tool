@@ -3,19 +3,19 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
-gem 'rails',               '~> 7.0.2'
-gem 'pg',                  '>= 1.3.1'                  # use postgresql as the database
-gem 'puma',                '~> 5.6.2'                  # use puma as the app server
-gem 'bootsnap', require: false                         # boot ruby/rails apps faster
-gem "sprockets-rails"                                  # asset pipeline
-gem "jsbundling-rails"                                 # bundle and transpile javascript
-gem 'redis',               '~> 4.6.0'                  # use redis adapter to run action cable in production
-gem 'jbuilder',            '~> 2.11.5'                 # build json apis with ease
-gem 'slim-rails',          '~> 3.3.0'                  # compile slim to html
-gem 'sassc-rails',         '~> 2.1.2'                  # compile scss to css
-gem 'devise',              '~> 4.8.1'                  # authentication
-gem 'http',                '~> 5.0.4'                  # http client
-gem 'pagy',                '~> 5.10.1'                 # pagination
+gem 'rails',             '~> 7.0.2'
+gem 'pg',                '>= 1.3.1'                    # use postgresql as the database
+gem 'redis',             '~> 4.6.0'                    # use redis adapter to run action cable in production
+gem 'puma',              '~> 5.6.2'                    # use puma as the app server
+gem 'bootsnap',          '~> 1.12.0', require: false   # boot ruby/rails apps faster
+gem "sprockets-rails",   '~> 3.4.2'                    # asset pipeline
+gem "jsbundling-rails",  '~> 1.0.2'                    # bundle and transpile javascript
+gem 'sassc-rails',       '~> 2.1.2'                    # compile scss to css
+gem 'jbuilder',          '~> 2.11.5'                   # build json apis with ease
+gem 'slim-rails',        '~> 3.3.0'                    # compile slim to html
+gem 'devise',            '~> 4.8.1'                    # authentication
+gem 'http',              '~> 5.0.4'                    # http client
+gem 'pagy',              '~> 5.10.1'                   # pagination
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]    # standard ruby debugger

@@ -1,11 +1,11 @@
-@import "~stylesheets/custom_variables";
-@import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800);
+@import "abstracts/variables";
+@import "bootstrap/scss/bootstrap";
 
 @import "~simplebar/dist/simplebar";
 
-@import "~stylesheets/shared";
-@import "~stylesheets/main";
-@import "~stylesheets/responsive";
-@import "~stylesheets/auth";
+@import "base/shared";
+@import "base/main";
+@import "base/responsive";
+@import "base/auth";

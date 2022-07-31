@@ -1,0 +1,3 @@
+Style/HashSyntax:
+  Enabled: true
+  EnforcedStyle: ruby19

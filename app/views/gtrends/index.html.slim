@@ -1,11 +1,11 @@
 #main-head.pb-2
   .callout.mt-4
     h1 GoogleTrends Keyword Planner
-    .callout-body 
-      span 
-        | A keyword research tool created to bypass the 5 keyword limit imposed by 
+    .callout-body
+      span
+        | A keyword research tool created to bypass the 5 keyword limit imposed by
         = link_to('GoogleTrends', 'https://trends.google.com/trends', target: '_blank')
-        | . 
+        | .
       span Inspired by the recent obfuscation and unreliability of Google's search volume data.
       span Input up to 100 keywords to see how they rank relative to each other.
     .callout-warning Trend results generally take less than 1 minute to process and require a page refresh for now.
@@ -24,5 +24,5 @@
       == render partial: 'gtrends/pagination', locals: { pagy: @pagy }
   #copyright.col-30.col-lg-15.d-flex.order-lg-1.justify-content-center.justify-content-lg-start
     span GoogleTrends Keyword Planner © #{Date.today.year}
-    / span GoogleTrends Keyword Planner © #{Date.today.year} | 
-    / = button_to('Sign Out', destroy_user_session_path, method: :delete)
+    / span GoogleTrends Keyword Planner © #{Date.today.year} |
+    / = button_to('Sign Out', logout_path, data: { turbo_method: :delete })

@@ -10,7 +10,7 @@ gem 'puma',              '~> 5.6.2'                    # use puma as the app ser
 gem 'bootsnap',          '~> 1.12.0', require: false   # boot ruby/rails apps faster
 gem "sprockets-rails",   '~> 3.4.2'                    # asset pipeline
 gem "jsbundling-rails",  '~> 1.0.2'                    # bundle and transpile javascript
-gem 'sassc-rails',       '~> 2.1.2'                    # compile scss to css
+gem "cssbundling-rails", '~> 1.1.1'                    # bundle and process css
 gem 'jbuilder',          '~> 2.11.5'                   # build json apis with ease
 gem 'slim-rails',        '~> 3.3.0'                    # compile slim to html
 gem 'devise',            '~> 4.8.1'                    # authentication

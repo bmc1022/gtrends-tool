@@ -2,6 +2,10 @@ Layout/AccessModifierIndentation:
   Enabled: true
   EnforcedStyle: indent
 
+Layout/ArgumentAlignment:
+  Enabled: true
+  EnforcedStyle: with_first_argument
+
 Layout/TrailingEmptyLines:
   Enabled: true
   EnforcedStyle: final_newline

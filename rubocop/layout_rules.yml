@@ -6,6 +6,10 @@ Layout/ArgumentAlignment:
   Enabled: true
   EnforcedStyle: with_first_argument
 
+Layout/ArrayAlignment:
+  Enabled: true
+  EnforcedStyle: with_first_element
+
 Layout/TrailingEmptyLines:
   Enabled: true
   EnforcedStyle: final_newline

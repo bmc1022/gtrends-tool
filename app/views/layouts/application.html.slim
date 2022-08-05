@@ -3,4 +3,5 @@
 body class="#{controller_path.gsub('/', ' ')} #{action_name}"
   #main
     .container
+      == render 'shared/flash'
       == yield

@@ -4,6 +4,6 @@ import "./controllers"
 
 import "bootstrap/dist/js/bootstrap.bundle"
 
-App.init = () => {
-  new ClipboardJS('.clipboard'); // copy text to clipboard
-};
+// App.init = () => {
+//   new ClipboardJS('.clipboard'); // copy text to clipboard
+// };

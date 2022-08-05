@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
-gem 'rails',             '~> 7.0.2'
+gem 'rails',             '~> 7.0.2'                    # web app framework
 gem 'pg',                '>= 1.3.1'                    # use postgresql as the database
 gem 'redis',             '~> 4.6.0'                    # use redis adapter to run action cable in production
 gem 'puma',              '~> 5.6.2'                    # use puma as the app server

@@ -20,9 +20,7 @@ group :red_green_refactor, halt_on_fail: true do
     watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
     watch(%r{^app/(.*)(\.erb|\.haml|\.slim)$})          { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
     watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/libs/#{m[1]}_spec.rb" }
-    watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb",
-                                                               "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb",
-                                                               "spec/acceptance/#{m[1]}_spec.rb"] }
+    watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| "spec/requests/#{m[1]}_request_spec.rb" }
     watch(%r{^config/(.+)\.rb$})                        { |m| "spec/config/#{m[1]}_spec.rb" }
   end
 

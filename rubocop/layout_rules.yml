@@ -10,6 +10,20 @@ Layout/ArrayAlignment:
   Enabled: true
   EnforcedStyle: with_first_element
 
+Layout/AssignmentIndentation:
+  Enabled: true
+
+Layout/BeginEndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_line
+
+Layout/BlockAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: either
+
+Layout/BlockEndNewline:
+  Enabled: true
+
 Layout/TrailingEmptyLines:
   Enabled: true
   EnforcedStyle: final_newline

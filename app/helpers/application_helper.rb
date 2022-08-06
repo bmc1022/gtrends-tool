@@ -32,10 +32,10 @@ module ApplicationHelper
     base_class = 'trend-avg'
 
     str_class = case rel_to_highest
-      when 0.75..1.00 then 'high-avg'
-      when 0.50..0.74 then 'mid-avg'
-      when 0.20..0.49 then 'low-avg'
-    end
+                when 0.75..1.00 then 'high-avg'
+                when 0.50..0.74 then 'mid-avg'
+                when 0.20..0.49 then 'low-avg'
+                end
 
     return [base_class, str_class]
   end

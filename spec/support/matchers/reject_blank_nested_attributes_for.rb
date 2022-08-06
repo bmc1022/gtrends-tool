@@ -43,8 +43,8 @@ module RejectBlankNestedAttributesForMatcher
       # Create a hash that contains empty strings for every column on the class with a string type.
       attrs = associated_class.columns.select { |col| col.sql_type =~ /character/ }.map { |col| [col.name, '' ] }.to_h
       case associated_type
-        when "HasOneReflection"  then attrs
-        when "HasManyReflection" then [attrs]
+      when "HasOneReflection"  then attrs
+      when "HasManyReflection" then [attrs]
       end
     end
   end

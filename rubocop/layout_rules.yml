@@ -24,6 +24,10 @@ Layout/BlockAlignment:
 Layout/BlockEndNewline:
   Enabled: true
 
+Layout/CaseIndentation:
+  Enabled: true
+  EnforcedStyle: case
+
 Layout/TrailingEmptyLines:
   Enabled: true
   EnforcedStyle: final_newline

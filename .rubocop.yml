@@ -5,13 +5,15 @@ require:
 
 inherit_from:
   - rubocop/bundler_rules.yml
-  - rubocop/factorybot_rules.yml
   - rubocop/layout_rules.yml
   - rubocop/lint_rules.yml
   - rubocop/metrics_rules.yml
   - rubocop/naming_rules.yml
   - rubocop/performance_rules.yml
   - rubocop/rails_rules.yml
+  - rubocop/rspec_capybara_rules.yml
+  - rubocop/rspec_factorybot_rules.yml
+  - rubocop/rspec_rails_rules.yml
   - rubocop/rspec_rules.yml
   - rubocop/security_rules.yml
   - rubocop/style_rules.yml

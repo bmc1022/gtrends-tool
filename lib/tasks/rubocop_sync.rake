@@ -1,19 +1,22 @@
 namespace :rubocop do
-
   desc 'find missing or no longer relevant rubocop rules'
   task sync_rules: :environment do
     rubocop_metadata = [
       {
-        base_url: "https://docs.rubocop.org/rubocop/",
+        base_docs_url: "https://docs.rubocop.org/rubocop/",
         departments: ["Bundler", "Layout", "Lint", "Metrics", "Naming", "Security", "Style"]
       },
       {
-        base_url: "https://docs.rubocop.org/rubocop-performance/",
+        base_docs_url: "https://docs.rubocop.org/rubocop-performance/",
         departments: ["Performance"]
       },
       {
-        base_url: "https://docs.rubocop.org/rubocop-rspec/",
-        departments: ["FactoryBot", "Rails", "RSpec"]
+        base_docs_url: "https://docs.rubocop.org/rubocop-rails/",
+        departments: ["Rails"]
+      },
+      {
+        base_docs_url: "https://docs.rubocop.org/rubocop-rspec/",
+        departments: ["RSpec/Capybara", "RSpec/FactoryBot", "RSpec/Rails", "RSpec"]
       }
     ]
 
@@ -21,19 +24,25 @@ namespace :rubocop do
     # Then extract all rules from the official docs to compare to.
     rubocop_metadata.each do |data_set|
       data_set[:departments].each do |department|
-        department_file = File.read("./rubocop/#{department.downcase}_rules.yml")
-        # The following regex pattern will match only non-indented lines.
-        active_rules = department_file.scan(/(^\S.*(?:\n^\h+.*)*)/).flatten.map! { |match| match.delete_suffix!(":") }
+        parameterized_department = department.parameterize.underscore
 
-        doc = Nokogiri::HTML(URI.open("#{data_set[:base_url]}cops_#{department.downcase}.html"))
+        department_file = File.read("./rubocop/#{parameterized_department}_rules.yml")
+        # The following regex pattern will match only non-indented lines.
+        active_rules = department_file.scan(/(^\S.*(?:\n^\h+.*)*)/).flatten.map! do |match|
+          match.delete_suffix!(":")
+        end
+
+        url = "#{data_set[:base_docs_url]}cops_#{parameterized_department}.html"
+        doc = Nokogiri::HTML(URI.open(url))
         official_rules = doc.xpath("//div[@class='sect1']/h2/text()").map(&:to_s)
         sleep(0.2) # Prevent sending several requests at the same time.
 
         # Find official rules that are missing from this app:
         missing_rules = official_rules - active_rules
-        missing_rules.each { |rule| p "#{rule} is missing from rubocop/#{department.downcase}_rules.yml" }
+        missing_rules.each do |rule|
+          p "#{rule} is missing from rubocop/#{parameterized_department}_rules.yml"
+        end
       end
     end
   end
-
 end

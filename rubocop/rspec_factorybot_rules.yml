@@ -1,0 +1,12 @@
+RSpec/FactoryBot/AttributeDefinedStatically:
+  Enabled: true
+
+RSpec/FactoryBot/CreateList:
+  Enabled: true
+  EnforcedStyle: create_list
+
+RSpec/FactoryBot/FactoryClassName:
+  Enabled: true
+
+RSpec/FactoryBot/SyntaxMethods:
+  Enabled: true

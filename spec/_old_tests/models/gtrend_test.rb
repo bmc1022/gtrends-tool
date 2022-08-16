@@ -86,8 +86,8 @@ class GtrendTest < ActiveSupport::TestCase
   test 'convert_kws_to_list method' do
     trend = create(:gtrend, kws: 'one
                                   two   , three,  ,    four   ')
-    # kws data is saved as a string version of an array
-    # parsing as json converts it back to an actual array
+    # :kws data is saved as a string version of an array.
+    # Parsing as JSON converts it back to an actual array.
     assert_equal ['one', 'two', 'three', 'four'], JSON.parse(trend.kws)
   end
 

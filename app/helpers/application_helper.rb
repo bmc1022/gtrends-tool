@@ -2,31 +2,31 @@ module ApplicationHelper
 
   include Pagy::Frontend
 
-  # displays an inline svg reference
+  # Displays an inline SVG reference.
   def svg_icon(reference, class_name='icon')
     tag.svg(class: class_name) do
       concat(tag.use('xlink:href': reference))
     end
   end
 
-  # returns the full title on a per-page basis
+  # Returns the full title on a per-page basis.
   def full_title(page_title='')
     base_title = 'GoogleTrends Keyword Planner'
     page_title.empty? ? base_title : "#{page_title} - #{base_title}"
   end
 
-  # sort a trend's keyword averages from highest to lowest
+  # Sort a trend's keyword averages from highest to lowest.
   def desc_5y_avg(trend)
     trend.keywords.sort_by(&:avg_5y).reverse!
   end
 
-  # convert an array of arrays to csv format
+  # Convert an array of arrays to CSV format.
   def data_to_csv(data)
     require 'csv'
     data.map(&CSV.method(:generate_line)).join
   end
 
-  # conditional css classes for colorizing trend averages
+  # Conditional CSS classes for colorizing trend averages.
   def trend_strength(max, avg)
     rel_to_highest = avg.to_f / max
     base_class = 'trend-avg'

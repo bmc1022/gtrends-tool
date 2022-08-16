@@ -15,8 +15,8 @@ class GtrendsApi < ApplicationService
   end
 
   def call
-    # the first argument denotes how many of the top keywords will be used as a
-    # base to compare against each set of 5 - use 2 or 3 only
+    # The first argument denotes how many of the top keywords will be used as a
+    # base to compare against each set of 5 - use 2 or 3 only.
     gtrend_results(3, @keywords)
   end
 
@@ -64,7 +64,7 @@ class GtrendsApi < ApplicationService
         @gtrend.update(job_status: 'failed')
         return
       end
-      widget_data = res.to_s[4..-1] # strip leading junk characters
+      widget_data = res.to_s[4..-1] # Strip leading junk characters.
       widgets = JSON.parse(widget_data)['widgets']
 
       widgets.each do |widget|
@@ -105,14 +105,14 @@ class GtrendsApi < ApplicationService
     end
 
     def interest_over_time_data(kws)
-      build_params(kws) # assign interest over time params
+      build_params(kws) # Assign interest over time params.
 
       hl_tz = { 'hl': 'en-US', 'tz': '-600' }
       params_with_token = @over_time_req.merge(@over_time_token).merge(hl_tz)
 
       q = format_query(params_with_token)
       res = rescue_retry(HTTP.timeout(5).get(OVER_TIME_URL + q))
-      over_time_data = res.to_s[6..-1] # strip leading junk characters
+      over_time_data = res.to_s[6..-1] # Strip leading junk characters.
       unless res.is_a?(HTTP::Response)
         Rails.logger.error {'Error fetching Interest Over Time data'}
         @gtrend.update(job_status: 'failed')
@@ -124,13 +124,13 @@ class GtrendsApi < ApplicationService
 
     def create_keywords(list)
       kw_params = list.map do |k, v|
-        v ||= 0 # assign v to 0 if nil
+        v ||= 0 # Assign 0 if nil.
         { gtrend: @gtrend, kw: k, avg_5y: v }
       end
 
       @gtrend.keywords.build(kw_params)
 
-      # create all keywords using the same database connection
+      # Create all keywords using the same database connection.
       Gtrend.transaction do
         @gtrend.job_status = 'done'
         @gtrend.save!
@@ -138,12 +138,12 @@ class GtrendsApi < ApplicationService
     end
 
     def find_top(n, kws)
-      # compare first five
+      # Compare first five.
       top_kws = interest_over_time_data(kws.take(5)).max_by(n){|k,v| v}.to_h
 
-      # cycle through each consecutive slice of [5-n] keywords (since there's a
-      # 5 keyword limit), comparing to and overwriting the previous top (n)
-      # there's a 1 second pause between each request to avoid rate limit
+      # Cycle through each consecutive slice of [5-n] keywords (since there's a
+      # 5 keyword limit), comparing to and overwriting the previous top (n).
+      # There's a 1 second pause between each request to avoid rate limit.
       kws.drop(5).each_slice(5 - n) do |slice|
         sleep(1)
         res = interest_over_time_data(top_kws.keys + slice)
@@ -153,8 +153,8 @@ class GtrendsApi < ApplicationService
       return top_kws
     end
 
-    # once the overall top [n] keywords are found from the list, use those as a
-    # base and cycle through the remaining keywords again for the full results
+    # Once the overall top [n] keywords are found from the list, use those as a
+    # base and cycle through the remaining keywords again for the full results.
     def gtrend_results(n=3, kws)
       top_kws = find_top(n, kws)
       remaining_kws = kws.size > n ? kws - top_kws.keys : kws

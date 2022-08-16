@@ -21,7 +21,7 @@ module GtrendsTool
 
     # Generator configuration.
     config.generators do |g|
-      g.assets = false # skip generating asset files
+      g.assets = false # Skip generating asset files.
       g.test_framework :rspec
       g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end

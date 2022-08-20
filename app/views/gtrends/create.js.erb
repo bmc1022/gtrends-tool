@@ -1,15 +1,15 @@
 // start polling
 
 // remove last trend on the page
-document.querySelector('#trend-results > :last-child').remove();
+document.querySelector("#trend-results > :last-child").remove();
 
 // prepend and fade newly created trend to list
-document.querySelector('#new-trend').insertAdjacentHTML('afterend', '<%= j(render @gtrend) %>');
+document.querySelector("#new-trend").insertAdjacentHTML("afterend", "<%= j(render @gtrend) %>");
 
 // add a spinner animation while trend results are processed
-var spinnerHtml = '<div id="spinner" class="d-flex justify-content-center align-items-center h-100"> \
-                   <div class="spinner-border text-secondary"></div></div>';
-document.querySelector('.trend-list').insertAdjacentHTML('afterbegin', spinnerHtml);
+var spinnerHtml = "<div id='spinner' class='d-flex justify-content-center align-items-center h-100'> \
+                   <div class='spinner-border text-secondary'></div></div>";
+document.querySelector(".trend-list").insertAdjacentHTML("afterbegin", spinnerHtml);
 
 // reset the trend form
-document.querySelector('#new-trend-form').reset();
+document.querySelector("#new-trend-form").reset();

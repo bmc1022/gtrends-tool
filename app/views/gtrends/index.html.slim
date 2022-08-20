@@ -4,25 +4,25 @@
     .callout-body
       span
         | A keyword research tool created to bypass the 5 keyword limit imposed by
-        = link_to('GoogleTrends', 'https://trends.google.com/trends', target: '_blank')
+        = link_to("GoogleTrends", "https://trends.google.com/trends", target: "_blank")
         | .
-      span Inspired by the recent obfuscation and unreliability of Google's search volume data.
+      span Inspired by the recent obfuscation and unreliability of Google"s search volume data.
       span Input up to 100 keywords to see how they rank relative to each other.
     .callout-warning Trend results generally take less than 1 minute to process and require a page refresh for now.
   /- if Rails.env.development?
   /  #search.d-flex.justify-content-center.mt-5
   /    .input-group.w-50
-  /      input.form-control type='text' placeholder='Search...'
-  /      button.btn.btn-outline-secondary type='button'
-  /        = svg_icon('#search')
+  /      input.form-control type="text" placeholder="Search..."
+  /      button.btn.btn-outline-secondary type="button"
+  /        = svg_icon("#search")
 #trend-results.row.my-4
   #new-trend.col-md-15.col-lg-10
-    == render 'new'
+    == render "new"
   == render @gtrends
 #main-foot.row.d-flex.mb-4
   #pagination.col-30.col-lg-15.d-flex.order-lg-2.mb-2.justify-content-center.justify-content-lg-end
-      == render partial: 'gtrends/pagination', locals: { pagy: @pagy }
+      == render partial: "gtrends/pagination", locals: { pagy: @pagy }
   #copyright.col-30.col-lg-15.d-flex.order-lg-1.justify-content-center.justify-content-lg-start
     span GoogleTrends Keyword Planner © #{Date.today.year}
     / span GoogleTrends Keyword Planner © #{Date.today.year} |
-    / = button_to('Sign Out', logout_path, data: { turbo_method: :delete })
+    / = button_to("Sign Out", logout_path, data: { turbo_method: :delete })

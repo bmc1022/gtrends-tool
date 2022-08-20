@@ -12,12 +12,12 @@
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
 # Pagy::DEFAULT[:page]   = 1                                  # default
-Pagy::DEFAULT[:items]    = 5
+Pagy::DEFAULT[:items] = 5
 # Pagy::DEFAULT[:outset] = 0                                  # default
 
 # Other Variables
 # See https://ddnexus.github.io/pagy/api/pagy#other-variables
-Pagy::DEFAULT[:size]         = [1,2,2,1]
+Pagy::DEFAULT[:size] = [1, 2, 2, 1]
 # Pagy::DEFAULT[:page_param] = :page                           # default
 # The :params can be also set as a lambda e.g ->(params){ params.exclude('useless').merge!('custom' => 'useful') }
 # Pagy::DEFAULT[:params]     = {}                              # default

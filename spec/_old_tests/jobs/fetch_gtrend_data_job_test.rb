@@ -3,9 +3,7 @@
 require "test_helper"
 
 class FetchGtrendDataJobTest < ActiveJob::TestCase
-  setup do
-    @trend = create(:gtrend, kws: "one, two, three")
-  end
+  before { @trend = create(:gtrend, kws: "one, two, three") }
 
   teardown do
     clear_enqueued_jobs

@@ -51,7 +51,7 @@ class GtrendTest < ActiveSupport::TestCase
   end
 
   test "name should not be too long" do
-    trend = build(:gtrend, name: "a"*101)
+    trend = build(:gtrend, name: "a" * 101)
     assert trend.invalid?
     assert trend.errors[:name].present?
   end
@@ -63,13 +63,13 @@ class GtrendTest < ActiveSupport::TestCase
   end
 
   test "kws should not be too long" do
-    trend = build(:gtrend, kws: "a"*5001)
+    trend = build(:gtrend, kws: "a" * 5001)
     assert trend.invalid?
     assert trend.errors[:kws].present?
   end
 
   test "kw count must not exceed 100" do
-    trend = build(:gtrend, kws: "a,"*101)
+    trend = build(:gtrend, kws: "a," * 101)
     assert trend.invalid?
     assert trend.errors[:kws].present?
   end

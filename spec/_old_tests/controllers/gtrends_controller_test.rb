@@ -6,7 +6,7 @@ class GtrendsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   include ActiveJob::TestHelper
 
-  setup do
+  before do
     @user = create(:user)
     sign_in(@user)
   end

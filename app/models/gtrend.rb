@@ -15,13 +15,11 @@ class Gtrend < ApplicationRecord
   private
 
   def kws_to_list
-    self.kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
+    kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
   end
 
   def kw_count
-    if kws_to_list.size > 100
-      errors.add(:kws, "Keyword count must not exceed 100.")
-    end
+    errors.add(:kws, "Keyword count must not exceed 100.") if kws_to_list.size > 100
   end
 
   def update_kws
@@ -31,6 +29,6 @@ class Gtrend < ApplicationRecord
   # :kws is a virtual/non-persisted attribute and should be skipped on updates to
   # gtrend records since the assigned data will no longer exist after save.
   def skip_kws?
-    self.persisted?
+    persisted?
   end
 end

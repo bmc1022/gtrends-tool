@@ -5,9 +5,7 @@ require "test_helper"
 class UserAuthenticationTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  setup do
-    @user = create(:user)
-  end
+  before { @user = create(:user) }
 
   test "should redirect to index after login" do
     sign_in(@user)

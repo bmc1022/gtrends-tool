@@ -1,0 +1,52 @@
+Metrics/AbcSize:
+  Enabled: true
+  Max: 17
+  CountRepeatedAttributes: true
+
+Metrics/BlockLength:
+  Enabled: true
+  AllowedMethods:
+   - "context"
+   - "describe"
+   - "it"
+   - "shared_examples"
+   - "namespace"
+   - "task"
+   - "configure"
+   - "draw"
+  Max: 25
+  CountComments: false
+
+Metrics/BlockNesting:
+  Enabled: true
+  Max: 3
+  CountBlocks: false
+
+Metrics/ClassLength:
+  Enabled: true
+  Max: 100
+  CountComments: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 7
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 10
+  CountComments: false
+
+Metrics/ModuleLength:
+  Enabled: true
+  Max: 100
+  CountComments: false
+
+Metrics/ParameterLists:
+  Enabled: true
+  Max: 5
+  MaxOptionalParameters: 3
+  CountKeywordArgs: true
+
+Metrics/PerceivedComplexity:
+  Enabled: true
+  Max: 8

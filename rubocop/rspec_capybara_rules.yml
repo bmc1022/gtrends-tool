@@ -1,0 +1,11 @@
+RSpec/Capybara/CurrentPathExpectation:
+  Enabled: true
+
+RSpec/Capybara/FeatureMethods:
+  Enabled: true
+
+RSpec/Capybara/SpecificMatcher:
+  Enabled: true
+
+RSpec/Capybara/VisibilityMatcher:
+  Enabled: true

@@ -1,0 +1,9 @@
+RSpec/Rails/AvoidSetupHook:
+  Enabled: true
+
+RSpec/Rails/HaveHttpStatus:
+  Enabled: true
+
+RSpec/Rails/HttpStatus:
+  Enabled: true
+  EnforcedStyle: symbolic

@@ -1,5 +1,6 @@
-class GtrendsController < ApplicationController
+# frozen_string_literal: true
 
+class GtrendsController < ApplicationController
   include CableReady::Broadcaster
 
   before_action :set_gtrend,  only: [:destroy]
@@ -31,16 +32,15 @@ class GtrendsController < ApplicationController
 
   private
 
-    def set_gtrend
-      @gtrend = Gtrend.find(params[:id])
-    end
+  def set_gtrend
+    @gtrend = Gtrend.find(params[:id])
+  end
 
-    def all_gtrends
-      @pagy, @gtrends = pagy(Gtrend.includes(:keywords).order("created_at DESC"))
-    end
+  def all_gtrends
+    @pagy, @gtrends = pagy(Gtrend.includes(:keywords).order("created_at DESC"))
+  end
 
-    def gtrend_params
-      params.require(:gtrend).permit(:name, :kws)
-    end
-
+  def gtrend_params
+    params.require(:gtrend).permit(:name, :kws)
+  end
 end

@@ -1,5 +1,6 @@
-FactoryBot.define do
+# frozen_string_literal: true
 
+FactoryBot.define do
   factory :keyword do
     sequence(:kw) { |n| "kw#{n}" }
 
@@ -13,5 +14,4 @@ FactoryBot.define do
       avg_5y { rand(1..99) }
     end
   end
-
 end

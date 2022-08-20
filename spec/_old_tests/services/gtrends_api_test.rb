@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class GtrendsApiTest < ActiveSupport::TestCase
-
   test "" do
     # GtrendsApi.new()
   end
@@ -29,5 +30,4 @@ class GtrendsApiTest < ActiveSupport::TestCase
   # test '' do
 
   # end
-
 end

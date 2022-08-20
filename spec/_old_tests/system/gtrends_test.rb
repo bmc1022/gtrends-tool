@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class GtrendsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
   include ActiveJob::TestHelper
 
-  setup do
+  before do
     @user = create(:user)
     sign_in(@user)
     @gtrends = create(:gtrend_with_keywords)
@@ -30,16 +32,7 @@ class GtrendsTest < ApplicationSystemTestCase
     take_screenshot
   end
 
-  test "user copies data to clipboard" do
-
-  end
-
-  test "user performs a search" do
-
-  end
-
-  test "user navigates to new page using pagination" do
-
-  end
-
+  test "user copies data to clipboard"
+  test "user performs a search"
+  test "user navigates to new page using pagination"
 end

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class FetchGtrendDataJobTest < ActiveJob::TestCase
-
   setup do
     @trend = create(:gtrend, kws: "one, two, three")
   end
@@ -30,5 +31,4 @@ class FetchGtrendDataJobTest < ActiveJob::TestCase
     assert_enqueued_jobs 1
     assert_equal "queued", @trend.reload.job_status
   end
-
 end

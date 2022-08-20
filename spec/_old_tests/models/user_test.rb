@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
@@ -28,5 +30,4 @@ class UserTest < ActiveSupport::TestCase
     assert_equal user, User.find_first_by_auth_conditions({ email: "test@email.com" })
     assert_equal user, User.find_first_by_auth_conditions({ username: "test" })
   end
-
 end

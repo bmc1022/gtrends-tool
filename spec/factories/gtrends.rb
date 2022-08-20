@@ -1,7 +1,8 @@
-FactoryBot.define do
+# frozen_string_literal: true
 
+FactoryBot.define do
   factory :gtrend do
-    sequence(:name) { |n| "test#{n}"}
+    sequence(:name) { |n| "test#{n}" }
     kws { "lorem, ipsum, dolor" }
 
     factory :gtrend_with_keywords do
@@ -15,5 +16,4 @@ FactoryBot.define do
       end
     end
   end
-
 end

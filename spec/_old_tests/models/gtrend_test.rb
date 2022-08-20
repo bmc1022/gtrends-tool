@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require "test_helper"
 require "json"
 
 class GtrendTest < ActiveSupport::TestCase
-
   test "has valid data" do
     trend = build(:gtrend)
     assert trend.valid?
@@ -10,17 +11,15 @@ class GtrendTest < ActiveSupport::TestCase
 
   test "keywords association" do
     trend = create(:gtrend)
-    keyword = create(:keyword, gtrend: trend)
+    create(:keyword, gtrend: trend)
     assert trend.keywords.present?
   end
 
   test "associated keywords should be destroyed on gtrend deletion" do
     keyword = create(:keyword)
     trend = keyword.gtrend
-    trend.destroy
-    assert_raises(ActiveRecord::RecordNotFound) do
-      keyword.reload
-    end
+    trend.destroy!
+    assert_raises(ActiveRecord::RecordNotFound) { keyword.reload }
   end
 
   test "name must be present" do
@@ -84,8 +83,7 @@ class GtrendTest < ActiveSupport::TestCase
   end
 
   test "convert_kws_to_list method" do
-    trend = create(:gtrend, kws: 'one
-                                  two   , three,  ,    four   ')
+    trend = create(:gtrend, kws: "one \ntwo   , three,  ,    four   ")
     # :kws data is saved as a string version of an array.
     # Parsing as JSON converts it back to an actual array.
     assert_equal ["one", "two", "three", "four"], JSON.parse(trend.kws)
@@ -97,5 +95,4 @@ class GtrendTest < ActiveSupport::TestCase
     trend.update(kws: "one, two, three")
     assert_equal "one, two, three", trend.kws
   end
-
 end

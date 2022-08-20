@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class GtrendsControllerTest < ActionDispatch::IntegrationTest
@@ -16,14 +18,12 @@ class GtrendsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create gtrend" do
     assert_difference("Gtrend.count", 1) do
-      post gtrends_url, params: { gtrend: { name: "test1", kws: "lorem, ipsum" },
-                        format: :js }
+      post gtrends_url, params: { gtrend: { name: "test1", kws: "lorem, ipsum" }, format: :js }
       assert_includes @response["Content-Type"], "text/javascript"
       assert_enqueued_jobs(1)
     end
     assert_difference("Gtrend.count", 1) do
-      post gtrends_url, params: { gtrend: { name: "test2", kws: "lorem, ipsum" },
-                        format: :html }
+      post gtrends_url, params: { gtrend: { name: "test2", kws: "lorem, ipsum" }, format: :html }
       assert_includes @response["Content-Type"], "text/html"
       assert_redirected_to gtrends_url
       assert_enqueued_jobs(2)
@@ -45,5 +45,4 @@ class GtrendsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to gtrends_url
     end
   end
-
 end

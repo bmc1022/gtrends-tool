@@ -1,5 +1,6 @@
-class Gtrend < ApplicationRecord
+# frozen_string_literal: true
 
+class Gtrend < ApplicationRecord
   has_many :keywords, dependent: :destroy, inverse_of: :gtrend
 
   before_save :update_kws, unless: :skip_kws?
@@ -13,24 +14,23 @@ class Gtrend < ApplicationRecord
 
   private
 
-    def kws_to_list
-      self.kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
-    end
+  def kws_to_list
+    self.kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
+  end
 
-    def kw_count
-      if kws_to_list.size > 100
-        errors.add(:kws, "Keyword count must not exceed 100.")
-      end
+  def kw_count
+    if kws_to_list.size > 100
+      errors.add(:kws, "Keyword count must not exceed 100.")
     end
+  end
 
-    def update_kws
-      self.kws = kws_to_list
-    end
+  def update_kws
+    self.kws = kws_to_list
+  end
 
-    # :kws is a virtual/non-persisted attribute and should be skipped on updates to
-    # gtrend records since the assigned data will no longer exist after save.
-    def skip_kws?
-      self.persisted?
-    end
-
+  # :kws is a virtual/non-persisted attribute and should be skipped on updates to
+  # gtrend records since the assigned data will no longer exist after save.
+  def skip_kws?
+    self.persisted?
+  end
 end

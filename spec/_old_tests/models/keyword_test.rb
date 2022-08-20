@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class KeywordTest < ActiveSupport::TestCase
-
   test "has valid data" do
     keyword = build(:keyword)
     assert keyword.valid?
@@ -39,7 +40,7 @@ class KeywordTest < ActiveSupport::TestCase
 
   test "kw uniqueness should have custom error message" do
     trend = create(:gtrend)
-    keyword1 = create(:keyword, kw: "test", gtrend: trend)
+    create(:keyword, kw: "test", gtrend: trend)
     keyword2 = build(:keyword, kw: "test", gtrend: trend)
     assert keyword2.invalid?
     assert_equal ["'test' has already been taken"], keyword2.errors[:kw]
@@ -53,5 +54,4 @@ class KeywordTest < ActiveSupport::TestCase
     assert keyword2.invalid?
     assert keyword2.errors[:kw].present?
   end
-
 end

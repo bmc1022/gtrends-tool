@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RejectBlankNestedAttributesForMatcher
   def reject_blank_nested_attributes_for(association)
     RejectBlankNestedAttributesForMatcher.new(association)
@@ -10,9 +12,9 @@ module RejectBlankNestedAttributesForMatcher
 
     def matches?(instance)
       @instance = instance
-      @instance.update!("#{@association}_attributes": { })
+      @instance.update!("#{@association}_attributes": {})
       @instance.update!("#{@association}_attributes": empty_attributes)
-      @instance.send(@association).blank?
+      @instance.public_send(@association).blank?
     end
 
     def description
@@ -27,7 +29,9 @@ module RejectBlankNestedAttributesForMatcher
 
     def find_association
       # Use the parent class to find the nested association.
-      @instance.class.name.constantize.reflect_on_all_associations.detect{|assoc| assoc.name == @association}
+      @instance.class.name.constantize.reflect_on_all_associations.find do |assoc|
+        assoc.name == @association
+      end
     end
 
     def associated_class
@@ -41,7 +45,9 @@ module RejectBlankNestedAttributesForMatcher
 
     def empty_attributes
       # Create a hash that contains empty strings for every column on the class with a string type.
-      attrs = associated_class.columns.select { |col| col.sql_type =~ /character/ }.map { |col| [col.name, '' ] }.to_h
+      string_cols = associated_class.columns.select { |col| col.sql_type.include?("character") }
+      attrs = string_cols.to_h { |col| [col.name, ""] }
+
       case associated_type
       when "HasOneReflection"  then attrs
       when "HasManyReflection" then [attrs]
@@ -50,6 +56,4 @@ module RejectBlankNestedAttributesForMatcher
   end
 end
 
-RSpec.configure do |config|
-  config.include RejectBlankNestedAttributesForMatcher
-end
+RSpec.configure { |config| config.include(RejectBlankNestedAttributesForMatcher) }

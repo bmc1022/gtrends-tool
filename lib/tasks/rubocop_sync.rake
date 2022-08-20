@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :rubocop do
-  desc 'find missing or no longer relevant rubocop rules'
+  desc "find missing or no longer relevant rubocop rules"
   task sync_rules: :environment do
     rubocop_metadata = [
       {
@@ -33,7 +35,7 @@ namespace :rubocop do
         end
 
         url = "#{data_set[:base_docs_url]}cops_#{parameterized_department}.html"
-        doc = Nokogiri::HTML(URI.open(url))
+        doc = Nokogiri::HTML(URI.parse(url).open)
         official_rules = doc.xpath("//div[@class='sect1']/h2/text()").map(&:to_s)
         sleep(0.2) # Prevent sending several requests at the same time.
 

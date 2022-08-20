@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # This file should be used for configuration that's independent from Rails
 # and that you want to always be loaded with Rspec.
 # spec/rails_helper.rb will also pick up any settings from here.
 
 RSpec.configure do |config|
-  config.expect_with :rspec do |expectations|
+  config.expect_with(:rspec) do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
     # defined using `chain`, e.g.:
@@ -16,7 +18,7 @@ RSpec.configure do |config|
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
-  config.mock_with :rspec do |mocks|
+  config.mock_with(:rspec) do |mocks|
     # Prevents you from mocking or stubbing a method that does not exist on
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
@@ -28,7 +30,7 @@ RSpec.configure do |config|
   # is tagged with `:focus`, all examples get run. RSpec also provides
   # aliases for `it`, `describe`, and `context` that include `:focus`
   # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
-  config.filter_run_when_matching :focus
+  config.filter_run_when_matching(:focus)
 
   # Limits the available syntax to the non-monkey patched syntax that is
   # recommended. For more details, see:
@@ -45,10 +47,10 @@ RSpec.configure do |config|
   # Setting this allows you to use `--seed` to deterministically reproduce
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
-  Kernel.srand config.seed
+  Kernel.srand(config.seed)
 
   # Requires supporting ruby files with custom matchers and macros, etc, in
   # spec/support/ and its subdirectories.
-  Dir[File.join(__dir__, '/support/**/*.rb')].each { |f| require f }
+  Dir[File.join(__dir__, "/support/**/*.rb")].each { |f| require f }
   Dir[File.join(__dir__, "/models/shared_examples/**/*.rb")].each { |f| require f }
 end

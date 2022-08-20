@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       resources :gtrends, only: [:index, :create, :destroy]
@@ -20,5 +21,4 @@ Rails.application.routes.draw do
   # end
 
   resources :gtrends, only: [:index, :create, :destroy], path: '/'
-
 end

@@ -1,15 +1,15 @@
-require 'simplecov'
-SimpleCov.start 'rails' do
-  coverage_dir 'reports/coverage'
-end
+# frozen_string_literal: true
 
-require 'spec_helper'
-ENV["RAILS_ENV"] ||= 'test'
-require_relative '../config/environment'
+require "simplecov"
+SimpleCov.start("rails") { coverage_dir "reports/coverage" }
+
+require "spec_helper"
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'rspec/rails'
-require 'rspec/collection_matchers'
+require "rspec/rails"
+require "rspec/collection_matchers"
 require "test_prof/recipes/rspec/before_all"
 
 # Checks for pending migrations and applies them before tests are run.
@@ -18,13 +18,13 @@ begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
-  exit 1
+  exit(1)
 end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
+    with.test_framework(:rspec)
+    with.library(:rails)
   end
 end
 
@@ -40,14 +40,12 @@ RSpec.configure do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
 
-  config.include FactoryBot::Syntax::Methods
-  config.include Shoulda::Callback::Matchers::ActiveModel
+  config.include(FactoryBot::Syntax::Methods)
+  config.include(Shoulda::Callback::Matchers::ActiveModel)
 
-  config.include Devise::Test::IntegrationHelpers, type: :system
-  config.include Warden::Test::Helpers
+  config.include(Devise::Test::IntegrationHelpers, type: :system)
+  config.include(Warden::Test::Helpers)
 
   # Driver setup for system tests.
-  config.before(:each, type: :system) do
-    driven_by :selenium_chrome_headless
-  end
+  config.before(:each, type: :system) { driven_by :selenium_chrome_headless }
 end

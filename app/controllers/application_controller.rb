@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include Pagy::Backend
 
@@ -5,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit :sign_in, keys: [:login, :password]
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit :sign_in, keys: [:login, :password]
+  end
 end

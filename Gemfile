@@ -1,7 +1,9 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
+
+source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.0'
+ruby "3.1.0"
 
 gem "rails",             "~> 7.0.2"                    # Web app framework.
 gem "pg",                ">= 1.3.1"                    # Use PostgreSQL as the database.
@@ -13,12 +15,12 @@ gem "jsbundling-rails",  "~> 1.0.2"                    # Bundle and transpile Ja
 gem "cssbundling-rails", "~> 1.1.1"                    # Bundle and process CSS.
 gem "jbuilder",          "~> 2.11.5"                   # Build JSON APIs with ease.
 gem "slim-rails",        "~> 3.3.0"                    # Compile Slim to HTML.
-gem 'devise',            '~> 4.8.1'                    # Authentication.
-gem 'http',              '~> 5.0.4'                    # HTTP client.
-gem 'pagy',              '~> 5.10.1'                   # Pagination.
+gem "devise",            "~> 4.8.1"                    # Authentication.
+gem "http",              "~> 5.0.4"                    # HTTP client.
+gem "pagy",              "~> 5.10.1"                   # Pagination.
 
 group :development, :test do
-  gem "debug", platforms: %i[mri mingw x64_mingw]      # Standard Ruby debugger.
+  gem "debug", platforms: [:mri, :mingw, :x64_mingw]   # Standard Ruby debugger.
   gem "pry-rails"                                      # Use Pry as the Rails console.
   gem "rspec-rails"                                    # Use RSpec testing framework.
   gem "capybara"                                       # Acceptance test framework.

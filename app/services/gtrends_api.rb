@@ -1,10 +1,10 @@
 class GtrendsApi < ApplicationService
 
-  require 'json'
+  require "json"
 
-  GTRENDS_URL = 'https://trends.google.com/trends'
-  GENERAL_API_URL = 'https://trends.google.com/trends/api/explore'
-  OVER_TIME_URL = 'https://trends.google.com/trends/api/widgetdata/multiline'
+  GTRENDS_URL = "https://trends.google.com/trends"
+  GENERAL_API_URL = "https://trends.google.com/trends/api/explore"
+  OVER_TIME_URL = "https://trends.google.com/trends/api/widgetdata/multiline"
 
   def initialize(gtrend, keywords)
     @gtrend = gtrend
@@ -42,35 +42,35 @@ class GtrendsApi < ApplicationService
         end
       end
 
-      return q.join('&').prepend('?')
+      return q.join("&").prepend("?")
     end
 
     def get_google_cookie
       res = rescue_retry(HTTP.timeout(3).get(GTRENDS_URL))
-      cookie = res['Set-Cookie'].split(';')[0]
+      cookie = res["Set-Cookie"].split(";")[0]
       if cookie.present?
         return cookie
       else
-        Rails.logger.error {'Error fetching cookie from Google'}
-        @gtrend.update(job_status: 'failed')
-        return ''
+        Rails.logger.error {"Error fetching cookie from Google"}
+        @gtrend.update(job_status: "failed")
+        return ""
       end
     end
 
     def get_api_tokens(q)
       res = gtrend_data(GENERAL_API_URL + q)
       unless res.is_a?(HTTP::Response)
-        Rails.logger.error {'Error fetching Google API tokens'}
-        @gtrend.update(job_status: 'failed')
+        Rails.logger.error {"Error fetching Google API tokens"}
+        @gtrend.update(job_status: "failed")
         return
       end
       widget_data = res.to_s[4..-1] # Strip leading junk characters.
-      widgets = JSON.parse(widget_data)['widgets']
+      widgets = JSON.parse(widget_data)["widgets"]
 
       widgets.each do |widget|
-        if widget['id'] == 'TIMESERIES'
-          @over_time_req   = { 'req': widget['request'] }
-          @over_time_token = { 'token': widget['token'] }
+        if widget["id"] == "TIMESERIES"
+          @over_time_req   = { 'req': widget["request"] }
+          @over_time_token = { 'token': widget["token"] }
         end
       end
 
@@ -81,12 +81,12 @@ class GtrendsApi < ApplicationService
       compared_kws = []
 
       kws.each do |kw|
-        kw_json = { 'keyword': kw, 'geo': 'US', 'time': 'today 5-y' }
+        kw_json = { 'keyword': kw, 'geo': "US", 'time': "today 5-y" }
         compared_kws << kw_json
       end
 
       params = {
-        'hl': 'en-US', 'req': { 'comparisonItem': compared_kws }, 'tz': '-600'
+        'hl': "en-US", 'req': { 'comparisonItem': compared_kws }, 'tz': "-600"
       }
 
       payload_query = format_query(params)
@@ -100,22 +100,22 @@ class GtrendsApi < ApplicationService
     end
 
     def over_time_averages(kws, data)
-      averages = data['default']['averages']
+      averages = data["default"]["averages"]
       return kws.zip(averages).to_h
     end
 
     def interest_over_time_data(kws)
       build_params(kws) # Assign interest over time params.
 
-      hl_tz = { 'hl': 'en-US', 'tz': '-600' }
+      hl_tz = { 'hl': "en-US", 'tz': "-600" }
       params_with_token = @over_time_req.merge(@over_time_token).merge(hl_tz)
 
       q = format_query(params_with_token)
       res = rescue_retry(HTTP.timeout(5).get(OVER_TIME_URL + q))
       over_time_data = res.to_s[6..-1] # Strip leading junk characters.
       unless res.is_a?(HTTP::Response)
-        Rails.logger.error {'Error fetching Interest Over Time data'}
-        @gtrend.update(job_status: 'failed')
+        Rails.logger.error {"Error fetching Interest Over Time data"}
+        @gtrend.update(job_status: "failed")
         return {}
       end
 
@@ -132,7 +132,7 @@ class GtrendsApi < ApplicationService
 
       # Create all keywords using the same database connection.
       Gtrend.transaction do
-        @gtrend.job_status = 'done'
+        @gtrend.job_status = "done"
         @gtrend.save!
       end
     end

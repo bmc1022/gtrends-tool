@@ -2,7 +2,7 @@ FactoryBot.define do
 
   factory :gtrend do
     sequence(:name) { |n| "test#{n}"}
-    kws { 'lorem, ipsum, dolor' }
+    kws { "lorem, ipsum, dolor" }
 
     factory :gtrend_with_keywords do
       transient do

@@ -122,7 +122,7 @@ Pagy::DEFAULT[:size]         = [1,2,2,1]
 
 # Bootstrap extra: Add nav, nav_js and combo_nav_js helpers and templates for Bootstrap pagination
 # See https://ddnexus.github.io/pagy/extras/bootstrap
-require 'pagy/extras/bootstrap'
+require "pagy/extras/bootstrap"
 
 # Bulma extra: Add nav, nav_js and combo_nav_js helpers and templates for Bulma pagination
 # See https://ddnexus.github.io/pagy/extras/bulma
@@ -174,7 +174,7 @@ require 'pagy/extras/bootstrap'
 
 # Overflow extra: Allow for easy handling of overflowing pages
 # See https://ddnexus.github.io/pagy/extras/overflow
-require 'pagy/extras/overflow'
+require "pagy/extras/overflow"
 Pagy::DEFAULT[:overflow] = :last_page
 
 # Support extra: Extra support for features like: incremental, infinite, auto-scroll pagination
@@ -183,7 +183,7 @@ Pagy::DEFAULT[:overflow] = :last_page
 
 # Trim extra: Remove the page=1 param from links
 # See https://ddnexus.github.io/pagy/extras/trim
-require 'pagy/extras/trim'
+require "pagy/extras/trim"
 # set to false only if you want to make :trim_extra an opt-in variable
 # Pagy::DEFAULT[:trim_extra] = false # default true
 

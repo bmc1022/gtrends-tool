@@ -19,7 +19,7 @@ class Gtrend < ApplicationRecord
 
     def kw_count
       if kws_to_list.size > 100
-        errors.add(:kws, 'Keyword count must not exceed 100.')
+        errors.add(:kws, "Keyword count must not exceed 100.")
       end
     end
 

@@ -5,7 +5,7 @@ class FetchGtrendDataJob < ApplicationJob
 
   after_enqueue do |job|
     gtrend = job.arguments.first
-    gtrend.job_status = 'queued'
+    gtrend.job_status = "queued"
     gtrend.save!
   end
 

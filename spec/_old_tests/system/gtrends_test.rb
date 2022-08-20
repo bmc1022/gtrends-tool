@@ -1,4 +1,4 @@
-require 'application_system_test_case'
+require "application_system_test_case"
 
 class GtrendsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
@@ -10,35 +10,35 @@ class GtrendsTest < ApplicationSystemTestCase
     @gtrends = create(:gtrend_with_keywords)
   end
 
-  test 'user creates new trend list' do
+  test "user creates new trend list" do
     visit gtrends_url
-    within '#new-trend-form' do
-      fill_in 'gtrend_name', with: 'test name'
-      fill_in 'gtrend_kws',  with: 'one, two, three, four, five'
-      click_on 'Create New Trend'
+    within "#new-trend-form" do
+      fill_in "gtrend_name", with: "test name"
+      fill_in "gtrend_kws",  with: "one, two, three, four, five"
+      click_on "Create New Trend"
     end
     take_screenshot
   end
 
-  test 'user deletes trend list' do
+  test "user deletes trend list" do
     visit gtrends_url
-    within '#new-trend-form' do
-      fill_in 'gtrend_name', with: 'test name'
-      fill_in 'gtrend_kws',  with: 'one, two, three, four, five'
-      click_on 'Create New Trend'
+    within "#new-trend-form" do
+      fill_in "gtrend_name", with: "test name"
+      fill_in "gtrend_kws",  with: "one, two, three, four, five"
+      click_on "Create New Trend"
     end
     take_screenshot
   end
 
-  test 'user copies data to clipboard' do
+  test "user copies data to clipboard" do
 
   end
 
-  test 'user performs a search' do
+  test "user performs a search" do
 
   end
 
-  test 'user navigates to new page using pagination' do
+  test "user navigates to new page using pagination" do
 
   end
 

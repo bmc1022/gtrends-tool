@@ -1,8 +1,8 @@
-require 'test_helper'
+require "test_helper"
 
 class GtrendsApiTest < ActiveSupport::TestCase
 
-  test '' do
+  test "" do
     # GtrendsApi.new()
   end
 

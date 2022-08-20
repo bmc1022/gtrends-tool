@@ -240,6 +240,7 @@ Layout/LineLength:
     - "Gemfile"
     - "Guardfile"
     - "config/routes.rb"
+    - "config/initializers/pagy.rb"
 
 Layout/MultilineArrayBraceLayout:
   Enabled: true

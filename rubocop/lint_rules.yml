@@ -217,7 +217,7 @@ Lint/NonLocalExitFromIterator:
   Enabled: true
 
 Lint/NumberConversion:
-  Enabled: true
+  Enabled: false
 
 Lint/NumberedParameterAssignment:
   Enabled: true

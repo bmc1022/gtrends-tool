@@ -311,7 +311,7 @@ Rails/ShortI18n:
   EnforcedStyle: conservative
 
 Rails/SkipsModelValidations:
-  Enabled: true
+  Enabled: false
 
 Rails/SquishedSQLHeredocs:
   Enabled: true

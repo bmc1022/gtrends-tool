@@ -21,6 +21,9 @@ gem "pagy",              "~> 5.10.1"                   # Pagination.
 
 group :development, :test do
   gem "debug", platforms: [:mri, :mingw, :x64_mingw]   # Standard Ruby debugger.
+  gem "debase", require: false                         # Fast implementation of the standard debugger.
+  gem "ruby-debug-ide", require: false                 # An interface between ruby-debug and IDEs.
+  gem "solargraph", require: false                     # Code analysis and autocompletion.
   gem "pry-rails"                                      # Use Pry as the Rails console.
   gem "rspec-rails"                                    # Use RSpec testing framework.
   gem "capybara"                                       # Acceptance test framework.

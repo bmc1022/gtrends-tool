@@ -26,7 +26,7 @@ class GtrendsController < ApplicationController
   end
 
   def destroy
-    @gtrend.destroy
+    @gtrend.destroy!
     redirect_to(gtrends_url, status: :see_other)
   end
 

@@ -8,6 +8,7 @@ class GtrendsApi < ApplicationService
   OVER_TIME_URL = "https://trends.google.com/trends/api/widgetdata/multiline"
 
   def initialize(gtrend, keywords)
+    super
     @gtrend = gtrend
     @keywords = JSON.parse(keywords)
     @cookie = get_google_cookie

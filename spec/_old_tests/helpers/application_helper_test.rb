@@ -13,14 +13,14 @@ class ApplicationHelperTest < ActionView::TestCase
 
   test "#desc_5y_avg sorts the keyword averages of a trend from highest to lowest" do
     trend = create(:gtrend)
-    keywords = create_list(:keyword, 10, :with_random_averages, gtrend: trend)
+    create_list(:keyword, 10, :with_random_averages, gtrend: trend)
     averages = desc_5y_avg(trend).pluck(:avg_5y)
     assert_equal averages.sort.reverse, averages
   end
 
   test "#data_to_csv converts array to csv format" do
     trend = create(:gtrend)
-    keywords = create_list(:keyword, 3, :with_averages, gtrend: trend)
+    create_list(:keyword, 3, :with_averages, gtrend: trend)
     data = trend.keywords.sort_by(&:avg_5y).reverse!.pluck(:kw, :avg_5y)
     assert_equal "kw3,3\nkw2,2\nkw1,1\n", data_to_csv(data)
   end

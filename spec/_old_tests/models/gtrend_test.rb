@@ -29,19 +29,19 @@ class GtrendTest < ActiveSupport::TestCase
   end
 
   test "name must be unique" do
-    trend1 = create(:gtrend, name: "test")
-    trend2 = build(:gtrend, name: "test")
-    assert_equal trend1.name, trend2.name
-    assert trend2.invalid?
-    assert trend2.errors[:name].present?
+    trend_1 = create(:gtrend, name: "test")
+    trend_2 = build(:gtrend, name: "test")
+    assert_equal trend_1.name, trend_2.name
+    assert trend_2.invalid?
+    assert trend_2.errors[:name].present?
   end
 
   test "name should be case insensitive" do
-    trend1 = create(:gtrend, name: "test")
-    trend2 = build(:gtrend, name: "TEST")
-    assert_equal trend1.name, trend2.name.downcase
-    assert trend2.invalid?
-    assert trend2.errors[:name].present?
+    trend_1 = create(:gtrend, name: "test")
+    trend_2 = build(:gtrend, name: "TEST")
+    assert_equal trend_1.name, trend_2.name.downcase
+    assert trend_2.invalid?
+    assert trend_2.errors[:name].present?
   end
 
   test "name should not be too short" do
@@ -77,7 +77,7 @@ class GtrendTest < ActiveSupport::TestCase
   test "kws validation should be skipped on gtrend update" do
     trend = create(:gtrend)
     trend.reload
-    trend.update(name: "foo")
+    trend.update!(name: "foo")
     assert trend.kws.nil?
     assert trend.valid?
   end
@@ -92,7 +92,7 @@ class GtrendTest < ActiveSupport::TestCase
   test "convert_kws_to_list should be skipped on gtrend update" do
     trend = create(:gtrend)
     trend.reload
-    trend.update(kws: "one, two, three")
+    trend.update!(kws: "one, two, three")
     assert_equal "one, two, three", trend.kws
   end
 end

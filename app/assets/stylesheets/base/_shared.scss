@@ -1,6 +1,10 @@
+/* ==== Typography & Design Elements ======================================== */
+
 a {
   color: #52A0E6;
+  text-decoration: none;
   transition: all 0.3s ease;
+  &:hover, &:focus { text-decoration: none; }
 }
 
 input:focus::placeholder { color: transparent !important; }

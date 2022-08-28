@@ -3,15 +3,24 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  # Displays an inline SVG reference.
-  def svg_icon(reference, class_name = "icon")
-    tag.svg(class: class_name) { concat(tag.use("xlink:href": reference)) }
-  end
-
   # Returns the full title on a per-page basis.
   def full_title(page_title = "")
     base_title = "GoogleTrends Keyword Planner"
-    page_title.empty? ? base_title : "#{page_title} - #{base_title}"
+    page_title.blank? ? base_title : "#{page_title} - #{base_title}"
+  end
+
+  # Checks if an asset exists within the application.
+  def asset_exists?(asset_path)
+    if Rails.configuration.assets.compile
+      Rails.application.precompiled_assets.include?(asset_path)
+    else
+      Rails.application.assets_manifest.assets[asset_path].present?
+    end
+  end
+
+  # Displays an inline SVG reference.
+  def svg_icon(reference, class_name = "")
+    tag.svg(class: "icon #{class_name}".strip) { concat(tag.use("xlink:href": reference)) }
   end
 
   # Sort a trend's keyword averages from highest to lowest.

@@ -6,13 +6,14 @@
         - clipboard_kw_data = data_to_csv(desc_5y_avg(gtrend).pluck(:kw, :avg_5y))
         button.clipboard*{"title"=>"Copy Data (CSV)",
                           "data-controller"=>"clipboard",
-                          "data-clipboard-text"=>clipboard_kw_data,
+                          "data-tooltip-target"=>"tooltip",
+                          "data-action"=>"tooltip#clipboardTooltip",
                           "data-bs-toggle"=>"tooltip",
-                          "data-tooltip-target"=>"clipboard",
-                          "data-action"=>"tooltip#clipboardTooltip"}
+                          "data-clipboard-text"=>clipboard_kw_data}
           = svg_icon("#clipboard")
         = link_to(gtrend_path(gtrend), class: "close-btn", title: "Delete Trend",
-            data: {remote: true, turbo_method: :delete, turbo_confirm: "Are you sure?", "bs-toggle": "tooltip"}) do
+            data: {remote: true, turbo_method: :delete, turbo_confirm: "Are you sure?",
+                   "tooltip-target"=>"tooltip", "bs-toggle": "tooltip"}) do
           = svg_icon("#close")
     .trend-list.simplebar-init*{"data-simplebar-target"=>"scrollbar"}
       .list-wrapper

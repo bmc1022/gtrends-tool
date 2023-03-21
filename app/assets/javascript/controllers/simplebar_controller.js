@@ -1,9 +1,17 @@
-import { Controller } from "@hotwired/stimulus";
-import SimpleBar from 'simplebar';
+import { Controller } from "@hotwired/stimulus"
+import SimpleBar from 'simplebar'
 
 export default class extends Controller {
+  static targets = ["scrollbar"]
+
   connect() {
-    new SimpleBar(this.element);
-    this.element.classList.remove('simplebar-init');
+    this.simpleBars = this.scrollbarTargets.map((scrollbar) => new SimpleBar(scrollbar))
+  }
+
+  disconnect() {
+    this.simpleBars.forEach((simplebar) => {
+      simplebar.remove()
+    })
+    this.simpleBars = []
   }
 }

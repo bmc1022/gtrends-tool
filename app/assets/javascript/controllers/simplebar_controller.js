@@ -6,6 +6,7 @@ export default class extends Controller {
 
   connect() {
     this.simpleBars = this.scrollbarTargets.map((scrollbar) => {
+      // The simplebar-init class hides all scrollbars to prevent seeing the defaults flash on load.
       scrollbar.classList.remove('simplebar-init')
       new SimpleBar(scrollbar)
     })

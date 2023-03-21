@@ -4,8 +4,12 @@
       span= gtrend.name
       .options
         - clipboard_kw_data = data_to_csv(desc_5y_avg(gtrend).pluck(:kw, :avg_5y))
-        button.clipboard*{"data-bs-toggle"=>"tooltip", "title"=>"Copy Data (CSV)", \
-                          "data-controller"=>"clipboard", "data-clipboard-text"=>clipboard_kw_data}
+        button.clipboard*{"title"=>"Copy Data (CSV)",
+                          "data-controller"=>"clipboard",
+                          "data-clipboard-text"=>clipboard_kw_data,
+                          "data-bs-toggle"=>"tooltip",
+                          "data-tooltip-target"=>"clipboard",
+                          "data-action"=>"tooltip#clipboardTooltip"}
           = svg_icon("#clipboard")
         = link_to(gtrend_path(gtrend), class: "close-btn", title: "Delete Trend",
             data: {remote: true, turbo_method: :delete, turbo_confirm: "Are you sure?", "bs-toggle": "tooltip"}) do

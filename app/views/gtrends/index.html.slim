@@ -4,11 +4,9 @@
     .callout-body
       span
         | A keyword research tool created to bypass the 5 keyword limit imposed by
-        = link_to("GoogleTrends", "https://trends.google.com/trends", target: "_blank")
+        =< link_to("GoogleTrends", "https://trends.google.com/trends", target: "_blank")
         | .
-      span Inspired by the recent obfuscation and unreliability of Google"s search volume data.
       span Input up to 100 keywords to see how they rank relative to each other.
-    .callout-warning Trend results generally take less than 1 minute to process and require a page refresh for now.
   /- if Rails.env.development?
   /  #search.d-flex.justify-content-center.mt-5
   /    .input-group.w-50

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class GtrendsController < ApplicationController
-  include CableReady::Broadcaster
-
   before_action :set_gtrend, only: [:destroy]
   before_action :all_gtrends
 

@@ -10,7 +10,7 @@
         = link_to(gtrend_path(gtrend), class: "close-btn", title: "Delete Trend",
             data: {remote: true, turbo_method: :delete, turbo_confirm: "Are you sure?", "bs-toggle": "tooltip"}) do
           = svg_icon("#close")
-    .trend-list*{"data-simplebar"=>""}
+    .trend-list.simplebar-init*{"data-controller"=>"simplebar"}
       .list-wrapper
         table.table.table-sm.table-borderless
           tbody

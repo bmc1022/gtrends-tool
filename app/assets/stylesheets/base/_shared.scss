@@ -62,4 +62,7 @@ svg {
   }
 }
 
-
+.simplebar-init {
+  overflow: hidden !important;
+  &::-webkit-scrollbar { display: none; }
+}

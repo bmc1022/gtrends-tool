@@ -5,7 +5,10 @@ export default class extends Controller {
   static targets = ["scrollbar"]
 
   connect() {
-    this.simpleBars = this.scrollbarTargets.map((scrollbar) => new SimpleBar(scrollbar))
+    this.simpleBars = this.scrollbarTargets.map((scrollbar) => {
+      scrollbar.classList.remove('simplebar-init')
+      new SimpleBar(scrollbar)
+    })
   }
 
   disconnect() {

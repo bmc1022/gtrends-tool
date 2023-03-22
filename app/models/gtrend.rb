@@ -12,10 +12,14 @@ class Gtrend < ApplicationRecord
   validates :kws,  presence: true, length: { maximum: 5000 }, unless: :skip_kws?
   validate  :kw_count, on: :create
 
+  def highest_5y_avg
+    @highest_5y_avg ||= keywords.maximum(:avg_5y)
+  end
+
   private
 
   def kws_to_list
-    kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
+    kws.split(/[\n,]/).map(&:strip).reject!(&:empty?)
   end
 
   def kw_count

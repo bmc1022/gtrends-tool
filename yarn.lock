@@ -60,6 +60,13 @@ braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
+cable_ready@^5.0.0-pre10:
+  version "5.0.0-pre10"
+  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-5.0.0-pre10.tgz#e92ca5b481335dfff95ae148b7b0da86e98001c0"
+  integrity sha512-NevHcu5N5zzUKxyS/cYtkIY6mm7y1anQr9zxu65fqptMOBZS2fukXpz9YEn659yGKyqtCMVNrzkNtkICkBoGAQ==
+  dependencies:
+    morphdom "2.6.1"
+
 can-use-dom@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/can-use-dom/-/can-use-dom-0.1.0.tgz#22cc4a34a0abc43950f42c6411024a3f6366b45a"
@@ -294,6 +301,11 @@ lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
+
+morphdom@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/morphdom/-/morphdom-2.6.1.tgz#e868e24f989fa3183004b159aed643e628b4306e"
+  integrity sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"

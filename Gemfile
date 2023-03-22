@@ -8,6 +8,7 @@ ruby "3.1.0"
 gem "rails",             "~> 7.0.2"                    # Web app framework.
 gem "pg",                ">= 1.3.1"                    # Use PostgreSQL as the database.
 gem "redis",             "~> 4.6.0"                    # Use Redis adapter to run ActionCable in production.
+gem "cable_ready",       "~> 5.0.0.pre10"              # Trigger client-side DOM changes from server-side Ruby.
 gem "puma",              "~> 5.6.2"                    # Use Puma as the app server.
 gem "bootsnap",          "~> 1.12.0", require: false   # Boot Ruby/Rails apps faster.
 gem "sprockets-rails",   "~> 3.4.2"                    # Asset Pipeline.

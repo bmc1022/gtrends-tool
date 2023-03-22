@@ -88,6 +88,12 @@ GEM
     bullet (7.0.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
+    cable_ready (5.0.0.pre10)
+      actionpack (>= 5.2)
+      actionview (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      thread-local (>= 1.1.0)
     capybara (3.36.0)
       addressable
       matrix
@@ -400,6 +406,7 @@ GEM
     temple (0.8.2)
     test-prof (1.0.8)
     thor (1.2.1)
+    thread-local (1.1.0)
     tilt (2.0.10)
     timeout (0.2.0)
     tzinfo (2.0.5)
@@ -440,6 +447,7 @@ DEPENDENCIES
   bootsnap (~> 1.12.0)
   brakeman
   bullet
+  cable_ready (~> 5.0.0.pre10)
   capybara
   cssbundling-rails (~> 1.1.1)
   debase

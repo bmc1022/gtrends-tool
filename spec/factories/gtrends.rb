@@ -11,8 +11,7 @@ FactoryBot.define do
       end
 
       after(:create) do |trend, evaluator|
-        create_list(:keyword, evaluator.keyword_count,
-                    :with_random_averages, gtrend: trend)
+        create_list(:keyword, evaluator.keyword_count, :with_random_averages, gtrend: trend)
       end
     end
   end

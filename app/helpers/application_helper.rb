@@ -26,6 +26,6 @@ module ApplicationHelper
   # Convert an array of arrays to CSV format.
   def data_to_csv(data)
     require("csv")
-    data.map(&CSV.method(:generate_line)).join
+    data.map { |row| CSV.generate_line(row) }.join
   end
 end

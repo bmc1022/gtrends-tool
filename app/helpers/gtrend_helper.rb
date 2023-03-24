@@ -8,16 +8,13 @@ module GtrendHelper
 
   # Conditional CSS classes for colorizing trend averages.
   def trend_strength(max, avg)
-    rel_to_highest = avg.to_f / max
-    base_class = "trend-avg"
-
     str_class =
-      case rel_to_highest
+      case (avg.to_f / max)
       when 0.75..1.00 then "high-avg"
       when 0.50..0.74 then "mid-avg"
       when 0.20..0.49 then "low-avg"
       end
 
-    [base_class, str_class]
+    ["trend-avg", str_class]
   end
 end

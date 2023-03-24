@@ -50,12 +50,12 @@ RSpec.describe(ApplicationHelper, type: :helper) do
     let(:reference)  { "#icon-example" }
     let(:class_name) { "custom-class"  }
 
-    it "returns an inline svg reference" do
+    it "returns an inline SVG reference" do
       expected_html = '<svg class="icon"><use xlink:href="#icon-example" /></svg>'
       expect(helper.svg_icon(reference)).to eq(expected_html)
     end
 
-    it "returns an inline svg reference with a given css class" do
+    it "returns an inline SVG reference with a given CSS class" do
       expected_html = '<svg class="icon custom-class"><use xlink:href="#icon-example" /></svg>'
       expect(helper.svg_icon(reference, class_name)).to eq(expected_html)
     end
@@ -64,7 +64,7 @@ RSpec.describe(ApplicationHelper, type: :helper) do
   describe "#data_to_csv" do
     let(:data) { [["keyword1", 10], ["keyword2", 20], ["keyword3", 30]] }
 
-    it "converts an array of arrays into csv format" do
+    it "converts an array of arrays into CSV format" do
       expect(helper.data_to_csv(data)).to eq("keyword1,10\nkeyword2,20\nkeyword3,30\n")
     end
   end

@@ -7,7 +7,7 @@ FactoryBot.define do
     association :gtrend
 
     trait :with_averages do
-      sequence(:avg_5y) { |n| n }
+      sequence(:avg_5y) { |n| n * 10 }
     end
 
     trait :with_random_averages do

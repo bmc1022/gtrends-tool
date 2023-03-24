@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2021_05_28_053626) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_23_151450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2021_05_28_053626) do
     t.string "name"
     t.string "job_status", default: ""
     t.index ["job_status"], name: "index_gtrends_on_job_status"
+    t.index ["name"], name: "index_gtrends_on_name", unique: true
   end
 
   create_table "keywords", force: :cascade do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2021_05_28_053626) do
     t.string "kw"
     t.integer "avg_5y", default: 0
     t.index ["gtrend_id"], name: "index_keywords_on_gtrend_id"
+    t.index ["kw", "gtrend_id"], name: "index_keywords_on_kw_and_gtrend_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

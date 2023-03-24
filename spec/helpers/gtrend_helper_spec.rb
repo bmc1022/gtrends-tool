@@ -6,10 +6,13 @@ RSpec.describe(GtrendHelper, type: :helper) do
   describe "#clipboard_kw_data" do
     let(:trend) { build(:gtrend) }
 
-    before { create_list(:keyword, 3, :with_averages, gtrend: trend) }
+    before do
+      create(:keyword, gtrend: trend, kw: "keyword a", avg_5y: 10)
+      create(:keyword, gtrend: trend, kw: "keyword b", avg_5y: 20)
+    end
 
-    it "returns a CSV formatted list of keywords and their 5-year average" do
-      expect(helper.clipboard_kw_data(trend)).to eq("kw3,30\nkw2,20\nkw1,10\n")
+    it "returns a CSV formatted list of keywords sorted by their 5-year average" do
+      expect(helper.clipboard_kw_data(trend)).to eq("keyword b,20\nkeyword a,10\n")
     end
   end
 

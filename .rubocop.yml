@@ -25,7 +25,8 @@ inherit_mode:
 AllCops:
   TargetRubyVersion: 3.1.0
   Exclude:
-    - 'bin/**/*'
-    - 'vendor/**/*'
-    - 'db/**/*'
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "db/**/*"
+    - "spec/_old_tests/**/*"
   DisabledByDefault: true

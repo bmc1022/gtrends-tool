@@ -3,14 +3,6 @@
 require "test_helper"
 
 class ApplicationHelperTest < ActionView::TestCase
-  test "#svg_icon displays an inline svg reference" do
-    assert_equal "<svg class='test'><use xlink:href='#icon'></use></svg>", svg_icon("#icon", "test")
-  end
-
-  test "#full_title returns a page title with site name appended" do
-    assert_equal "Test Title - GoogleTrends Keyword Planner", full_title("Test Title")
-  end
-
   test "#desc_5y_avg sorts the keyword averages of a trend from highest to lowest" do
     trend = create(:gtrend)
     create_list(:keyword, 10, :with_random_averages, gtrend: trend)

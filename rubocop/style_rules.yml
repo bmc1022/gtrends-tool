@@ -355,6 +355,7 @@ Style/MethodCallWithArgsParentheses:
     - "puts"
     - "p"
     - "to"
+    - "not_to"
   IgnoreMacros: true
   AllowParenthesesInMultilineCall: false
   AllowParenthesesInChaining: false

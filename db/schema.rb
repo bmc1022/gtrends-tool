@@ -55,10 +55,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_151450) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "gtrend_id"
-    t.string "kw"
+    t.string "term"
     t.integer "avg_5y", default: 0
     t.index ["gtrend_id"], name: "index_keywords_on_gtrend_id"
-    t.index ["kw", "gtrend_id"], name: "index_keywords_on_kw_and_gtrend_id", unique: true
+    t.index ["term", "gtrend_id"], name: "index_keywords_on_term_and_gtrend_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

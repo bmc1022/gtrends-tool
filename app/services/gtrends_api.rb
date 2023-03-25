@@ -125,7 +125,7 @@ class GtrendsApi < ApplicationService
   def create_keywords(list)
     kw_params = list.map do |k, v|
       v ||= 0 # Assign 0 if nil.
-      { gtrend: @gtrend, kw: k, avg_5y: v }
+      { gtrend: @gtrend, term: k, avg_5y: v }
     end
 
     @gtrend.keywords.build(kw_params)

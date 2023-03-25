@@ -3,7 +3,7 @@
 module GtrendHelper
   # Returns a CSV formatted list of keywords and their 5-year average for the given trend.
   def clipboard_kw_data(trend)
-    data_to_csv(trend.keywords.desc_5y_avg.pluck(:kw, :avg_5y))
+    data_to_csv(trend.keywords.desc_5y_avg.pluck(:term, :avg_5y))
   end
 
   # Conditional CSS classes for colorizing trend averages.

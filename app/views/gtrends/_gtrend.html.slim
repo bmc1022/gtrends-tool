@@ -21,4 +21,4 @@
             - gtrend.keywords.desc_5y_avg.each do |kw|
               tr
                 = tag.td(kw.avg_5y, class: trend_strength(gtrend.highest_5y_avg, kw.avg_5y))
-                td.trend-keyword= kw.kw
+                td.trend-keyword= kw.term

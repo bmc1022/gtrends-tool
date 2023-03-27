@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :keyword do
-    sequence(:kw) { |n| "kw#{n}" }
+    sequence(:term) { |n| "keyword#{n}" }
 
     association :gtrend
 

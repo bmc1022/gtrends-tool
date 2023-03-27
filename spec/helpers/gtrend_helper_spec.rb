@@ -7,8 +7,8 @@ RSpec.describe(GtrendHelper, type: :helper) do
     let(:trend) { build(:gtrend) }
 
     before do
-      create(:keyword, gtrend: trend, kw: "keyword a", avg_5y: 10)
-      create(:keyword, gtrend: trend, kw: "keyword b", avg_5y: 20)
+      create(:keyword, gtrend: trend, term: "keyword a", avg_5y: 10)
+      create(:keyword, gtrend: trend, term: "keyword b", avg_5y: 20)
     end
 
     it "returns a CSV formatted list of keywords sorted by their 5-year average" do

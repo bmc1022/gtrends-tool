@@ -56,7 +56,7 @@ end
 group :test do
   gem "simplecov", require: false                      # Code coverage analysis tool for Ruby.
   gem "rspec-collection_matchers"                      # Collection matchers (e.g. have(n).items).
-  gem "shoulda"                                        # One-liners to test common Rails functionality.
+  gem "shoulda-matchers"                               # One-liners to test common Rails functionality.
   gem "shoulda-callback-matchers"                      # Shoulda matchers to test callbacks.
   gem "test-prof"                                      # Analyze test suite performance.
 end

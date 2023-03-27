@@ -29,6 +29,10 @@ Metrics/ClassLength:
   Exclude:
    - "spec/**/*"
 
+Metrics/CollectionLiteralLength:
+  Enabled: true
+  LengthThreshold: 250
+
 Metrics/CyclomaticComplexity:
   Enabled: true
   Max: 7

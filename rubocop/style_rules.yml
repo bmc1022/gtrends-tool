@@ -22,6 +22,9 @@ Style/ArgumentsForwarding:
 Style/ArrayCoercion:
   Enabled: true
 
+Style/ArrayIntersect:
+  Enabled: true
+
 Style/ArrayJoin:
   Enabled: true
 
@@ -115,6 +118,12 @@ Style/CommentAnnotation:
 Style/CommentedKeyword:
   Enabled: true
 
+Style/ComparableClamp:
+  Enabled: true
+
+Style/ConcatArrayLiterals:
+  Enabled: true
+
 Style/ConditionalAssignment:
   Enabled: true
   EnforcedStyle: assign_to_condition
@@ -135,6 +144,9 @@ Style/DefWithParentheses:
   Enabled: true
 
 Style/Dir:
+  Enabled: true
+
+Style/DirEmpty:
   Enabled: true
 
 Style/DisableCopsWithinSourceCodeDirective:
@@ -216,6 +228,9 @@ Style/ExponentialNotation:
   EnforcedStyle: scientific
 
 Style/FetchEnvVar:
+  Enabled: true
+
+Style/FileEmpty:
   Enabled: true
 
 Style/FileRead:
@@ -321,6 +336,9 @@ Style/InlineComment:
 Style/InverseMethods:
   Enabled: true
 
+Style/InvertibleUnlessCondition:
+  Enabled: true
+
 Style/IpAddresses:
   Enabled: true
 
@@ -348,6 +366,9 @@ Style/MapCompactWithConditionalBlock:
 Style/MapToHash:
   Enabled: true
 
+Style/MapToSet:
+  Enabled: true
+
 Style/MethodCallWithArgsParentheses:
   Enabled: true
   EnforcedStyle: require_parentheses
@@ -373,6 +394,9 @@ Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
 
 Style/MinMax:
+  Enabled: true
+
+Style/MinMaxComparison:
   Enabled: true
 
 Style/MissingElse:
@@ -502,6 +526,9 @@ Style/OneLineConditional:
 Style/OpenStructUse:
   Enabled: true
 
+Style/OperatorMethodCall:
+  Enabled: true
+
 Style/OptionHash:
   Enabled: false
 
@@ -566,6 +593,15 @@ Style/RedundantCondition:
 Style/RedundantConditional:
   Enabled: true
 
+Style/RedundantConstantBase:
+  Enabled: true
+
+Style/RedundantDoubleSplatHashBraces:
+  Enabled: true
+
+Style/RedundantEach:
+  Enabled: true
+
 Style/RedundantException:
   Enabled: true
 
@@ -577,6 +613,9 @@ Style/RedundantFileExtensionInRequire:
   Enabled: true
 
 Style/RedundantFreeze:
+  Enabled: true
+
+Style/RedundantHeredocDelimiterQuotes:
   Enabled: true
 
 Style/RedundantInitialize:
@@ -617,10 +656,16 @@ Style/RedundantSort:
 Style/RedundantSortBy:
   Enabled: true
 
+Style/RedundantStringEscape:
+  Enabled: true
+
 Style/RegexpLiteral:
   Enabled: true
   EnforcedStyle: slashes
   AllowInnerSlashes: true
+
+Style/RequireOrder:
+  Enabled: true
 
 Style/RescueModifier:
   Enabled: true
@@ -685,7 +730,7 @@ Style/StabbyLambdaParentheses:
   EnforcedStyle: require_parentheses
 
 Style/StaticClass:
-  Enabled: true
+  Enabled: false
 
 Style/StderrPuts:
   Enabled: true
@@ -808,6 +853,9 @@ Style/WordArray:
 Style/YodaCondition:
   Enabled: true
   EnforcedStyle: forbid_for_all_comparison_operators
+
+Style/YodaExpression:
+  Enabled: true
 
 Style/ZeroLengthPredicate:
   Enabled: true

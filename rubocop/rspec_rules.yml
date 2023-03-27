@@ -29,6 +29,13 @@ RSpec/BeforeAfterAll:
 RSpec/ChangeByZero:
   Enabled: true
 
+RSpec/ClassCheck:
+  Enabled: true
+  EnforcedStyle: be_a
+
+RSpec/ContainExactly:
+  Enabled: true
+
 RSpec/ContextMethod:
   Enabled: true
 
@@ -52,6 +59,9 @@ RSpec/DescribedClassModuleWrapping:
   Enabled: true
 
 RSpec/Dialect:
+  Enabled: true
+
+RSpec/DuplicatedMetadata:
   Enabled: true
 
 RSpec/EmptyExampleGroup:
@@ -155,6 +165,9 @@ RSpec/LetBeforeExamples:
 RSpec/LetSetup:
   Enabled: true
 
+RSpec/MatchArray:
+  Enabled: true
+
 RSpec/MessageChain:
   Enabled: true
 
@@ -191,6 +204,10 @@ RSpec/NestedGroups:
   Enabled: true
   Max: 4
 
+RSpec/NoExpectationExample:
+  Enabled: true
+  AllowedPatterns: ^expect_, ^assert_
+
 RSpec/NotToNot:
   Enabled: true
   EnforcedStyle: not_to
@@ -199,6 +216,9 @@ RSpec/OverwritingSetup:
   Enabled: true
 
 RSpec/Pending:
+  Enabled: true
+
+RSpec/PendingWithoutReason:
   Enabled: true
 
 RSpec/PredicateMatcher:
@@ -210,6 +230,9 @@ RSpec/ReceiveCounts:
   Enabled: true
 
 RSpec/ReceiveNever:
+  Enabled: true
+
+RSpec/RedundantAround:
   Enabled: true
 
 RSpec/RepeatedDescription:
@@ -244,6 +267,12 @@ RSpec/SharedExamples:
   Enabled: true
 
 RSpec/SingleArgumentMessageChain:
+  Enabled: true
+
+RSpec/SkipBlockInsideExample:
+  Enabled: true
+
+RSpec/SortMetadata:
   Enabled: true
 
 RSpec/StubbedMock:

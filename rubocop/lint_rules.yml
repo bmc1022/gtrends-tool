@@ -76,6 +76,9 @@ Lint/DuplicateElsifCondition:
 Lint/DuplicateHashKey:
   Enabled: true
 
+Lint/DuplicateMagicComment:
+  Enabled: true
+
 Lint/DuplicateMethods:
   Enabled: true
 
@@ -406,6 +409,9 @@ Lint/UselessElseWithoutRescue:
   Enabled: true
 
 Lint/UselessMethodDefinition:
+  Enabled: true
+
+Lint/UselessRescue:
   Enabled: true
 
 Lint/UselessRuby2Keywords:

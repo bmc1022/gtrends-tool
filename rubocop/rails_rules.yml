@@ -1,9 +1,25 @@
+Rails/ActionControllerFlashBeforeRender:
+  Enabled: true
+
 Rails/ActionControllerTestCase:
   Enabled: true
 
 Rails/ActionFilter:
   Enabled: true
   EnforcedStyle: action
+
+Rails/ActionOrder:
+  Enabled: true
+  ExpectedOrder:
+    - index
+    - show
+    - new
+    - edit
+    - create
+    - update
+    - destroy
+  Include:
+    - "app/controllers/**/*.rb"
 
 Rails/ActiveRecordAliases:
   Enabled: true
@@ -15,6 +31,9 @@ Rails/ActiveRecordOverride:
   Enabled: true
 
 Rails/ActiveSupportAliases:
+  Enabled: true
+
+Rails/ActiveSupportOnLoad:
   Enabled: true
 
 Rails/AddColumnIndex:
@@ -136,6 +155,9 @@ Rails/FindById:
 Rails/FindEach:
   Enabled: true
 
+Rails/FreezeTime:
+  Enabled: true
+
 Rails/HasAndBelongsToMany:
   Enabled: true
 
@@ -160,6 +182,9 @@ Rails/I18nLocaleAssignment:
 
 Rails/I18nLocaleTexts:
   Enabled: false
+
+Rails/IgnoredColumnsAssignment:
+  Enabled: true
 
 Rails/IgnoredSkipActionFilterOption:
   Enabled: true
@@ -277,6 +302,14 @@ Rails/RequestReferer:
 Rails/RequireDependency:
   Enabled: true
 
+Rails/ResponseParsedBody:
+  Enabled: true
+  Include:
+    - "spec/controllers/**/*.rb"
+    - "spec/requests/**/*.rb"
+    - "test/controllers/**/*.rb"
+    - "test/integration/**/*.rb"
+
 Rails/ReversibleMigration:
   Enabled: true
 
@@ -284,6 +317,9 @@ Rails/ReversibleMigrationMethodDefinition:
   Enabled: true
 
 Rails/RootJoinChain:
+  Enabled: true
+
+Rails/RootPathnameMethods:
   Enabled: true
 
 Rails/RootPublicPath:
@@ -333,6 +369,13 @@ Rails/ToFormattedS:
   Enabled: true
   EnforcedStyle: to_fs
 
+Rails/ToSWithArgument:
+  Enabled: true
+
+Rails/TopLevelHashWithIndifferentAccess:
+  Enabled: true
+  Severity: warning
+
 Rails/TransactionExitStatement:
   Enabled: true
 
@@ -359,5 +402,12 @@ Rails/WhereExists:
   Enabled: true
   EnforcedStyle: exists
 
+Rails/WhereMissing:
+  Enabled: true
+
 Rails/WhereNot:
   Enabled: true
+
+Rails/WhereNotWithMultipleConditions:
+  Enabled: true
+  Severity: warning

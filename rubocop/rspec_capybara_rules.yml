@@ -1,11 +1,24 @@
-RSpec/Capybara/CurrentPathExpectation:
+Capybara/CurrentPathExpectation:
   Enabled: true
 
 RSpec/Capybara/FeatureMethods:
   Enabled: true
 
-RSpec/Capybara/SpecificMatcher:
+Capybara/MatchStyle:
   Enabled: true
 
-RSpec/Capybara/VisibilityMatcher:
+Capybara/NegationMatcher:
+  Enabled: true
+  EnforcedStyle: not_to
+
+Capybara/SpecificActions:
+  Enabled: true
+
+Capybara/SpecificFinders:
+  Enabled: true
+
+Capybara/SpecificMatcher:
+  Enabled: true
+
+Capybara/VisibilityMatcher:
   Enabled: true

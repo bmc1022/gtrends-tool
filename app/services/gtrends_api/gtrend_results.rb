@@ -1,18 +1,11 @@
 # frozen_string_literal: true
 
-class GtrendsApi < ApplicationService
-  require "json"
-
-  GTRENDS_URL = "https://trends.google.com/trends"
-  GENERAL_API_URL = "https://trends.google.com/trends/api/explore"
-  OVER_TIME_URL = "https://trends.google.com/trends/api/widgetdata/multiline"
-
+class GtrendsApi::GtrendResults < GtrendsApi::Base
   def initialize(gtrend, keywords)
-    super
     @gtrend = gtrend
-    @keywords = JSON.parse(keywords)
-    @cookie = get_google_cookie
-    @over_time_req = {}
+    @keywords = keywords
+    @cookie = GtrendsApi::GoogleCookie.call
+    @over_time_request = {}
     @over_time_token = {}
   end
 
@@ -24,18 +17,8 @@ class GtrendsApi < ApplicationService
 
   private
 
-  def rescue_retry(req, n = 3)
-    retries = 0
-    begin
-      req
-    rescue HTTP::Error
-      sleep(retries)
-      (retries += 1) <= n ? retry : raise
-    end
-  end
-
   def format_query(params)
-    q = params.map do |k, v|
+    query = params.map do |k, v|
       k = CGI.escape(k.to_s)
       if v.is_a?(Hash)
         "#{k}=#{CGI.escape(v.to_json).gsub('%2C', ',').gsub('%3A', ':')}"
@@ -44,35 +27,23 @@ class GtrendsApi < ApplicationService
       end
     end
 
-    q.join("&").prepend("?")
+    query.join("&").prepend("?")
   end
 
-  def get_google_cookie
-    res = rescue_retry(HTTP.timeout(3).get(GTRENDS_URL))
-    cookie = res["Set-Cookie"].split(";")[0]
-    if cookie.present?
-      cookie
-    else
-      Rails.logger.error { "Error fetching cookie from Google" }
-      @gtrend.update(job_status: "failed")
-      ""
-    end
-  end
-
-  def get_api_tokens(q)
-    res = gtrend_data(GENERAL_API_URL + q)
-    unless res.is_a?(HTTP::Response)
+  def api_tokens(query)
+    response = gtrend_data(GENERAL_API_URL + query)
+    unless response.is_a?(HTTP::Response)
       Rails.logger.error { "Error fetching Google API tokens" }
       @gtrend.update(job_status: "failed")
       return
     end
-    widget_data = res.to_s[4..-1] # Strip leading junk characters.
+    widget_data = response.to_s[4..-1] # Strip leading junk characters.
     widgets = JSON.parse(widget_data)["widgets"]
 
     widgets.each do |widget|
       if widget["id"] == "TIMESERIES"
-        @over_time_req   = { req: widget["request"] }
-        @over_time_token = { token: widget["token"] }
+        @over_time_request = { req: widget["request"] }
+        @over_time_token   = { token: widget["token"] }
       end
     end
 
@@ -90,7 +61,7 @@ class GtrendsApi < ApplicationService
     params = { hl: "en-US", req: { comparisonItem: compared_kws }, tz: "-600" }
 
     payload_query = format_query(params)
-    get_api_tokens(payload_query)
+    api_tokens(payload_query)
 
     nil
   end
@@ -137,17 +108,17 @@ class GtrendsApi < ApplicationService
     end
   end
 
-  def find_top(n, kws)
+  def find_top(count, kws)
     # Compare first five.
-    top_kws = interest_over_time_data(kws.take(5)).max_by(n) { |_k, v| v }.to_h
+    top_kws = interest_over_time_data(kws.take(5)).max_by(count) { |_k, v| v }.to_h
 
     # Cycle through each consecutive slice of [5-n] keywords (since there's a
     # 5 keyword limit), comparing to and overwriting the previous top (n).
     # There's a 1 second pause between each request to avoid rate limit.
-    kws.drop(5).each_slice(5 - n) do |slice|
+    kws.drop(5).each_slice(5 - count) do |slice|
       sleep(1)
       res = interest_over_time_data(top_kws.keys + slice)
-      top_kws = res.max_by(n) { |_k, v| v }.to_h
+      top_kws = res.max_by(count) { |_k, v| v }.to_h
     end
 
     top_kws

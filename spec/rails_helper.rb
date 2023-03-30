@@ -9,6 +9,8 @@ require_relative "../config/environment"
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
+require "webmock/rspec"
+require "vcr"
 require "rspec/collection_matchers"
 require "test_prof/recipes/rspec/before_all"
 
@@ -19,13 +21,6 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit(1)
-end
-
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework(:rspec)
-    with.library(:rails)
-  end
 end
 
 RSpec.configure do |config|
@@ -48,4 +43,19 @@ RSpec.configure do |config|
 
   # Driver setup for system tests.
   config.before(:each, type: :system) { driven_by :selenium_chrome_headless }
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework(:rspec)
+    with.library(:rails)
+  end
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/support/vcr_cassettes"
+  config.hook_into(:webmock)
+  config.configure_rspec_metadata!
+  config.default_cassette_options = { record: :new_episodes }
+  config.allow_http_connections_when_no_cassette = true
 end

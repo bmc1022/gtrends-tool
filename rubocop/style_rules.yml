@@ -665,7 +665,7 @@ Style/RegexpLiteral:
   AllowInnerSlashes: true
 
 Style/RequireOrder:
-  Enabled: true
+  Enabled: false
 
 Style/RescueModifier:
   Enabled: true

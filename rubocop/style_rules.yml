@@ -855,7 +855,7 @@ Style/YodaCondition:
   EnforcedStyle: forbid_for_all_comparison_operators
 
 Style/YodaExpression:
-  Enabled: true
+  Enabled: false
 
 Style/ZeroLengthPredicate:
   Enabled: true

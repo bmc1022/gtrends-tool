@@ -191,8 +191,6 @@ Lint/MissingCopEnableDirective:
 
 Lint/MissingSuper:
   Enabled: true
-  Exclude:
-    - "app/services/**/*"
 
 Lint/MixedRegexpCaptureTypes:
   Enabled: true

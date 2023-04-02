@@ -12,6 +12,6 @@ class FetchGtrendDataJob < ApplicationJob
   end
 
   def perform(gtrend, keywords)
-    GtrendsApi::GtrendResults.call(gtrend, keywords)
+    GtrendsApi::ProcessGtrendsData.call(gtrend, keywords)
   end
 end

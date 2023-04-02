@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GtrendsApi::Base < ApplicationService
+module GtrendsApi::Base
   require "json"
 
   GTRENDS_URL = "https://trends.google.com/trends"
@@ -9,13 +9,19 @@ class GtrendsApi::Base < ApplicationService
 
   private
 
-  def rescue_retry(request, n = 3)
+  def rescue_retry(request, max_retries = 3)
     retries = 0
     begin
       request
     rescue HTTP::Error
       sleep(retries)
-      (retries += 1) <= n ? retry : raise
+      (retries += 1) <= max_retries ? retry : raise
     end
+  end
+
+  def job_failed(message, return_value: nil)
+    Rails.logger.error { message }
+    @gtrend.update!(job_status: "failed")
+    return_value
   end
 end

@@ -45,6 +45,7 @@ Metrics/MethodLength:
    - "array"
    - "hash"
    - "heredoc"
+   - "method_call"
 
 Metrics/ModuleLength:
   Enabled: true

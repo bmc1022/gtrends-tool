@@ -39,7 +39,13 @@ RSpec.describe(ApplicationHelper, type: :helper) do
     end
 
     context "when assets are not precompiled" do
-      before { allow(Rails.configuration.assets).to receive(:compile).and_return(false) }
+      before do
+        allow(Rails.configuration.assets).to receive(:compile).and_return(false)
+        allow(Rails.application.assets_manifest.assets).to receive(:[])
+          .with(existing_asset_path).and_return(true)
+        allow(Rails.application.assets_manifest.assets).to receive(:[])
+          .with(non_existing_asset_path).and_return(false)
+      end
 
       it { expect(helper.asset_exists?(existing_asset_path)).to be(true) }
       it { expect(helper.asset_exists?(non_existing_asset_path)).to be(false) }

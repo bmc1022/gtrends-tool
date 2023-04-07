@@ -71,6 +71,9 @@ Rails.application.configure do
   # Set up default URL options for the Devise mailer.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
+  # Set the background job adapter to SideKiq.
+  config.active_job.queue_adapter = :sidekiq
+
   config.after_initialize do
     Bullet.enable        = true
     Bullet.bullet_logger = true

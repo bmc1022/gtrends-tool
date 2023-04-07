@@ -7,7 +7,7 @@ ruby "3.1.0"
 
 gem "rails",             "~> 7.0.2"                    # Web app framework.
 gem "pg",                ">= 1.3.1"                    # Use PostgreSQL as the database.
-gem "redis",             "~> 4.6.0"                    # Use Redis adapter to run ActionCable in production.
+gem "redis",             "~> 5.0.6"                    # Use Redis adapter to run ActionCable in production.
 gem "cable_ready",       "~> 5.0.0.pre10"              # Trigger client-side DOM changes from server-side Ruby.
 gem "puma",              "~> 5.6.2"                    # Use Puma as the app server.
 gem "bootsnap",          "~> 1.12.0", require: false   # Boot Ruby/Rails apps faster.
@@ -17,6 +17,7 @@ gem "cssbundling-rails", "~> 1.1.1"                    # Bundle and process CSS.
 gem "jbuilder",          "~> 2.11.5"                   # Build JSON APIs with ease.
 gem "slim-rails",        "~> 3.3.0"                    # Compile Slim to HTML.
 gem "devise",            "~> 4.8.1"                    # Authentication.
+gem "sidekiq",           "~> 7.0.8"                    # Background job processing.
 gem "http",              "~> 5.0.4"                    # HTTP client.
 gem "pagy",              "~> 5.10.1"                   # Pagination.
 

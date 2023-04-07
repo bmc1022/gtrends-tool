@@ -698,6 +698,8 @@ Style/Semicolon:
 
 Style/Send:
   Enabled: true
+  Exclude:
+    - "spec/**/*"
 
 Style/SignalException:
   Enabled: true

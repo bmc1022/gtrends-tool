@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 RSpec::Matchers.define(:have_constant) do |const|
-  match { |owner| owner.const_defined?(const) && owner.const_get(const) == @value }
+  match do |owner|
+    if @value.nil?
+      owner.const_defined?(const)
+    else
+      owner.const_defined?(const) && owner.const_get(const) == @value
+    end
+  end
 
   chain :with_value do |value|
     @value = value

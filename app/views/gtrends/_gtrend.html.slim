@@ -1,7 +1,7 @@
 .col-md-15.col-lg-10.trend*{"data-id"=>gtrend.id,"data-status"=>gtrend.job_status}
   .trend-wrapper
     .trend-header
-      span= gtrend.name
+      = tag.span(gtrend.name, class: ("small" if gtrend.name.size >= 20))
       .options
         button.clipboard*{"title"=>"Copy Data (CSV)",
                           "data-controller"=>"clipboard",

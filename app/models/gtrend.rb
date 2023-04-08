@@ -5,7 +5,7 @@ class Gtrend < ApplicationRecord
 
   attribute :kws, :text
 
-  validates :name, presence: true, length: { in: 2..100 }, uniqueness: { case_sensitive: false }
+  validates :name, presence: true, length: { in: 2..25 }, uniqueness: { case_sensitive: false }
   # :kws is a virtual/non-persisted attribute and validations on it should be skipped on updates to
   # gtrend records since the assigned data will no longer exist after reload.
   with_options on: :create do
@@ -15,7 +15,7 @@ class Gtrend < ApplicationRecord
   end
 
   def kws
-    read_attribute(:kws).to_s.split(/[\n,]/).map(&:strip).compact_blank
+    read_attribute(:kws).to_s.split(/[\n,]/).map(&:strip).uniq(&:downcase).compact_blank
   end
 
   def highest_5y_avg

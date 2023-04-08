@@ -30,7 +30,7 @@ RSpec.describe(Gtrend, type: :model) do
   describe "validations" do
     describe ":name validations" do
       it { is_expected.to validate_presence_of(:name) }
-      it { is_expected.to validate_length_of(:name).is_at_least(2).is_at_most(100) }
+      it { is_expected.to validate_length_of(:name).is_at_least(2).is_at_most(25) }
       it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
     end
 
@@ -51,7 +51,7 @@ RSpec.describe(Gtrend, type: :model) do
           gtrend.kws = Array.new(100) { "a" }
           expect(gtrend).to be_valid
 
-          gtrend.kws = Array.new(101) { "a" }
+          gtrend.kws = (1..101).to_a.to_s
           expect(gtrend).to be_invalid
           expect(gtrend.errors[:kws]).to include("Keyword count must not exceed 100.")
         end
@@ -71,10 +71,10 @@ RSpec.describe(Gtrend, type: :model) do
   end
 
   describe "#kws getter method" do
-    let(:gtrend) { build(:gtrend, kws: "one,  ,two  , three\nfour   \n  five") }
+    let(:gtrend) { build(:gtrend, kws: "one, ONE,  One,   ,two  , three\nfour   \n  five") }
 
     it "returns an array of keywords split by comma and newline, with leading and trailing
-        whitespace removed, and empty entries discarded" do
+        whitespace removed, and empty and duplicate entries discarded" do
       expect(gtrend.kws).to eq(["one", "two", "three", "four", "five"])
     end
   end

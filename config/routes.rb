@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   devise_for :users, skip: [:registrations, :sessions], controllers: { sessions: "sessions" }
@@ -11,13 +11,8 @@ Rails.application.routes.draw do
   end
 
   authenticate :user do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
-
-  # # disabled for demo purposes
-  # authenticate :user do
-  #   resources :gtrends, only: [:index, :create, :destroy], path: '/'
-  # end
 
   resources :gtrends, only: [:index, :create, :destroy], path: "/"
 end

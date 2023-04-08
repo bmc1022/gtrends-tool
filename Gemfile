@@ -17,6 +17,7 @@ gem "cssbundling-rails", "~> 1.1.1"                    # Bundle and process CSS.
 gem "jbuilder",          "~> 2.11.5"                   # Build JSON APIs with ease.
 gem "slim-rails",        "~> 3.3.0"                    # Compile Slim to HTML.
 gem "devise",            "~> 4.8.1"                    # Authentication.
+gem "pundit",            "~> 2.3.0"                    # Authorization.
 gem "sidekiq",           "~> 7.0.8"                    # Background job processing.
 gem "http",              "~> 5.0.4"                    # HTTP client.
 gem "pagy",              "~> 5.10.1"                   # Pagination.

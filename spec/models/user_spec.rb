@@ -22,6 +22,10 @@ RSpec.describe(User, type: :model) do
     it { is_expected.to have_db_index([:username]).unique }
   end
 
+  describe "associations" do
+    it { is_expected.to have_many(:gtrends).dependent(:destroy) }
+  end
+
   describe ".find_first_by_auth_conditions" do
     let!(:user_1) { create(:user, username: "user1", email: "u1@email.com") }
     let!(:user_2) { create(:user, username: "user2", email: "u2@email.com") }

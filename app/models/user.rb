@@ -5,6 +5,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :rememberable
 
+  has_many :gtrends, dependent: :destroy
+
   attr_writer :login
 
   def self.find_first_by_auth_conditions(warden_conditions)

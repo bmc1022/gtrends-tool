@@ -15,16 +15,19 @@ RSpec.describe(Gtrend, type: :model) do
     end
 
     # Database columns
+    it { is_expected.to have_db_column(:user_id).of_type(:integer) }
     it { is_expected.to have_db_column(:name).of_type(:string) }
     it { is_expected.to have_db_column(:job_status).of_type(:string).with_options(default: "") }
 
     # Database indexes
+    it { is_expected.to have_db_index([:user_id]) }
     it { is_expected.to have_db_index([:job_status]) }
     it { is_expected.to have_db_index([:name]).unique }
   end
 
   describe "associations" do
     it { is_expected.to have_many(:keywords).dependent(:destroy).inverse_of(:gtrend) }
+    it { is_expected.to belong_to(:user).optional }
   end
 
   describe "validations" do

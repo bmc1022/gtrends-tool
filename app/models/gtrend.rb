@@ -2,6 +2,7 @@
 
 class Gtrend < ApplicationRecord
   has_many :keywords, dependent: :destroy, inverse_of: :gtrend
+  belongs_to :user, optional: true
 
   attribute :kws, :text
 

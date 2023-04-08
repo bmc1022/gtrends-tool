@@ -23,7 +23,7 @@ Performance/Casecmp:
   Enabled: true
 
 Performance/ChainArrayAllocation:
-  Enabled: true
+  Enabled: false
 
 Performance/CollectionLiteralInLoop:
   Enabled: true

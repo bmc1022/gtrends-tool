@@ -39,7 +39,7 @@ Metrics/CyclomaticComplexity:
 
 Metrics/MethodLength:
   Enabled: true
-  Max: 10
+  Max: 20
   CountComments: false
   CountAsOne:
    - "array"

@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   attr_writer :login
 
+  validates :username, uniqueness: { case_sensitive: false, allow_blank: true }
+  validates :email, uniqueness: { case_sensitive: false, allow_blank: true }
+  validate  :username_or_email
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if (login = conditions.delete(:login))
@@ -22,5 +26,13 @@ class User < ApplicationRecord
 
   def login
     @login || username || email
+  end
+
+  private
+
+  def username_or_email
+    return if username.present? || email.present?
+
+    errors.add(:base, "A user must have either a username or an email.")
   end
 end

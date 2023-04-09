@@ -48,6 +48,47 @@ RSpec.describe(User, type: :model) do
     it { is_expected.to have_many(:gtrends).dependent(:destroy) }
   end
 
+  describe "validations" do
+    it { is_expected.to validate_uniqueness_of(:username).case_insensitive.allow_blank }
+    it { is_expected.to validate_uniqueness_of(:email).case_insensitive.allow_blank }
+
+    describe ":username_or_email validation" do
+      let(:user) { build(:user, username:, email:) }
+
+      before { user.send(:username_or_email) }
+
+      context "when both a username and email are present" do
+        let(:username) { "testuser" }
+        let(:email)    { "test@email.com" }
+
+        it { expect(user.errors).to be_empty }
+      end
+
+      context "when a username is present" do
+        let(:username) { "testuser" }
+        let(:email)    { nil }
+
+        it { expect(user.errors).to be_empty }
+      end
+
+      context "when an email is present" do
+        let(:username) { nil }
+        let(:email)    { "test@email.com" }
+
+        it { expect(user.errors).to be_empty }
+      end
+
+      context "when a username or email are not provided" do
+        let(:username) { nil }
+        let(:email)    { nil }
+
+        it "adds an error to the user" do
+          expect(user.errors[:base]).to include("A user must have either a username or an email.")
+        end
+      end
+    end
+  end
+
   describe ".find_first_by_auth_conditions" do
     let!(:user_1) { create(:user, username: "user1", email: "u1@email.com") }
     let!(:user_2) { create(:user, username: "user2", email: "u2@email.com") }

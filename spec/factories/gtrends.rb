@@ -14,5 +14,13 @@ FactoryBot.define do
         create_list(:keyword, evaluator.keyword_count, :with_random_averages, gtrend: trend)
       end
     end
+
+    trait :created_by_user do
+      association :user
+    end
+
+    trait :created_by_guest do
+      guest_id { SecureRandom.uuid }
+    end
   end
 end

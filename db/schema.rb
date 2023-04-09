@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_08_125230) do
     t.string "username"
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true, where: "((email IS NOT NULL) AND ((email)::text <> ''::text))"
-    t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true, where: "((username IS NOT NULL) AND ((username)::text <> ''::text))"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

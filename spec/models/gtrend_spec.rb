@@ -16,6 +16,7 @@ RSpec.describe(Gtrend, type: :model) do
 
     # Database columns
     it { is_expected.to have_db_column(:user_id).of_type(:integer) }
+    it { is_expected.to have_db_column(:guest_id).of_type(:string) }
     it { is_expected.to have_db_column(:name).of_type(:string) }
     it { is_expected.to have_db_column(:job_status).of_type(:string).with_options(default: "") }
 

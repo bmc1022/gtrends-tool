@@ -62,5 +62,6 @@ group :test do
   gem "rspec-collection_matchers"                      # Collection matchers (e.g. have(n).items).
   gem "shoulda-matchers"                               # One-liners to test common Rails functionality.
   gem "shoulda-callback-matchers"                      # Shoulda matchers to test callbacks.
+  gem "pundit-matchers"                                # RSpec matchers for testing Pundit authorisation policies.
   gem "test-prof"                                      # Analyze test suite performance.
 end

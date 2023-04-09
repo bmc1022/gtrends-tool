@@ -9,10 +9,10 @@ RSpec.describe(User, type: :model) do
 
   describe "attributes and indexes" do
     # Database columns
-    it do
-      expect(user).to have_db_column(:email).of_type(:string).with_options(default: "", null: false)
-      expect(user).to have_db_column(:encrypted_password).of_type(:string)
-                                                         .with_options(default: "", null: false)
+    it { is_expected.to have_db_column(:email).of_type(:string) }
+    it { is_expected.to have_db_column(:username).of_type(:string) }
+    it { is_expected.to have_db_column(:admin).of_type(:boolean).with_options(default: false) }
+    it { is_expected.to have_db_column(:remember_created_at).of_type(:datetime) }
       expect(user).to have_db_column(:remember_created_at).of_type(:datetime)
       expect(user).to have_db_column(:username).of_type(:string)
     end
@@ -20,6 +20,28 @@ RSpec.describe(User, type: :model) do
     # Database indexes
     it { is_expected.to have_db_index([:email]).unique }
     it { is_expected.to have_db_index([:username]).unique }
+
+    describe "email index" do
+      let(:email_index) do
+        ActiveRecord::Base.connection.indexes(:users).find { |index| index.columns == ["email"] }
+      end
+
+      it "has the correct where clause" do
+        expect(email_index.where).to eq("((email IS NOT NULL) AND ((email)::text <> ''::text))")
+      end
+    end
+
+    describe "username index" do
+      let(:username_index) do
+        ActiveRecord::Base.connection.indexes(:users).find { |index| index.columns == ["username"] }
+      end
+
+      it "has the correct where clause" do
+        expect(username_index.where).to eq(
+          "((username IS NOT NULL) AND ((username)::text <> ''::text))"
+        )
+      end
+    end
   end
 
   describe "associations" do

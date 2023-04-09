@@ -74,6 +74,28 @@ RSpec.describe(Gtrend, type: :model) do
     end
   end
 
+  describe "scopes" do
+    describe ".seeded_trends" do
+      before_all do
+        @user_trend   = create(:gtrend, :created_by_user)
+        @guest_trend  = create(:gtrend, :created_by_guest)
+        @seeded_trend = create(:gtrend, user_id: nil, guest_id: nil)
+      end
+
+      it "returns only trends that have been created by the seed file" do
+        expect(described_class.seeded_trends).to contain_exactly(@seeded_trend)
+      end
+
+      it "does not return trends that have an associated user" do
+        expect(described_class.seeded_trends).not_to include(@user_trend)
+      end
+
+      it "does not return trends that have an associated guest" do
+        expect(described_class.seeded_trends).not_to include(@guest_trend)
+      end
+    end
+  end
+
   describe "#kws getter method" do
     let(:gtrend) { build(:gtrend, kws: "one, ONE,  One,   ,two  , three\nfour   \n  five") }
 

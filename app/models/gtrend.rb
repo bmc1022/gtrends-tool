@@ -15,6 +15,8 @@ class Gtrend < ApplicationRecord
     validate  :kw_count
   end
 
+  scope :seeded_trends, -> { where(user_id: nil, guest_id: nil) }
+
   def kws
     read_attribute(:kws).to_s.split(/[\n,]/).map(&:strip).uniq(&:downcase).compact_blank
   end

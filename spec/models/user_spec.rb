@@ -13,9 +13,9 @@ RSpec.describe(User, type: :model) do
     it { is_expected.to have_db_column(:username).of_type(:string) }
     it { is_expected.to have_db_column(:admin).of_type(:boolean).with_options(default: false) }
     it { is_expected.to have_db_column(:remember_created_at).of_type(:datetime) }
-      expect(user).to have_db_column(:remember_created_at).of_type(:datetime)
-      expect(user).to have_db_column(:username).of_type(:string)
-    end
+
+    it { is_expected.to have_db_column(:encrypted_password).of_type(:string)
+                                                           .with_options(default: "", null: false) }
 
     # Database indexes
     it { is_expected.to have_db_index([:email]).unique }

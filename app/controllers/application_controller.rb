@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def pundit_user
+    user_signed_in? ? current_user : Guest.new(guest_identifier)
+  end
+
+  def guest_identifier
+    cookies[:guest_identifier] ||= { value: SecureRandom.uuid, expires: 1.month }
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :password])
   end

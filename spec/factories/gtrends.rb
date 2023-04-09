@@ -22,5 +22,10 @@ FactoryBot.define do
     trait :created_by_guest do
       guest_id { SecureRandom.uuid }
     end
+
+    trait :seeded do
+      user_id { nil }
+      guest_id { nil }
+    end
   end
 end

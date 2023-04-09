@@ -79,7 +79,7 @@ RSpec.describe(Gtrend, type: :model) do
       before_all do
         @user_trend   = create(:gtrend, :created_by_user)
         @guest_trend  = create(:gtrend, :created_by_guest)
-        @seeded_trend = create(:gtrend, user_id: nil, guest_id: nil)
+        @seeded_trend = create(:gtrend, :seeded)
       end
 
       it "returns only trends that have been created by the seed file" do

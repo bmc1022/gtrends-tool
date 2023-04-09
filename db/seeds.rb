@@ -1,11 +1,17 @@
 class DataGenerator
-  require 'csv'
+  require "csv"
 
-  def user
-    User.first_or_create({
-      username: "demo_user",
-      password: "123demo"
-    })
+  def admin
+    User.find_or_create_by!(username: "admin") do |admin|
+      admin.password = ENV["ADMIN_PASSWORD"]
+      admin.admin = true
+    end
+  end
+
+  def demo_user
+    User.find_or_create_by!(username: "demo_user") do |user|
+      user.password = "123demo"
+    end
   end
 
   def weighted_rand
@@ -48,10 +54,10 @@ class DataGenerator
   end
 
   def dummy_trend_lists
-    pests = ['ant', 'fire ant', 'sugar ant', 'aphid', 'bed bug', 'bee', 'beetle',
-         'centipede', 'cricket', 'earwig', 'flea', 'gnat', 'millipede', 'mite',
-         'moth', 'scorpion', 'slug', 'snail', 'spider', 'springtail', 'stink bug',
-         'termite', 'tick', 'wasp'].reverse!
+    pests = ["ant", "fire ant", "sugar ant", "aphid", "bed bug", "bee", "beetle",
+         "centipede", "cricket", "earwig", "flea", "gnat", "millipede", "mite",
+         "moth", "scorpion", "slug", "snail", "spider", "springtail", "stink bug",
+         "termite", "tick", "wasp"].reverse!
 
     pests.each do |pest|
       gtrend = Gtrend.new(name: "#{pest.titleize}s")
@@ -61,31 +67,32 @@ class DataGenerator
   end
 
   def pestcontrol_trend_lists
-    file = Rails.root.join('db', 'files', 'commonpests_gtrend_queries.csv')
+    file = Rails.root.join("db", "files", "commonpests_gtrend_queries.csv")
     CSV.foreach(file, headers: true) do |row|
-      gtrend = Gtrend.find_or_initialize_by(name: row['Section'])
+      gtrend = Gtrend.find_or_initialize_by(name: row["Section"])
       gtrend.save(validate: false)
       Keyword.create!(
         gtrend: gtrend,
-        term: row['Title'],
-        avg_5y: row['Score'])
+        term: row["Title"],
+        avg_5y: row["Score"])
     end
   end
 
   def trend_lists
-    file = Rails.root.join('db', 'files', 'demo_data.csv')
+    file = Rails.root.join("db", "files", "demo_data.csv")
     CSV.foreach(file, headers: true) do |row|
-      gtrend = Gtrend.find_or_initialize_by(name: row['TrendName'])
+      gtrend = Gtrend.find_or_initialize_by(name: row["TrendName"])
       gtrend.save(validate: false)
       Keyword.create!(
         gtrend: gtrend,
-        term: row['Keyword'],
-        avg_5y: row['Score'])
+        term: row["Keyword"],
+        avg_5y: row["Score"])
     end
   end
 end
 
-DataGenerator.new.user
+DataGenerator.new.admin
+DataGenerator.new.demo_user
 Gtrend.destroy_all
-DataGenerator.new.trend_lists
 DataGenerator.new.pestcontrol_trend_lists if Rails.env.development?
+DataGenerator.new.trend_lists

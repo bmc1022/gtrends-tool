@@ -1,5 +1,8 @@
 import { application } from "./application"
 
+import AlertController from "./alert_controller"
+application.register("alert", AlertController)
+
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 

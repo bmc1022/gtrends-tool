@@ -1,41 +1,17 @@
 /*---- INDEX -----------------------------------------------------------------*/
 /*////////////////////////////////////////////////////////////////////////////*/
 
-body { 
-  background: #f5f5f5; 
-  //background: linear-gradient(to bottom right, #F2C14E, #F78154);
+body {
+  background: #f5f5f5;
 }
 
-#main-head {
-  position: relative;
-  #notice {
-    position: absolute;
-    left: 0;
-    right: 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 10;
-  }
-  
-  #search {
-    text-align: center;
-    input {
-      height: 40px;
-      padding: 10px 14px;
-      font-size: 0.9rem;
-      border: 1px solid #e0e0e0;
-      border-radius: 0.25rem 0 0 0.25rem;
-      &:focus {
-        border: 1px solid #81caca;
-        box-shadow: inset 0 0 0 0.1rem rgba(57, 190, 190, 0.35);
-      }
-    }
-    .btn-outline-secondary {
-      background: #fff;
-      border-color: #d6d6d6;
-    }
-  }
+#notices {
+  position: fixed;
+  top: 105px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  z-index: 999;
 }
 
 #trend-results {
@@ -108,7 +84,7 @@ body {
         text-align: center;
         box-shadow: inset 0px 1px #75dada;
         &:hover { background: #38b1b1; }
-        &:active { 
+        &:active {
           box-shadow: inset 0px 2px #2f9494;
           border-bottom: 2px solid #90d6d6;
         }

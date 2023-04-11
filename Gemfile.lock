@@ -88,7 +88,7 @@ GEM
     bullet (7.0.7)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
-    cable_ready (5.0.0.rc1)
+    cable_ready (5.0.0.rc2)
       actionpack (>= 5.2)
       actionview (>= 5.2)
       activesupport (>= 5.2)
@@ -208,7 +208,7 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    loofah (2.19.1)
+    loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.8)
@@ -464,7 +464,7 @@ DEPENDENCIES
   bootsnap (~> 1.12.0)
   brakeman
   bullet
-  cable_ready (~> 5.0.0.pre10)
+  cable_ready (= 5.0.0.rc2)
   capybara
   cssbundling-rails (~> 1.1.1)
   debase

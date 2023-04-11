@@ -60,7 +60,7 @@ class DataGenerator
          "termite", "tick", "wasp"].reverse!
 
     pests.each do |pest|
-      gtrend = Gtrend.new(name: "#{pest.titleize}s")
+      gtrend = Gtrend.new(name: "#{pest.titleize}s", job_status: "done")
       gtrend.save(validate: false)
       keywords(pest, gtrend)
     end
@@ -69,7 +69,7 @@ class DataGenerator
   def pestcontrol_trend_lists
     file = Rails.root.join("db", "files", "commonpests_gtrend_queries.csv")
     CSV.foreach(file, headers: true) do |row|
-      gtrend = Gtrend.find_or_initialize_by(name: row["Section"])
+      gtrend = Gtrend.find_or_initialize_by(name: row["Section"], job_status: "done")
       gtrend.save(validate: false)
       Keyword.create!(
         gtrend: gtrend,
@@ -81,7 +81,7 @@ class DataGenerator
   def trend_lists
     file = Rails.root.join("db", "files", "demo_data.csv")
     CSV.foreach(file, headers: true) do |row|
-      gtrend = Gtrend.find_or_initialize_by(name: row["TrendName"])
+      gtrend = Gtrend.find_or_initialize_by(name: row["TrendName"], job_status: "done")
       gtrend.save(validate: false)
       Keyword.create!(
         gtrend: gtrend,

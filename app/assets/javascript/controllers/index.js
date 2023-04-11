@@ -14,3 +14,6 @@ application.register("simplebar", SimplebarController)
 
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)
+
+import consumer from '../channels/consumer'
+application.consumer = consumer

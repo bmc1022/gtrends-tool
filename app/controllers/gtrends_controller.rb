@@ -18,7 +18,6 @@ class GtrendsController < ApplicationController
       if @gtrend.save
         FetchGtrendDataJob.perform_later(@gtrend, @gtrend.kws)
         format.html { redirect_to(gtrends_url) }
-        format.js
       else
         format.html { render(:index) }
       end

@@ -1,6 +1,10 @@
+/* ==== Typography & Design Elements ======================================== */
+
 a {
   color: #52A0E6;
+  text-decoration: none;
   transition: all 0.3s ease;
+  &:hover, &:focus { text-decoration: none; }
 }
 
 input:focus::placeholder { color: transparent !important; }
@@ -40,7 +44,6 @@ svg {
 }
 
 .alert {
-  padding: .5em .75em;
   font-size: .95em;
   &.alert-notice {
     color: #39afaf;
@@ -52,10 +55,9 @@ svg {
     background-color: #fff0f1;
     border-color: #f5c6cb;
   }
-  .close {
-    color: rgba(0, 0, 0, 0.75);
-    text-shadow: none;
-  }
 }
 
-
+.simplebar-init {
+  overflow: hidden !important;
+  &::-webkit-scrollbar { display: none; }
+}

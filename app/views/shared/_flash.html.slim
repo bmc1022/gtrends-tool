@@ -1,4 +1,4 @@
 - flash.each do |name, msg|
-  .alert.alert-dismissible.fade.show class="alert-#{name}" role="alert"
+  .alert.alert-dismissible.fade.show class="alert-#{name}" role="alert" data-controller="alert"
     span= msg if msg.is_a?(String)
     button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"

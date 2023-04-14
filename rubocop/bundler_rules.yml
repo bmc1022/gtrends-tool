@@ -1,0 +1,18 @@
+Bundler/DuplicatedGem:
+  Enabled: true
+
+Bundler/GemComment:
+  Enabled: true
+
+Bundler/GemFilename:
+  Enabled: true
+  EnforcedStyle: Gemfile
+
+Bundler/GemVersion:
+  Enabled: false
+
+Bundler/InsecureProtocolSource:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: false

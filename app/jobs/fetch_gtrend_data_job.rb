@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FetchGtrendDataJob < ApplicationJob
   queue_as :default
 
@@ -5,11 +7,11 @@ class FetchGtrendDataJob < ApplicationJob
 
   after_enqueue do |job|
     gtrend = job.arguments.first
-    gtrend.job_status = 'queued'
+    gtrend.job_status = "queued"
     gtrend.save!
   end
 
   def perform(gtrend, keywords)
-    GtrendsApi.call(gtrend, keywords)
+    GtrendsApi::ProcessGtrendsData.call(gtrend, keywords)
   end
 end

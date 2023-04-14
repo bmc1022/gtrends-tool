@@ -1,22 +1,25 @@
-.col-md-15.col-lg-10.trend*{'data-id'=>gtrend.id,'data-status'=>gtrend.job_status}
+.col-md-15.col-lg-10.trend*{"data-id"=>gtrend.id,"data-status"=>gtrend.job_status}
   .trend-wrapper
     .trend-header
-      span= gtrend.name
+      = tag.span(gtrend.name, class: ("small" if gtrend.name.size >= 20))
       .options
-        - clipboard_kw_data = data_to_csv(desc_5y_avg(gtrend).pluck(:kw, :avg_5y))
-        button.clipboard*{'data-bs-toggle'=>'tooltip', 'title'=>'Copy Data (CSV)', \
-                          'data-clipboard-text'=>clipboard_kw_data}
-          = svg_icon('#clipboard')
-        = link_to(gtrend_path(gtrend), class: 'close-btn', title: 'Delete Trend',
-            data: {remote: true, turbo_method: :delete, turbo_confirm: 'Are you sure?', 'bs-toggle': 'tooltip'}) do
-          = svg_icon('#close')
-    .trend-list*{'data-simplebar'=>''}
+        button.clipboard*{"title"=>"Copy Data (CSV)",
+                          "data-controller"=>"clipboard",
+                          "data-tooltip-target"=>"tooltip",
+                          "data-action"=>"tooltip#clipboardTooltip",
+                          "data-bs-toggle"=>"tooltip",
+                          "data-clipboard-text"=>clipboard_kw_data(gtrend)}
+          = svg_icon("#clipboard")
+        - if policy(gtrend).destroy?
+          = link_to(gtrend_path(gtrend), class: "close-btn", title: "Delete Trend",
+              data: {remote: true, turbo_method: :delete, turbo_confirm: "Are you sure?",
+                    "tooltip-target"=>"tooltip", "bs-toggle": "tooltip"}) do
+            = svg_icon("#close")
+    .trend-list.simplebar-init*{"data-simplebar-target"=>"scrollbar"}
       .list-wrapper
         table.table.table-sm.table-borderless
           tbody
-            - sorted_kws = desc_5y_avg(gtrend)
-            - sorted_kws.each do |kw|
+            - gtrend.keywords.desc_5y_avg.each do |kw|
               tr
-                = tag.td(kw.avg_5y,
-                    class: trend_strength(sorted_kws[0].avg_5y, kw.avg_5y))
-                td.trend-keyword= kw.kw
+                = tag.td(kw.avg_5y, class: trend_strength(gtrend.highest_5y_avg, kw.avg_5y))
+                td.trend-keyword= kw.term

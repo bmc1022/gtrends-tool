@@ -1,56 +1,67 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
+
+source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.0'
+ruby "3.1.0"
 
-gem 'rails',             '~> 7.0.2'
-gem 'pg',                '>= 1.3.1'                    # use postgresql as the database
-gem 'redis',             '~> 4.6.0'                    # use redis adapter to run action cable in production
-gem 'puma',              '~> 5.6.2'                    # use puma as the app server
-gem 'bootsnap',          '~> 1.12.0', require: false   # boot ruby/rails apps faster
-gem "sprockets-rails",   '~> 3.4.2'                    # asset pipeline
-gem "jsbundling-rails",  '~> 1.0.2'                    # bundle and transpile javascript
-gem "cssbundling-rails", '~> 1.1.1'                    # bundle and process css
-gem 'jbuilder',          '~> 2.11.5'                   # build json apis with ease
-gem 'slim-rails',        '~> 3.3.0'                    # compile slim to html
-gem 'devise',            '~> 4.8.1'                    # authentication
-gem 'http',              '~> 5.0.4'                    # http client
-gem 'pagy',              '~> 5.10.1'                   # pagination
+gem "rails",             "~> 7.0.2"                    # Web app framework.
+gem "pg",                ">= 1.3.1"                    # Use PostgreSQL as the database.
+gem "redis",             "~> 5.0.6"                    # Use Redis adapter to run ActionCable in production.
+gem "cable_ready",       "5.0.0.rc2"                   # Trigger client-side DOM changes from server-side Ruby.
+gem "puma",              "~> 5.6.2"                    # Use Puma as the app server.
+gem "bootsnap",          "~> 1.12.0", require: false   # Boot Ruby/Rails apps faster.
+gem "sprockets-rails",   "~> 3.4.2"                    # Asset Pipeline.
+gem "jsbundling-rails",  "~> 1.0.2"                    # Bundle and transpile JavaScript.
+gem "cssbundling-rails", "~> 1.1.1"                    # Bundle and process CSS.
+gem "jbuilder",          "~> 2.11.5"                   # Build JSON APIs with ease.
+gem "slim-rails",        "~> 3.3.0"                    # Compile Slim to HTML.
+gem "devise",            "~> 4.8.1"                    # Authentication.
+gem "pundit",            "~> 2.3.0"                    # Authorization.
+gem "sidekiq",           "~> 7.0.8"                    # Background job processing.
+gem "http",              "~> 5.0.4"                    # HTTP client.
+gem "pagy",              "~> 5.10.1"                   # Pagination.
 
 group :development, :test do
-  gem 'debug', platforms: %i[ mri mingw x64_mingw ]    # standard ruby debugger
-  gem 'pry-rails'                                      # use pry as the rails console
-  gem 'rspec-rails'                                    # use rspec testing framework
-  gem 'capybara'                                       # acceptance test framework
-  gem 'selenium-webdriver'                             # web browser automation
-  gem 'webdrivers'                                     # mimic the behavior of actual users
-  gem 'factory_bot_rails'                              # fixtures replacement
-  gem 'rubocop', require: false                        # enforces ruby style conventions
-  gem 'rubocop-performance'                            # rubocop performance rules
-  gem 'rubocop-rails'                                  # rubocop rails rules
-  gem 'rubocop-rspec'                                  # rubocop rspec rules
+  gem "debug", platforms: [:mri, :mingw, :x64_mingw]   # Standard Ruby debugger.
+  gem "debase", require: false                         # Fast implementation of the standard debugger.
+  gem "ruby-debug-ide", require: false                 # An interface between ruby-debug and IDEs.
+  gem "solargraph", require: false                     # Code analysis and autocompletion.
+  gem "pry-rails"                                      # Use Pry as the Rails console.
+  gem "rspec-rails"                                    # Use RSpec testing framework.
+  gem "capybara"                                       # Acceptance test framework.
+  gem "selenium-webdriver"                             # Web browser automation.
+  gem "webdrivers"                                     # Mimic the behavior of actual users.
+  gem "factory_bot_rails"                              # Fixtures replacement.
+  gem "rubocop", require: false                        # Enforces Ruby style conventions.
+  gem "rubocop-performance"                            # RuboCop performance rules.
+  gem "rubocop-rails"                                  # RuboCop Rails rules.
+  gem "rubocop-rspec"                                  # RuboCop RSpec rules.
 end
 
 group :development do
-  gem 'web-console'                                    # use <%= console %> in views to access a console
-  gem 'listen'                                         # notifies about file modifications
-  gem "better_errors"                                  # replaces standard rails error page
-  gem "binding_of_caller"                              # extends better_errors (repl/variable inspection)
-  gem 'awesome_print', require: 'ap'                   # pretty print ruby objects
-  gem 'guard-rspec', require: false                    # automatically run specs when files are modified
-  gem 'guard-rubocop'                                  # automatically run rubocop when files are modified
-  gem 'stackprof', require: false                      # sampling call-stack profiler for ruby
-  gem 'memory_profiler'                                # memory profiler for ruby
-  gem 'rack-mini-profiler'                             # profile page speed, db queries, memory usage, etc
-  gem 'bullet'                                         # identifies n+1 queries and unused eager loading
-  gem 'derailed_benchmarks'                            # output the memory use of gems
-  gem 'brakeman'                                       # checks for security vulnerabilities
+  gem "web-console"                                    # Use <%= console %> in views to access a console.
+  gem "listen"                                         # Notifies about file modifications.
+  gem "better_errors"                                  # Replaces standard Rails error page.
+  gem "binding_of_caller"                              # Extends better_errors (repl/variable inspection).
+  gem "awesome_print", require: "ap"                   # Pretty print Ruby objects.
+  gem "guard-rspec", require: false                    # Automatically run specs when files are modified.
+  gem "guard-rubocop"                                  # Automatically run RuboCop when files are modified.
+  gem "stackprof", require: false                      # Sampling call-stack profiler for Ruby.
+  gem "memory_profiler"                                # Memory profiler for Ruby.
+  gem "rack-mini-profiler"                             # Profile page speed, DB queries, memory usage, etc.
+  gem "bullet"                                         # Identifies n+1 queries and unused eager loading.
+  gem "derailed_benchmarks"                            # Output the memory use of Gems.
+  gem "brakeman"                                       # Checks for security vulnerabilities.
 end
 
 group :test do
-  gem 'simplecov', require: false                      # code coverage analysis tool for ruby
-  gem 'rspec-collection_matchers'                      # collection matchers (e.g. have(n).items)
-  gem 'shoulda'                                        # one-liners to test common rails functionality
-  gem 'shoulda-callback-matchers'                      # shoulda matchers to test callbacks
-  gem 'test-prof'                                      # analyze test suite performance
+  gem "simplecov", require: false                      # Code coverage analysis tool for Ruby.
+  gem "webmock"                                        # Stub and set expectations on HTTP requests in Ruby.
+  gem "vcr"                                            # Record HTTP interactions and replay them during future test runs.
+  gem "rspec-collection_matchers"                      # Collection matchers (e.g. have(n).items).
+  gem "shoulda-matchers"                               # One-liners to test common Rails functionality.
+  gem "shoulda-callback-matchers"                      # Shoulda matchers to test callbacks.
+  gem "pundit-matchers"                                # RSpec matchers for testing Pundit authorisation policies.
+  gem "test-prof"                                      # Analyze test suite performance.
 end

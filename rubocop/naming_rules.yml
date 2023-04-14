@@ -1,0 +1,86 @@
+Naming/AccessorMethodName:
+  Enabled: true
+
+Naming/AsciiIdentifiers:
+  Enabled: true
+  AsciiConstants: true
+
+Naming/BinaryOperatorParameterName:
+  Enabled: true
+
+Naming/BlockForwarding:
+  Enabled: true
+  EnforcedStyle: anonymous
+  BlockForwardingName: block
+
+Naming/BlockParameterName:
+  Enabled: true
+  MinNameLength: 1
+  AllowNamesEndingInNumbers: true
+
+Naming/ClassAndModuleCamelCase:
+  Enabled: true
+
+Naming/ConstantName:
+  Enabled: true
+
+Naming/FileName:
+  Enabled: true
+
+Naming/HeredocDelimiterCase:
+  Enabled: true
+  EnforcedStyle: uppercase
+
+Naming/HeredocDelimiterNaming:
+  Enabled: true
+
+Naming/InclusiveLanguage:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: true
+  EnforcedStyleForLeadingUnderscores: disallowed
+
+Naming/MethodName:
+  Enabled: true
+  EnforcedStyle: snake_case
+
+Naming/MethodParameterName:
+  Enabled: true
+  MinNameLength: 3
+  AllowNamesEndingInNumbers: true
+  AllowedNames:
+    - "at"
+    - "by"
+    - "db"
+    - "id"
+    - "in"
+    - "io"
+    - "ip"
+    - "of"
+    - "on"
+    - "os"
+    - "pp"
+    - "to"
+
+Naming/PredicateName:
+  Enabled: true
+  NamePrefix:
+    - "is_"
+    - "has_"
+    - "have_"
+  AllowedMethods: is_a?
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: true
+  PreferredName: e
+
+Naming/VariableName:
+  Enabled: true
+  EnforcedStyle: snake_case
+
+Naming/VariableNumber:
+  Enabled: true
+  EnforcedStyle: snake_case
+  CheckMethodNames: true
+  CheckSymbols: true

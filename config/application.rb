@@ -1,6 +1,8 @@
-require_relative 'boot'
+# frozen_string_literal: true
 
-require 'rails/all'
+require_relative "boot"
+
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -9,7 +11,7 @@ Bundler.require(*Rails.groups)
 module GtrendsTool
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults(7.0)
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -21,9 +23,9 @@ module GtrendsTool
 
     # Generator configuration.
     config.generators do |g|
-      g.assets = false # skip generating asset files
-      g.test_framework :rspec
-      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+      g.assets = false # Skip generating asset files.
+      g.test_framework(:rspec)
+      g.fixture_replacement(:factory_bot, dir: "spec/factories")
     end
   end
 end

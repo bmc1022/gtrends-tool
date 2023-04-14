@@ -1,36 +1,37 @@
+# frozen_string_literal: true
+
 class Gtrend < ApplicationRecord
-
   has_many :keywords, dependent: :destroy, inverse_of: :gtrend
-
-  before_save :update_kws, unless: :skip_kws?
+  belongs_to :user, optional: true
 
   attribute :kws, :text
 
-  validates :name, presence: true, length: { minimum: 2, maximum: 100 },
-                   uniqueness: { case_sensitive: false }
-  validates :kws,  presence: true, length: { maximum: 5000 }, unless: :skip_kws?
-  validate  :kw_count, on: :create
+  validates :name, presence: true, length: { in: 2..25 }, uniqueness: { case_sensitive: false }
+  # :kws is a virtual/non-persisted attribute and validations on it should be skipped on updates to
+  # gtrend records since the assigned data will no longer exist after reload.
+  with_options on: :create do
+    validates :kws, presence: true
+    validate  :kws_max_chars
+    validate  :kw_count
+  end
+
+  scope :seeded_trends, -> { where(user_id: nil, guest_id: nil) }
+
+  def kws
+    read_attribute(:kws).to_s.split(/[\n,]/).map(&:strip).uniq(&:downcase).compact_blank
+  end
+
+  def highest_5y_avg
+    @highest_5y_avg ||= keywords.maximum(:avg_5y)
+  end
 
   private
 
-    def kws_to_list
-      self.kws.split(/[\n,]/).map(&:strip).reject(&:empty?)
-    end
+  def kws_max_chars
+    errors.add(:kws, "Keywords cannot be longer than 5000 characters") if kws.join.length > 5000
+  end
 
-    def kw_count
-      if kws_to_list.size > 100
-        errors.add(:kws, 'Keyword count must not exceed 100.')
-      end
-    end
-
-    def update_kws
-      self.kws = kws_to_list
-    end
-
-    # kws is a non-persisted attribute and should be skipped on updates
-    # to gtrend records since the kws data will no longer exist after save
-    def skip_kws?
-      self.persisted?
-    end
-
+  def kw_count
+    errors.add(:kws, "Keyword count must not exceed 100.") if kws.size > 100
+  end
 end

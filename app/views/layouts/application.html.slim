@@ -1,7 +1,8 @@
-== render 'shared/html_head'
-== render 'shared/icons'
-body class="#{controller_path.gsub('/', ' ')} #{action_name}"
+== render "shared/html_head"
+== render "shared/icons"
+body class="#{controller_path.gsub("/", " ")} #{action_name}"
   #main
     .container
-      == render 'shared/flash'
+      #notices
+        == render "shared/flash"
       == yield

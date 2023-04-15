@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :keyword do
-    sequence(:term) { |n| "keyword#{n}" }
-
     association :gtrend
+
+    sequence(:term) { |n| "keyword#{n}" }
 
     trait :with_averages do
       sequence(:avg_5y) { |n| n * 10 }

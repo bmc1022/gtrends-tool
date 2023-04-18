@@ -22,6 +22,20 @@ services:
     plan: free
     ipAllowList: []
     maxmemoryPolicy: noeviction
+  # - type: worker
+  #   name: sidekiq
+  #   plan: starter
+  #   env: ruby
+  #   buildCommand: bundle install
+  #   startCommand: bundle exec sidekiq
+  #   envVars:
+  #     - key: RAILS_MASTER_KEY
+  #       sync: false
+  #     - key: REDIS_URL
+  #       fromService:
+  #         type: redis
+  #         name: redis
+  #         property: connectionString
 
 databases:
   - name: postgres

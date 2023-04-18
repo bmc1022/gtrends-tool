@@ -12,6 +12,11 @@ services:
         fromDatabase:
           name: postgres
           property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: redis
+          property: connectionString
   - type: redis
     name: redis
     plan: free

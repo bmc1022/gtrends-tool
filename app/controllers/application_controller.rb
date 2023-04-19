@@ -10,6 +10,18 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def self.render_with_signed_in_user(user, *args)
+    ActionController::Renderer::RACK_KEY_TRANSLATION["warden"] ||= "warden"
+    warden_proxy = warden_proxy_for_user(user)
+    renderer.new("warden" => warden_proxy).render(*args)
+  end
+
+  def self.warden_proxy_for_user(user)
+    Warden::Proxy.new({}, Warden::Manager.new({})).tap do |proxy|
+      proxy.set_user(user, scope: :user)
+    end
+  end
+
   protected
 
   def pundit_user

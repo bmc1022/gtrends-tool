@@ -16,10 +16,14 @@
                     "tooltip-target"=>"tooltip", "bs-toggle": "tooltip"}) do
             = svg_icon("#close")
     .trend-list.simplebar-init*{"data-simplebar-target"=>"scrollbar"}
-      .list-wrapper
-        table.table.table-sm.table-borderless
-          tbody
-            - gtrend.keywords.desc_5y_avg.each do |kw|
-              tr
-                = tag.td(kw.avg_5y, class: trend_strength(gtrend.highest_5y_avg, kw.avg_5y))
-                td.trend-keyword= kw.term
+      - if gtrend.job_status == "done"
+        .list-wrapper
+          table.table.table-sm.table-borderless
+            tbody
+              - gtrend.keywords.desc_5y_avg.each do |kw|
+                tr
+                  = tag.td(kw.avg_5y, class: trend_strength(gtrend.highest_5y_avg, kw.avg_5y))
+                  td.trend-keyword= kw.term
+      - else
+        #spinner.d-flex.justify-content-center.align-items-center.h-100
+          .spinner-border.text-secondary

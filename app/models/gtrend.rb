@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Gtrend < ApplicationRecord
+  include CableReady::Broadcaster
+
+  after_update_commit :broadcast_update
+
   has_many :keywords, dependent: :destroy, inverse_of: :gtrend
   belongs_to :user, optional: true
 
@@ -33,5 +37,12 @@ class Gtrend < ApplicationRecord
 
   def kw_count
     errors.add(:kws, "Keyword count must not exceed 100.") if kws.size > 100
+  end
+
+  def broadcast_update
+    args = { partial: "gtrends/gtrend", locals: { gtrend: self } }
+    html = ApplicationController.render_with_signed_in_user(user, **args)
+
+    cable_ready[GtrendsChannel].morph(selector: dom_id(self), html:).broadcast_to(self)
   end
 end

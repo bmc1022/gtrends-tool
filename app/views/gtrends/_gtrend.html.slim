@@ -1,4 +1,4 @@
-.col-md-15.col-lg-10.trend*{"data-id"=>gtrend.id,"data-status"=>gtrend.job_status}
+.col-md-15.col-lg-10.trend*{"id"=>dom_id(gtrend),"data-controller"=>"gtrend"}
   .trend-wrapper
     .trend-header
       = tag.span(gtrend.name, class: ("small" if gtrend.name.size >= 20))

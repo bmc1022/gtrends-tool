@@ -10,7 +10,7 @@
                           "data-bs-toggle"=>"tooltip",
                           "data-clipboard-text"=>clipboard_kw_data(gtrend)}
           = svg_icon("#clipboard")
-        - if policy(gtrend).destroy?
+        - if GtrendPolicy.new(gtrend.pundit_user, gtrend).destroy?
           = link_to(gtrend_path(gtrend), class: "close-btn", title: "Delete Trend",
               data: {remote: true, turbo_method: :delete, turbo_confirm: "Are you sure?",
                     "tooltip-target"=>"tooltip", "bs-toggle": "tooltip"}) do

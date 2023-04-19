@@ -29,6 +29,10 @@ class Gtrend < ApplicationRecord
     @highest_5y_avg ||= keywords.maximum(:avg_5y)
   end
 
+  def pundit_user
+    user || Guest.new(guest_id)
+  end
+
   private
 
   def kws_max_chars

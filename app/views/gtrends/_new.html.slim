@@ -1,7 +1,13 @@
-= form_with(model: @gtrend, id: "gtrend-form", local: false, format: :json) do |f|
-  .new-trend-head
-    = f.text_field :name, placeholder: "Enter Title"
+= form_with(model: @gtrend, id: "gtrend-form",
+            data: { controller: "form", action: "turbo:submit-end->form#handleSubmitEnd" },
+            local: false, format: :json) do |f|
+  .new-trend-head.position-relative
+    = f.text_field :name, placeholder: "Enter Title", class: "form-control"
+    .invalid-tooltip
   .submit-btn
     = f.submit "+", title: "Create New Trend"
-  = f.text_area :kws, value: "",
-    placeholder: "Enter a list of up to 100 keywords, separated by either commas or new lines."
+  .position-relative
+    = f.text_area :kws, value: "",
+      placeholder: "Enter a list of up to 100 keywords, separated by either commas or new lines.",
+      class: "form-control"
+    .invalid-tooltip

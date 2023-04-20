@@ -6,6 +6,9 @@ application.register("alert", AlertController)
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
+import FormController from "./form_controller"
+application.register("form", FormController)
+
 import GtrendController from "./gtrend_controller"
 application.register("gtrend", GtrendController)
 

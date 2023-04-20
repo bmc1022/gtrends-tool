@@ -20,14 +20,12 @@ export default class extends Controller {
     // Loop through the errors and set the error tooltip for each input field
     Object.keys(errors).forEach(field => {
       const input = this.element.querySelector(`[name="gtrend[${field}]"]`)
-      const tooltip = this.element.querySelector(`[name="gtrend[${field}]"]`).nextElementSibling
-
-      if (input) {
-        const firstError = errors[field][0]
+      if (input && input.nextElementSibling) {
+        const tooltip = input.nextElementSibling
 
         // Add the error tooltip
         input.classList.add("is-invalid")
-        tooltip.textContent = firstError
+        tooltip.textContent = errors[field][0]
 
         // Add an event listener to hide the tooltip when the input changes
         input.addEventListener("input", this.handleInput)

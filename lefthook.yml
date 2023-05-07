@@ -1,0 +1,17 @@
+pre-commit:
+  parallel: true
+  commands:
+    js:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: yarn eslint --fix {staged_files} && yarn prettier --write {staged_files}
+    css:
+      glob: "*.{css,scss,sass,pcss}"
+      run: yarn stylelint --fix {staged_files} && yarn prettier --write {staged_files}
+    ruby:
+      files: git diff --name-only --staged
+      glob: "*.{rb}"
+      run: rubocop --force-exclusion {files} --parallel && rails_best_practices {files} -c config/rails_best_practices.yml && reek {files}
+    security:
+      run: brakeman --no-pager
+    tests:
+      run: rspec

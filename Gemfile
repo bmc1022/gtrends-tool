@@ -46,14 +46,17 @@ group :development do
   gem "better_errors"                                  # Replaces standard Rails error page.
   gem "binding_of_caller"                              # Extends better_errors (repl/variable inspection).
   gem "awesome_print", require: "ap"                   # Pretty print Ruby objects.
+  gem "lefthook"                                       # Git hooks manager for Ruby and Node.js.
   gem "guard-rspec", require: false                    # Automatically run specs when files are modified.
   gem "guard-rubocop"                                  # Automatically run RuboCop when files are modified.
+  gem "rails_best_practices"                           # Code quality metrics.
+  gem "reek"                                           # Code smell detector.
+  gem "brakeman"                                       # Checks for security vulnerabilities.
   gem "stackprof", require: false                      # Sampling call-stack profiler for Ruby.
   gem "memory_profiler"                                # Memory profiler for Ruby.
   gem "rack-mini-profiler"                             # Profile page speed, DB queries, memory usage, etc.
   gem "bullet"                                         # Identifies n+1 queries and unused eager loading.
   gem "derailed_benchmarks"                            # Output the memory use of Gems.
-  gem "brakeman"                                       # Checks for security vulnerabilities.
 end
 
 group :test do

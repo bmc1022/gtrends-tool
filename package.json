@@ -15,6 +15,14 @@
     "sass": "^1.54.0",
     "simplebar": "^5.3.8"
   },
+  "devDependencies": {
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.7",
+    "stylelint": "^15.6.1",
+    "stylelint-config-standard-scss": "^9.0.0"
+  },
   "scripts": {
     "build": "esbuild app/assets/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"

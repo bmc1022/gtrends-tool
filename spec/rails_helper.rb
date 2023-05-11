@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 require "simplecov"
-SimpleCov.start("rails") { coverage_dir "reports/coverage" }
+SimpleCov.start("rails") do
+  coverage_dir "reports/coverage"
+  minimum_coverage 90 # Set the minimum coverage percentage
+end
 
 require "spec_helper"
 ENV["RAILS_ENV"] ||= "test"

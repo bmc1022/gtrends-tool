@@ -9,31 +9,34 @@ yarn-debug.log*
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
-!/log/.keep
-!/tmp/.keep
+!/log/
+!/tmp/
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
-!/tmp/pids/.keep
 
 # Ignore uploaded files in development.
 /storage/*
-!/storage/.keep
+!/storage/
 
 /public/assets
 /public/assets-test
 /public/packs
 /public/packs-test
-.byebug_history
+/public/uploads
+/public/fixtures
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
 # Ignore ESBuild builds.
 /app/assets/builds/*
-!/app/assets/builds/.keep
+!/app/assets/builds/
 
 # Ignore reports.
-/reports
-/coverage
+/reports/*
+!/reports/
+
+# Ignore VCR recorded requests.
+/spec/support/vcr_cassettes/*

@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: { case_sensitive: false, allow_blank: true }
   validates :email, uniqueness: { case_sensitive: false, allow_blank: true }
-  validate  :username_or_email
+  validate  :presence_of_username_or_email
 
   # Monkeypatched Devise method.
   def self.find_first_by_auth_conditions(warden_conditions)
@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
   private
 
-  def username_or_email
+  def presence_of_username_or_email
     return if username.present? || email.present?
 
     errors.add(:base, "A user must have either a username or an email.")

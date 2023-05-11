@@ -52,10 +52,10 @@ RSpec.describe(User, type: :model) do
     it { is_expected.to validate_uniqueness_of(:username).case_insensitive.allow_blank }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive.allow_blank }
 
-    describe ":username_or_email validation" do
+    describe ":presence_of_username_or_email validation" do
       let(:user) { build(:user, username:, email:) }
 
-      before { user.send(:username_or_email) }
+      before { user.send(:presence_of_username_or_email) }
 
       context "when both a username and email are present" do
         let(:username) { "testuser" }

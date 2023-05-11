@@ -4,14 +4,23 @@ detectors:
       - "User#login"
   InstanceVariableAssumption:
     exclude:
+      - "RejectBlankNestedAttributesForMatcher"
       - "User"
   IrresponsibleModule:
     enabled: false
   NilCheck:
     exclude:
       - "User#self.find_first_by_auth_conditions"
+  TooManyStatements:
+    enabled: false
+  UtilityFunction:
+    exclude:
+      - "RejectBlankNestedAttributesForMatcher#reject_blank_nested_attributes_for"
 
 directories:
+  "app/helpers/**":
+    UtilityFunction:
+      enabled: false
   "app/policies/**":
     InstanceVariableAssumption:
       enabled: false

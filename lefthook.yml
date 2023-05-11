@@ -10,7 +10,7 @@ pre-commit:
     ruby:
       files: git diff --name-only --staged
       glob: "*.{rb}"
-      run: rubocop --force-exclusion {files} --parallel && rails_best_practices {files} -c config/rails_best_practices.yml && reek {files}
+      run: rubocop --force-exclusion {files} --parallel && rails_best_practices {files} -c config/rails_best_practices.yml && reek
     security:
       run: brakeman --no-pager
     tests:

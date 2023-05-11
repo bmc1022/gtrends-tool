@@ -1,6 +1,6 @@
 // Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
-import "./channels"
-import "./controllers"
+import "@hotwired/turbo-rails";
+import "./channels";
+import "./controllers";
 
-import "bootstrap/dist/js/bootstrap.bundle"
+import "bootstrap/dist/js/bootstrap.bundle";

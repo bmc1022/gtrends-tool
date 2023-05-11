@@ -1,24 +1,24 @@
-import { Controller } from "@hotwired/stimulus"
-import { Tooltip } from "bootstrap"
+import { Controller } from "@hotwired/stimulus";
+import { Tooltip } from "bootstrap";
 
 export default class extends Controller {
-  static targets = ["tooltip"]
+  static targets = ["tooltip"];
 
   connect() {
-    this.tooltips = this.tooltipTargets.map((tooltip) => new Tooltip(tooltip))
+    this.tooltips = this.tooltipTargets.map((tooltip) => new Tooltip(tooltip));
   }
 
   disconnect() {
-    this.tooltips.forEach((tooltip) => tooltip.dispose())
+    this.tooltips.forEach((tooltip) => tooltip.dispose());
   }
 
   clipboardTooltip(event) {
-    let clipboard = event.currentTarget
-    let tooltipInstance = Tooltip.getInstance(clipboard)
-    tooltipInstance.setContent({".tooltip-inner": "Copied!"})
+    const clipboard = event.currentTarget;
+    const tooltipInstance = Tooltip.getInstance(clipboard);
+    tooltipInstance.setContent({ ".tooltip-inner": "Copied!" });
     setTimeout(() => {
-      tooltipInstance.hide()
-      tooltipInstance.setContent({".tooltip-inner": "Copy Data (CSV)"})
-    }, 1000)
+      tooltipInstance.hide();
+      tooltipInstance.setContent({ ".tooltip-inner": "Copy Data (CSV)" });
+    }, 1000);
   }
 }

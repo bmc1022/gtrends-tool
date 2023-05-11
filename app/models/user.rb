@@ -13,14 +13,17 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false, allow_blank: true }
   validate  :username_or_email
 
+  # Monkeypatched Devise method.
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
+    username_condition = conditions[:username]
+
     if (login = conditions.delete(:login))
       where(conditions).find_by("username = :value OR email = :value", value: login)
-    elsif conditions[:username].nil?
+    elsif username_condition.nil?
       find_by(conditions)
     else
-      find_by(username: conditions[:username])
+      find_by(username: username_condition)
     end
   end
 

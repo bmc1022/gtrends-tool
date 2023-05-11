@@ -9,11 +9,11 @@
       span Input up to 100 keywords to see how they rank relative to each other.
 #trend-results.row.my-4*{"data-controller"=>"simplebar tooltip"}
   #new-trend.col-md-15.col-lg-10
-    == render "new"
+    == render "gtrends/new", gtrend: @gtrend
   == render @gtrends
 #main-foot.row.d-flex.mb-4
   #pagination.col-30.col-lg-15.d-flex.order-lg-2.mb-2.justify-content-center.justify-content-lg-end
-      == render partial: "gtrends/pagination", locals: { pagy: @pagy }
+      == render "gtrends/pagination", pagy: @pagy
   #copyright class="col-30 col-lg-15 d-flex order-lg-1 \
                     justify-content-center justify-content-lg-start align-items-center"
     span GoogleTrends Keyword Planner © #{Date.today.year} |

@@ -3,7 +3,7 @@
 class Gtrend < ApplicationRecord
   include CableReady::Broadcaster
 
-  after_update_commit :broadcast_update
+  after_update_commit :broadcast_update, if: -> { saved_change_to_job_status? }
 
   has_many :keywords, dependent: :destroy, inverse_of: :gtrend
   belongs_to :user, optional: true

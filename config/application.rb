@@ -22,10 +22,10 @@ module GtrendsTool
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Generator configuration.
-    config.generators do |g|
-      g.assets = false # Skip generating asset files.
-      g.test_framework(:rspec)
-      g.fixture_replacement(:factory_bot, dir: "spec/factories")
+    config.generators do |generator|
+      generator.assets = false # Skip generating asset files.
+      generator.test_framework(:rspec)
+      generator.fixture_replacement(:factory_bot, dir: "spec/factories")
     end
   end
 end

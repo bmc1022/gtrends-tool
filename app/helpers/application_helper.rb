@@ -11,10 +11,12 @@ module ApplicationHelper
 
   # Checks if an asset exists within the application.
   def asset_exists?(asset_path)
+    rails_app = Rails.application
+
     if Rails.configuration.assets.compile
-      Rails.application.precompiled_assets.include?(asset_path)
+      rails_app.precompiled_assets.include?(asset_path)
     else
-      Rails.application.assets_manifest.assets[asset_path].present?
+      rails_app.assets_manifest.assets[asset_path].present?
     end
   end
 

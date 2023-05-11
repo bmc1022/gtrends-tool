@@ -4,7 +4,7 @@ development:
   channel_prefix: gtrends_tool_development
 
 test:
-  adapter: test
+  adapter: async
 
 production:
   adapter: redis

@@ -14,18 +14,20 @@ svg {
     width: 1em;
     height: 1em;
   }
-  &:active { filter: drop-shadow(0 0.09em 0.03em rgba(0, 0, 0, 0.4)); }
+  &:active { filter: drop-shadow(0 0.09em 0.03em rgb(0 0 0 / 40%)); }
 }
 
 .callout {
   font-size: 13px;
   font-weight: 700;
   text-align: center;
+
   h1 {
     font-size: 28px;
     font-weight: 800;
     color: #38BEBE;
   }
+
   .callout-body {
     color: #6D6D6D;
     span { display: block; }
@@ -45,11 +47,13 @@ svg {
 
 .alert {
   font-size: .95em;
+
   &.alert-notice {
     color: #39afaf;
     background-color: #edf5f5;
     border-color: #39afaf;
   }
+
   &.alert-error {
     color: #e20e21;
     background-color: #fff0f1;

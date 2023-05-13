@@ -1,5 +1,4 @@
-/*---- INDEX -----------------------------------------------------------------*/
-/*////////////////////////////////////////////////////////////////////////////*/
+/* ---- INDEX ----------------------------------------------------------------- */
 
 body {
   background: #f5f5f5;
@@ -17,15 +16,17 @@ body {
 #trend-results {
   #new-trend {
     margin: 10px 0 0;
+
     textarea {
       width: 100%;
       height: 202px;
       padding: 8px 14px;
       font-size: 12px;
-      border: 1px solid rgba(0,0,0,.12);
+      border: 1px solid rgb(0 0 0 / 12%);
       border-top: none;
       border-radius: 0 0 8px 8px;
       resize: unset;
+
       &::placeholder {
         position: absolute;
         top: 40%;
@@ -36,45 +37,51 @@ body {
         text-align: center;
         opacity: 0.6;
       }
+
       &:focus {
         outline: none;
         border: 1px solid #81caca;
-        box-shadow: inset 0 0 0 0.1rem rgba(57, 190, 190, 0.35);
+        box-shadow: inset 0 0 0 0.1rem rgb(57 190 190 / 35%);
       }
     }
+
     .new-trend-head {
       display: inline-block;
       width: 75%;
+
       input {
         width: 100%;
         padding: 8px 14px 4px;
         background: #fff;
-        border: 1px solid rgba(0,0,0,.12);
+        border: 1px solid rgb(0 0 0 / 12%);
         border-right: none;
         border-bottom: 3px solid #f1f1f1;
-        border-radius: 8px 0 0 0;
+        border-radius: 8px 0 0;
         font-weight: 800;
         text-transform: uppercase;
+
         &::placeholder {
           color: #959c9c;
           opacity: 0.6;
         }
+
         &:focus {
           padding: 8px 10px 6px;
           outline: none;
           border: 1px solid #81caca;
           border-bottom: none;
-          box-shadow: inset 0 0 0 0.1rem rgba(57, 190, 190, 0.35);
+          box-shadow: inset 0 0 0 0.1rem rgb(57 190 190 / 35%);
         }
       }
     }
+
     .submit-btn {
-      display: inline-block;
       float: right;
       width: 25%;
+
       input {
         width: 100%;
-        background: rgb(57, 190, 190);
+        background: rgb(57 190 190);
         border: 1px solid #53b5b5;
         border-bottom: 3px solid #39afaf;
         border-radius: 0 8px 0 0;
@@ -82,33 +89,39 @@ body {
         font-size: 34px;
         line-height: 34px;
         text-align: center;
-        box-shadow: inset 0px 1px #75dada;
+        box-shadow: inset 0 1px #75dada;
         &:hover { background: #38b1b1; }
+
         &:active {
-          box-shadow: inset 0px 2px #2f9494;
+          box-shadow: inset 0 2px #2f9494;
           border-bottom: 2px solid #90d6d6;
         }
       }
     }
   }
+
   .trend-wrapper {
     background: #fff;
     margin: 10px 0;
-    padding: 8px 14px 14px 14px;
-    border: 1px solid rgba(0,0,0,.12);
+    padding: 8px 14px 14px;
+    border: 1px solid rgb(0 0 0 / 12%);
     border-radius: 8px;
+
     .trend-header {
       margin-bottom: 5px;
       padding-bottom: 4px;
       border-bottom: 3px solid #f1f1f1;
+
       span {
         color: #595a5a;
         font-weight: 800;
         text-transform: uppercase;
       }
+
       .options {
         float: right;
         line-height: 20px;
+
         .clipboard {
           background: none;
           border: none;
@@ -116,6 +129,7 @@ body {
           &:hover { opacity: 1.0; }
           &:focus { outline: none; }
         }
+
         .close-btn {
           color: #444;
           opacity: 0.7;
@@ -123,6 +137,7 @@ body {
         }
       }
     }
+
     .trend-list {
       height: 182px;
       font-size: 0.75rem;
@@ -130,6 +145,7 @@ body {
       .list-wrapper { margin-right: 2px; }
       .table { margin-bottom: 0; }
       tr:not(:last-child) { border-bottom: 1px dotted #dfe3e4; }
+
       .trend-avg {
         padding-right: 10px;
         width: 25px;
@@ -142,11 +158,13 @@ body {
       }
     }
     .table-sm td { padding: 1px 0; }
+
     .simplebar-wrapper {
       .simplebar-content { height: 100%; }
     }
+
     .simplebar-scrollbar {
-      &:before { background: #999; }
+      &::before { background: #999; }
     }
   }
 }
@@ -158,7 +176,7 @@ body {
       font-size: 0.9rem;
       color: #6b6b6b;
     }
-    form.button_to { display: inline; }
+
     [type="submit"] {
       padding-left: 2px;
       background: transparent;
@@ -167,24 +185,28 @@ body {
       border: none;
       &:hover { text-decoration: underline; }
     }
+
     a {
       padding-left: 4px;
       font-size: 0.9rem;
       color: #52a0e6;
     }
   }
+
   #pagination {
     font-size: 0.9rem;
     ul.pagination { margin-bottom: 0; }
+
+    .page-link {
+      color: #39bebe;
+      &:hover { color: #329292; }
+    }
+
     .page-item.active .page-link {
       background-color: #39bebe;
       border-color: #39afaf;
       color: #fff;
-      box-shadow: inset 0px 1px #75dada;
-    }
-    .page-link {
-      color: #39bebe;
-      &:hover { color: #329292; }
+      box-shadow: inset 0 1px #75dada;
     }
   }
 }

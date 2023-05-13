@@ -1,13 +1,11 @@
 $grid-columns: 30;
 $grid-gutter-width: 20px;
-
 $grid-breakpoints: (
   xs: 0,
   sm: 480px,
   md: 768px,
   lg: 1020px
 );
-
 $container-max-widths: (
   sm: (600px + $grid-gutter-width),
   md: (730px + $grid-gutter-width),
@@ -24,7 +22,8 @@ $container-max-widths: (
 // $dark:       $gray-800 !default;
 
 // $body-color: #444;
-$font-family-base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-base: 'Open Sans', 'Helvetica Neue', helvetica, arial, sans-serif;
+
 // $font-size-base: 0.85rem;
 // $h1-font-size: $font-size-base * 2.2;
 // $h2-font-size: $font-size-base * 1.8;

@@ -5,9 +5,11 @@ body { background: #f9f9f9; }
   font-size: 24px;
   font-weight: 300;
   text-align: center;
+
   .auth-logo {
     display: block;
     padding: 30px 20px 20px;
+
     .icon {
       display: block;
       margin: auto;
@@ -25,9 +27,11 @@ body { background: #f9f9f9; }
     font-size: 14px;
     border: 3px solid #ffb784;
   }
+
   .alert .close {
-    color: rgba(255, 109, 17, 75%);
+    color: rgb(255 109 17 / 75%);
   }
+
   .auth-form {
     background: #fff;
     padding: 20px;
@@ -36,33 +40,36 @@ body { background: #f9f9f9; }
     border: 1px solid #d8dee2;
     border-radius: 5px;
     input#user_password { letter-spacing: 0.1em; }
+
     .password-reset {
       font-size: 13px;
       line-height: 23px;
     }
   }
+
   label {
     margin-bottom: 0.35rem;
     font-weight: 600;
   }
+
   .form-control {
-    height: calc(1.5em + 0.5rem + 2px); 
+    height: calc(1.5em + 0.5rem + 2px);
     font-size: 0.9rem;
   }
   .form-check { font-size: 14px; }
   .form-check-label { font-weight: 400 !important; }
+
   .form-callout {
     padding: 15px 20px;
     border: 1px solid #d8dee2;
     border-radius: 5px;
     text-align: center;
   }
+
   .btn-success {
     background: #39bebe;
     border: 2px solid #39afaf;
     &:hover { background: #39afaf; }
-    &:focus { box-shadow: 0 0 0 0.2rem rgba(99, 204, 204, 0.5); }
+    &:focus { box-shadow: 0 0 0 0.2rem rgb(99 204 204 / 50%); }
   }
 }
-
-#auth-footer {}

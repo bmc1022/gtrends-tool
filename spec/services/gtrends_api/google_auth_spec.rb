@@ -9,7 +9,7 @@ RSpec.describe(GtrendsApi::GoogleAuth, type: :service) do
   describe "#call" do
     context "when fetching the Google cookie is successful" do
       it "returns a valid Google cookie" do
-        VCR.use_cassette("gtrends_api/google_cookie_success") do
+        VCR.use_cassette("gtrends_api/google_cookie") do
           expect(google_auth_service).not_to be_empty
           expect(google_auth_service).to start_with("NID=")
         end

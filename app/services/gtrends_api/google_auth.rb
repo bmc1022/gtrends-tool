@@ -1,23 +1,38 @@
 # frozen_string_literal: true
 
-class GtrendsApi::GoogleAuth < ApplicationService
+class GtrendsApi::GoogleAuth
   include GtrendsApi::Base
 
+  COOKIE_EXPIRATION = 2_592_000 # 1 month
+
   def initialize(gtrend)
-    super()
     @gtrend = gtrend
   end
 
-  def call
-    fetch_google_cookie
+  def cookie
+    fetch_google_cookie if cookie_expired?
+    Rails.cache.read("google_auth_cookie")
   end
 
   private
+
+  def cookie_timestamp
+    Rails.cache.read("google_auth_cookie_timestamp") || 0
+  end
+
+  def cookie_expired?
+    (Time.current - cookie_timestamp).to_i > COOKIE_EXPIRATION
+  end
 
   def fetch_google_cookie
     response = rescue_retry(HTTP.timeout(3).get(GTRENDS_URL))
     cookie = response["Set-Cookie"].split(";")[0]
 
-    cookie.presence || job_failed("Error fetching cookie from Google", return_value: "")
+    if cookie.present?
+      Rails.cache.write("google_auth_cookie", cookie)
+      Rails.cache.write("google_auth_cookie_timestamp", Time.current)
+    else
+      job_failed("Error fetching cookie from Google", return_value: "")
+    end
   end
 end

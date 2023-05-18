@@ -45,6 +45,10 @@ RSpec.configure do |config|
   config.include(Devise::Test::IntegrationHelpers, type: :system)
   config.include(Warden::Test::Helpers)
 
+  # Enable in-memory caching for tests tagged with the :with_caching metadata option.
+  config.include(CacheHelper)
+  config.around(:each, :with_caching) { |example| with_caching(&example) }
+
   # Driver setup for system tests.
   config.before(:each, type: :system) { driven_by :selenium_chrome_headless }
 end

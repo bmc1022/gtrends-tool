@@ -41,13 +41,18 @@ class GtrendsApi::ProcessGtrendsData < ApplicationService
   # Once the overall top three keywords are found from the list, use those as a base and cycle
   # through the remaining keywords again for the full results.
   def gtrend_results
-    top_keywords = find_top_three(@keywords)
-    remaining_keywords = @keywords.size > 3 ? @keywords - top_keywords.keys : @keywords
     results = {}
 
-    remaining_keywords.each_slice(2) do |slice|
-      sleep(1)
-      results.merge!(GtrendsApi::FetchGtrendsData.call(@gtrend, top_keywords.keys + slice))
+    if @keywords.size > 5
+      top_keywords = find_top_three(@keywords)
+      remaining_keywords = @keywords - top_keywords.keys
+
+      remaining_keywords.each_slice(2) do |slice|
+        sleep(1)
+        results.merge!(GtrendsApi::FetchGtrendsData.call(@gtrend, top_keywords.keys + slice))
+      end
+    else
+      results.merge!(GtrendsApi::FetchGtrendsData.call(@gtrend, @keywords))
     end
 
     GtrendsApi::CreateKeywords.call(@gtrend, results)

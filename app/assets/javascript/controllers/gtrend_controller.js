@@ -3,7 +3,7 @@ import CableReady from "cable_ready";
 
 export default class extends Controller {
   static values = {
-    jobStatus: String,
+    jobStatus: String
   };
 
   connect() {
@@ -13,7 +13,7 @@ export default class extends Controller {
       this.channel = this.application.consumer.subscriptions.create(
         {
           channel: "GtrendsChannel",
-          gtrend_id: gtrendId,
+          gtrend_id: gtrendId
         },
         {
           connected() {
@@ -24,7 +24,7 @@ export default class extends Controller {
           },
           received(data) {
             if (data.cableReady) CableReady.perform(data.operations);
-          },
+          }
         }
       );
     }

@@ -440,6 +440,10 @@ GEM
     thread-local (1.1.0)
     tilt (2.0.11)
     timeout (0.3.2)
+    turbo-rails (1.4.0)
+      actionpack (>= 6.0.0)
+      activejob (>= 6.0.0)
+      railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -530,6 +534,7 @@ DEPENDENCIES
   sprockets-rails (~> 3.4.2)
   stackprof
   test-prof
+  turbo-rails (~> 1.4.0)
   vcr
   web-console
   webdrivers

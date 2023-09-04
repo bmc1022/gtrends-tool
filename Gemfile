@@ -19,6 +19,7 @@ gem "jbuilder",          "~> 2.11.5"                   # Build JSON APIs with ea
 gem "slim-rails",        "~> 3.3.0"                    # Compile Slim to HTML.
 gem "devise",            "~> 4.8.1"                    # Authentication.
 gem "pundit",            "~> 2.3.0"                    # Authorization.
+gem "rolify",            "~> 6.0.1"                    # Create roles with resource scoping.
 gem "sidekiq",           "~> 7.0.8"                    # Background job processing.
 gem "whenever",          "~> 1.0.0", require: false    # Cron jobs in Ruby.
 gem "http",              "~> 5.0.4"                    # HTTP client.

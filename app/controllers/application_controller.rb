@@ -25,11 +25,11 @@ class ApplicationController < ActionController::Base
   protected
 
   def pundit_user
-    user_signed_in? ? current_user : Guest.new(guest_identifier)
+    current_user || Guest.new(guest_identifier)
   end
 
   def guest_identifier
-    cookies[:guest_identifier] ||= { value: SecureRandom.uuid, expires: 1.month }
+    cookies[:guest_identifier] ||= { value: SecureRandom.uuid, expires: 1.month.from_now }
   end
 
   def configure_permitted_parameters
@@ -38,6 +38,6 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
-    redirect_to(request.referer || root_path)
+    redirect_back(fallback_location: root_path)
   end
 end

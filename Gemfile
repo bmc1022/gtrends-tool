@@ -17,7 +17,7 @@ gem "jsbundling-rails",  "~> 1.0.2"                    # Bundle and transpile Ja
 gem "cssbundling-rails", "~> 1.1.1"                    # Bundle and process CSS.
 gem "jbuilder",          "~> 2.11.5"                   # Build JSON APIs with ease.
 gem "slim-rails",        "~> 3.3.0"                    # Compile Slim to HTML.
-gem "devise",            "~> 4.8.1"                    # Authentication.
+gem "devise",            "~> 4.9.2"                    # Authentication.
 gem "pundit",            "~> 2.3.0"                    # Authorization.
 gem "rolify",            "~> 6.0.1"                    # Create roles with resource scoping.
 gem "sidekiq",           "~> 7.0.8"                    # Background job processing.
@@ -32,9 +32,6 @@ group :development, :test do
   gem "solargraph", require: false                     # Code analysis and autocompletion.
   gem "pry-rails"                                      # Use Pry as the Rails console.
   gem "rspec-rails"                                    # Use RSpec testing framework.
-  gem "capybara"                                       # Acceptance test framework.
-  gem "selenium-webdriver"                             # Web browser automation.
-  gem "webdrivers"                                     # Mimic the behavior of actual users.
   gem "factory_bot_rails"                              # Fixtures replacement.
   gem "rubocop", require: false                        # Enforces Ruby style conventions.
   gem "rubocop-performance"                            # RuboCop performance rules.
@@ -63,6 +60,8 @@ end
 
 group :test do
   gem "simplecov", require: false                      # Code coverage analysis tool for Ruby.
+  gem "capybara"                                       # Acceptance test framework.
+  gem "cuprite"                                        # Ruby driver for Capybara.
   gem "webmock"                                        # Stub and set expectations on HTTP requests in Ruby.
   gem "vcr"                                            # Record HTTP interactions and replay them during future test runs.
   gem "rspec-collection_matchers"                      # Collection matchers (e.g. have(n).items).

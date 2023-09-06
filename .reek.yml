@@ -21,8 +21,14 @@ directories:
   "app/helpers/**":
     UtilityFunction:
       enabled: false
+  "app/jobs/**":
+    UtilityFunction:
+      enabled: false
   "app/policies/**":
     InstanceVariableAssumption:
+      enabled: false
+  "db/**":
+    UtilityFunction:
       enabled: false
   "db/migrate/**":
     DuplicateMethodCall:

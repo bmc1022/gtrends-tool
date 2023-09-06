@@ -2,10 +2,11 @@ class DataGenerator
   require "csv"
 
   def admin
-    User.find_or_create_by!(username: "admin") do |admin|
+    user = User.find_or_create_by!(username: "admin") do |admin|
+      admin.email = "bmc1022@gmail.com"
       admin.password = ENV["ADMIN_PASSWORD"]
-      admin.admin = true
     end
+    user.add_role(:admin) unless user.has_role?(:admin)
   end
 
   def demo_user

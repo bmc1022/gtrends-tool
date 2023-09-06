@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # Enable specified Devise modules.
   devise :database_authenticatable, :rememberable
 
   has_many :gtrends, dependent: :destroy

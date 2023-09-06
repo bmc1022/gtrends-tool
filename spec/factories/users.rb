@@ -7,7 +7,7 @@ FactoryBot.define do
     password { "password" }
 
     trait :admin do
-      admin { true }
+      after(:create) { |user| user.add_role(:admin) }
     end
   end
 end

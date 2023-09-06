@@ -160,6 +160,8 @@ Rails/FreezeTime:
 
 Rails/HasAndBelongsToMany:
   Enabled: true
+  Exclude:
+    - "app/models/role.rb"
 
 Rails/HasManyOrHasOneDependent:
   Enabled: true

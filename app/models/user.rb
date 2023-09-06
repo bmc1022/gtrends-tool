@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  rolify
+
   # Enable specified Devise modules.
   devise :database_authenticatable, :rememberable
 

@@ -241,6 +241,7 @@ Layout/LineLength:
     - "Guardfile"
     - "config/routes.rb"
     - "config/initializers/pagy.rb"
+    - "spec/routing/*"
 
 Layout/MultilineArrayBraceLayout:
   Enabled: true

@@ -11,11 +11,11 @@ RSpec.describe(User, type: :model) do
     # Database columns
     it { is_expected.to have_db_column(:email).of_type(:string) }
     it { is_expected.to have_db_column(:username).of_type(:string) }
-    it { is_expected.to have_db_column(:admin).of_type(:boolean).with_options(default: false) }
-    it { is_expected.to have_db_column(:remember_created_at).of_type(:datetime) }
 
     it { is_expected.to have_db_column(:encrypted_password).of_type(:string)
                                                            .with_options(default: "", null: false) }
+
+    it { is_expected.to have_db_column(:remember_created_at).of_type(:datetime) }
 
     # Database indexes
     it { is_expected.to have_db_index([:email]).unique }
@@ -45,6 +45,7 @@ RSpec.describe(User, type: :model) do
   end
 
   describe "associations" do
+    it { is_expected.to have_and_belong_to_many(:roles) }
     it { is_expected.to have_many(:gtrends).dependent(:destroy) }
   end
 

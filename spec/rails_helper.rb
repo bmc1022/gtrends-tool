@@ -49,6 +49,8 @@ RSpec.configure do |config|
   config.include(CacheHelper)
   config.around(:each, :with_caching) { |example| with_caching(&example) }
 
+  config.include(CaptureStdout)
+
   # Driver setup for system tests.
   config.before(:each, type: :system) { driven_by :selenium_chrome_headless }
 end

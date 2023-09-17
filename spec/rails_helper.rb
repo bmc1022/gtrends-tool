@@ -42,8 +42,10 @@ RSpec.configure do |config|
   config.include(FactoryBot::Syntax::Methods)
   config.include(Shoulda::Callback::Matchers::ActiveModel)
 
-  config.include(Devise::Test::IntegrationHelpers, type: :system)
-  config.include(Warden::Test::Helpers)
+  [:system, :request].each do |type|
+    config.include(Devise::Test::IntegrationHelpers, type:)
+    config.include(Warden::Test::Helpers, type:)
+  end
 
   # Enable in-memory caching for tests tagged with the :with_caching metadata option.
   config.include(CacheHelper)

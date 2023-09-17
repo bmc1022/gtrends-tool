@@ -64,6 +64,7 @@ group :test do
   gem "cuprite"                                        # Ruby driver for Capybara.
   gem "webmock"                                        # Stub and set expectations on HTTP requests in Ruby.
   gem "vcr"                                            # Record HTTP interactions and replay them during future test runs.
+  gem "rails-controller-testing"                       # Extracting `assigns` and `assert_template` from ActionDispatch.
   gem "rspec-collection_matchers"                      # Collection matchers (e.g. have(n).items).
   gem "shoulda-matchers"                               # One-liners to test common Rails functionality.
   gem "shoulda-callback-matchers"                      # Shoulda matchers to test callbacks.

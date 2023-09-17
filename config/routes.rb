@@ -3,6 +3,8 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  root to: "gtrends#index"
+
   # Skip creation of the default :passwords, :registrations and :sessions Devise routes to avoid
   # path duplication with the custom paths in the devise_scope block below.
   # Use the specified custom user controllers instead of the default Devise controllers.
@@ -12,8 +14,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     # Authentication
-    get    "sign_up",        to: "users/registrations#new",     as: :new_user_registration
-    post   "sign_up",        to: "users/registrations#create",  as: :user_registration
     get    "login",          to: "users/sessions#new",          as: :new_user_session
     post   "login",          to: "users/sessions#create",       as: :user_session
     delete "logout",         to: "users/sessions#destroy",      as: :destroy_user_session
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     put    "edit_profile",   to: "users/registrations#update"
   end
 
-  authenticate :user do
+  authenticate :user, ->(user) { user.has_role?(:admin) } do
     mount Sidekiq::Web => "/sidekiq"
   end
 

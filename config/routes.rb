@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get    "sign_up",        to: "users/registrations#new",     as: :new_user_registration
     post   "sign_up",        to: "users/registrations#create",  as: :user_registration
     get    "close_account",  to: "users/registrations#cancel",  as: :cancel_user_registration
-    delete "close_account",  to: "users/registrations#destroy", as: :delete_user_registration
+    delete "close_account",  to: "users/registrations#destroy", as: :destroy_user_registration
     get    "edit_profile",   to: "users/registrations#edit",    as: :edit_user_registration
     patch  "edit_profile",   to: "users/registrations#update",  as: :update_user_registration
     put    "edit_profile",   to: "users/registrations#update"

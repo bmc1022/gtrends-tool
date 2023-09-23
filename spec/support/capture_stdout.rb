@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module CaptureStdout
-  def capture_stdout(&block)
+  def capture_stdout(&)
     original_stdout = $stdout
     $stdout = tmp_stdout = StringIO.new
     begin

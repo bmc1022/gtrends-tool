@@ -4,12 +4,12 @@ require "rails_helper"
 
 Rails.application.load_tasks
 
-RSpec.describe("rubocop:sync_rules task") do
+RSpec.describe("rubocop:sync_rules task", type: :task) do
   subject(:rubocop_sync_task) { Rake::Task["rubocop:sync_rules"] }
 
-  let(:rubocop_sync_instance) { RubocopSync.new }
+  let(:rubocop_sync_instance) { RubocopSync.new                   }
   let(:mock_official_rules)   { ["Rule1", "Rule2", "MissingRule"] }
-  let(:mock_active_rules)     { ["Rule1", "Rule2"] }
+  let(:mock_active_rules)     { ["Rule1", "Rule2"]                }
 
   before do
     allow(RubocopSync).to receive(:new).and_return(rubocop_sync_instance)
@@ -24,7 +24,7 @@ RSpec.describe("rubocop:sync_rules task") do
   end
 end
 
-RSpec.describe(RubocopSync) do
+RSpec.describe(RubocopSync, type: :task) do
   let(:rubocop_sync_instance) { described_class.new }
 
   describe "#fetch_official_rules" do
@@ -32,9 +32,9 @@ RSpec.describe(RubocopSync) do
       stub_request(:get, /docs\.rubocop\.org/)
         .to_return(body: "<html><div class='sect1'><h2>Rule1</h2><h2>Rule2</h2></div></html>")
 
-      expect(rubocop_sync_instance.send(
-        :fetch_official_rules, "https://docs.rubocop.org/rubocop", "Layout")
-      ).to eq(["Rule1", "Rule2"])
+      expect(rubocop_sync_instance
+        .send(:fetch_official_rules, "https://docs.rubocop.org/rubocop", "Layout"))
+        .to eq(["Rule1", "Rule2"])
     end
   end
 

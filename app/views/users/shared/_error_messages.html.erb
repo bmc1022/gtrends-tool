@@ -7,8 +7,10 @@
        %>
     </h2>
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% resource.errors.messages.each do |field, errors| %>
+        <% errors.each do |error_message| %>
+          <li><%= error_message %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

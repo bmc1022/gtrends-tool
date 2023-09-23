@@ -171,7 +171,7 @@ Layout/FirstArrayElementLineBreak:
 
 Layout/FirstHashElementIndentation:
   Enabled: true
-  EnforcedStyle: special_inside_parentheses
+  EnforcedStyle: consistent
 
 Layout/FirstHashElementLineBreak:
   Enabled: false

@@ -60,6 +60,7 @@ Style/BlockDelimiters:
     - "lambda"
     - "proc"
     - "it"
+    - "expect"
 
 Style/CaseEquality:
   Enabled: true

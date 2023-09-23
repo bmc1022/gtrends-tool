@@ -186,6 +186,8 @@ RSpec/MissingExampleGroupArgument:
 
 RSpec/MultipleDescribes:
   Enabled: true
+  Exclude:
+    - "spec/tasks/*"
 
 RSpec/MultipleExpectations:
   Enabled: false

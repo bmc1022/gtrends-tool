@@ -12,7 +12,10 @@ require_relative "../config/environment"
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
+require "view_component/test_helpers"
+require "view_component/system_test_helpers"
 require "webmock/rspec"
+require "capybara/rspec"
 require "vcr"
 require "pundit/rspec"
 require "rspec/collection_matchers"
@@ -39,13 +42,20 @@ RSpec.configure do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
 
-  config.include(FactoryBot::Syntax::Methods)
-  config.include(Shoulda::Callback::Matchers::ActiveModel)
+  config.include(ViewComponent::TestHelpers, type: :component)
+  config.include(ViewComponent::SystemTestHelpers, type: :component)
+  config.include(Capybara::RSpecMatchers, type: :component)
+  config.include(Devise::Test::ControllerHelpers, type: :component)
+  config.before(:each, type: :component) { @request = vc_test_controller.request }
 
   [:system, :request].each do |type|
+    config.include(Capybara::RSpecMatchers, type:)
     config.include(Devise::Test::IntegrationHelpers, type:)
     config.include(Warden::Test::Helpers, type:)
   end
+
+  config.include(FactoryBot::Syntax::Methods)
+  config.include(Shoulda::Callback::Matchers::ActiveModel)
 
   # Enable in-memory caching for tests tagged with the :with_caching metadata option.
   config.include(CacheHelper)
@@ -63,6 +73,8 @@ Shoulda::Matchers.configure do |config|
     with.library(:rails)
   end
 end
+
+Capybara.default_max_wait_time = 5
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/support/vcr_cassettes"

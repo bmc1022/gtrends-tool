@@ -17,6 +17,7 @@ gem "jsbundling-rails",  "~> 1.0.2"                    # Bundle and transpile Ja
 gem "cssbundling-rails", "~> 1.1.1"                    # Bundle and process CSS.
 gem "jbuilder",          "~> 2.11.5"                   # Build JSON APIs with ease.
 gem "slim-rails",        "~> 3.3.0"                    # Compile Slim to HTML.
+gem "view_component",    "~> 3.5.0"                    # Build reusable, testable, and encapsulated view components.
 gem "devise",            "~> 4.9.2"                    # Authentication.
 gem "pundit",            "~> 2.3.0"                    # Authorization.
 gem "rolify",            "~> 6.0.1"                    # Create roles with resource scoping.

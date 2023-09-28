@@ -53,17 +53,31 @@ RSpec.describe(ApplicationHelper, type: :helper) do
   end
 
   describe "#svg_icon" do
-    let(:reference)  { "#icon-example" }
-    let(:class_name) { "custom-class"  }
+    let(:reference) { "#icon-example" }
 
     it "returns an inline SVG reference" do
-      expected_html = '<svg class="icon"><use xlink:href="#icon-example" /></svg>'
+      expected_html = '<svg class="icon"><use xlink:href="#icon-example"></use></svg>'
       expect(helper.svg_icon(reference)).to eq(expected_html)
     end
 
-    it "returns an inline SVG reference with a given CSS class" do
-      expected_html = '<svg class="icon custom-class"><use xlink:href="#icon-example" /></svg>'
-      expect(helper.svg_icon(reference, class_name)).to eq(expected_html)
+    context "when a custom CSS class is provided" do
+      let(:additional_classes) { "custom-class" }
+
+      it "returns an inline SVG reference with the given CSS class" do
+        expected_html =
+          '<svg class="icon custom-class"><use xlink:href="#icon-example"></use></svg>'
+        expect(helper.svg_icon(reference, additional_classes:)).to eq(expected_html)
+      end
+    end
+
+    context "when multiple CSS classes are provided" do
+      let(:additional_classes) { ["class1", "class2"] }
+
+      it "returns an inline SVG reference with all given CSS classes" do
+        expected_html =
+          '<svg class="icon class1 class2"><use xlink:href="#icon-example"></use></svg>'
+        expect(helper.svg_icon(reference, additional_classes:)).to eq(expected_html)
+      end
     end
   end
 

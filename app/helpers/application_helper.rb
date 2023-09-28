@@ -21,8 +21,8 @@ module ApplicationHelper
   end
 
   # Displays an inline SVG reference.
-  def svg_icon(reference, class_name = "")
-    tag.svg(class: "icon #{class_name}".strip) { concat(tag.use("xlink:href": reference)) }
+  def svg_icon(reference, additional_classes: "")
+    render(SvgIconComponent.new(reference:, additional_classes:))
   end
 
   # Convert an array of arrays to CSV format.

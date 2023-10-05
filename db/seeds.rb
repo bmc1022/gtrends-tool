@@ -3,7 +3,7 @@ class DataGenerator
 
   def admin
     user = User.find_or_create_by!(username: "admin") do |admin|
-      admin.email = "bmc1022@gmail.com"
+      admin.email = ENV["ADMIN_EMAIL"]
       admin.password = ENV["ADMIN_PASSWORD"]
     end
     user.add_role(:admin) unless user.has_role?(:admin)

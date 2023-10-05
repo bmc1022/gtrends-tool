@@ -17,6 +17,7 @@ require "view_component/system_test_helpers"
 require "webmock/rspec"
 require "capybara/rspec"
 require "vcr"
+require "sidekiq/testing"
 require "pundit/rspec"
 require "rspec/collection_matchers"
 require "test_prof/recipes/rspec/before_all"
@@ -87,3 +88,5 @@ VCR.configure do |config|
   }
   config.allow_http_connections_when_no_cassette = true
 end
+
+Sidekiq::Testing.fake!

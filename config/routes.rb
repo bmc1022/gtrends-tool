@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
+require Rails.root.join("lib/constraints/admin_constraint")
 require "sidekiq/web"
 
 Rails.application.routes.draw do
   root to: "gtrends#index"
+
+  # The Sidekiq web UI is only accessible by administrators. If the constraint is not met, the next
+  # matching route will redirect non-admin users and guests to the login page.
+  mount Sidekiq::Web, at: "/sidekiq", constraints: AdminConstraint
+  get "sidekiq", to: redirect("login")
 
   # Skip creation of the default :passwords, :registrations and :sessions Devise routes to avoid
   # path duplication with the custom paths in the devise_scope block below.
@@ -33,10 +39,6 @@ Rails.application.routes.draw do
     get    "edit-profile",   to: "users/registrations#edit",    as: :edit_user_registration
     patch  "edit-profile",   to: "users/registrations#update",  as: :update_user_registration
     put    "edit-profile",   to: "users/registrations#update"
-  end
-
-  authenticate :user, ->(user) { user.has_role?(:admin) } do
-    mount Sidekiq::Web => "/sidekiq"
   end
 
   resources :gtrends, only: [:index, :create, :destroy], path: "/"

@@ -11,18 +11,8 @@ $container-max-widths: (
   md: (730px + $grid-gutter-width),
   lg: (940px + $grid-gutter-width)
 );
-
-// $primary:    #3f812a;
-// $secondary:  #42515a;
-// $success:    #3f812a;
-// $info:       $cyan !default;
-// $warning:    $yellow !default;
-// $danger:     #e44617;
-// $light:      $gray-100 !default;
-// $dark:       $gray-800 !default;
-
-// $body-color: #444;
-$font-family-base: 'Open Sans', 'Helvetica Neue', helvetica, arial, sans-serif;
+$body-color: #111827;
+$font-family-base: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 // $font-size-base: 0.85rem;
 // $h1-font-size: $font-size-base * 2.2;

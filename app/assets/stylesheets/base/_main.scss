@@ -32,7 +32,7 @@ body {
         top: 40%;
         padding-right: 10px;
         font-size: 0.8rem;
-        font-weight: bold;
+        font-weight: 600;
         color: #959c9c;
         text-align: center;
         opacity: 0.6;
@@ -114,7 +114,7 @@ body {
 
       span {
         color: #595a5a;
-        font-weight: 800;
+        font-weight: 700;
         text-transform: uppercase;
       }
 
@@ -150,7 +150,7 @@ body {
         padding-right: 10px;
         width: 25px;
         color: #444;
-        font-weight: 700;
+        font-weight: 600;
         text-align: right;
         &.high-avg { color: #26b8b8 !important; }
         &.mid-avg  { color: #52a0e6 !important; }

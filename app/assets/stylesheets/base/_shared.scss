@@ -1,4 +1,9 @@
-/* ==== Typography & Design Elements ======================================== */
+/* ==== Typography, General Positioning & Design Elements ======================================= */
+body {
+  background: #f5f5f5;
+  min-width: 310px;
+  overflow-x: hidden;
+}
 
 a {
   color: #52A0E6;
@@ -11,8 +16,8 @@ input:focus::placeholder { color: transparent !important; }
 
 svg {
   &.icon {
-    width: 1em;
     height: 1em;
+    width: 1em;
   }
   &:active { filter: drop-shadow(0 0.09em 0.03em rgb(0 0 0 / 40%)); }
 }
@@ -45,23 +50,102 @@ svg {
   .tooltip-arrow::before { border-top-color: #52a0e6 !important; }
 }
 
-.alert {
-  font-size: .95em;
-
-  &.alert-notice {
-    color: #39afaf;
-    background-color: #edf5f5;
-    border-color: #39afaf;
-  }
-
-  &.alert-error {
-    color: #e20e21;
-    background-color: #fff0f1;
-    border-color: #f5c6cb;
-  }
-}
-
 .simplebar-init {
   overflow: hidden !important;
   &::-webkit-scrollbar { display: none; }
+}
+
+/* ==== Alerts & Notices ======================================================================== */
+$alert-bg-colors: (
+  notice: #eff6ff,
+  success: #e7faf5,
+  warning: #fefce8,
+  alert: #fefce8,
+  danger: #fef2f2
+);
+$alert-text-colors: (
+  notice: #1876b2,
+  success: #077f51,
+  warning: #a16207,
+  alert: #a16207,
+  danger: #b91c1c
+);
+$alert-icon-colors: (
+  notice: #60a5fa,
+  success: #48cb99,
+  warning: #facc15,
+  alert: #facc15,
+  danger: #f87171
+);
+
+@function alert-bg-color($type) {
+  @return map-get($alert-bg-colors, $type);
+}
+@function alert-text-color($type) {
+  @return map-get($alert-text-colors, $type);
+}
+@function alert-icon-color($type) {
+  @return map-get($alert-icon-colors, $type);
+}
+
+#alerts {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  z-index: 999;
+  .alert {
+    --bs-alert-padding-x: 1rem;
+    --bs-alert-padding-y: 0.75rem;
+    font-size: 0.85rem;
+    h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    span { font-weight: 500; }
+    ul {
+      margin: 0;
+      padding: 0 0 0 1.25rem;
+    }
+    .alert-icon {
+      padding-right: 1rem;
+      svg.icon {
+        height: 1.2rem;
+        width: 1.2rem;
+        vertical-align: top;
+      }
+    }
+    .close-alert {
+      padding: 0 0 0 1rem;
+      button.close-btn {
+        background: transparent;
+        padding: 0;
+        border: none;
+        opacity: 0.5;
+        &:hover {
+          border-radius: 0.25rem;
+          opacity: 1;
+          box-sizing: border-box;
+        }
+        svg.icon {
+          height: 1.35rem;
+          width: 1.35rem;
+          box-sizing: content-box;
+        }
+      }
+    }
+  }
+  @each $alert-type, $color in $alert-bg-colors {
+    .alert-#{$alert-type} {
+      background-color: alert-bg-color($alert-type);
+      color: alert-text-color($alert-type);
+      border: 1px solid desaturate(darken(alert-bg-color($alert-type), 5%), 15%);
+      h3 { color: darken(alert-text-color($alert-type), 5%) }
+      svg.icon { color: alert-icon-color($alert-type); }
+      .close-alert button.close-btn:hover {
+        background-color: darken(alert-bg-color($alert-type), 5%);
+      }
+    }
+  }
 }

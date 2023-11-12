@@ -1,0 +1,3 @@
+#alerts data-turbo-cache="false"
+  = render(Alerts::FlashAlertComponent.new)
+  == yield(:model_errors) if content_for?(:model_errors)

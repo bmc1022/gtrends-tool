@@ -13,33 +13,29 @@ RSpec.describe(Alerts::FlashAlertComponent, type: :component) do
 
     before { allow(component_instance).to receive(:controller).and_return(mock_controller) }
 
-    describe "#render" do
-      it "renders an alert for each flash message" do
-        flash.each do |type, message|
-          expect(rendered_alert).to have_css(".alert-#{type}", text: message)
-        end
+    it "renders an alert for each flash message" do
+      flash.each do |type, message|
+        expect(rendered_alert).to have_css(".alert-#{type}", text: message)
       end
+    end
 
-      it "renders the correct icon for each flash message type" do
-        expect(rendered_alert).to have_xpath(".//div[contains(@class, 'alert-icon')]
-                                               //svg//use[@*[name()='xlink:href']='#check-circle']")
-        expect(rendered_alert).to have_xpath(".//div[contains(@class, 'alert-icon')]
-                                               //svg//use[@*[name()='xlink:href']='#info']")
-        expect(rendered_alert).to have_xpath(".//div[contains(@class, 'alert-icon')]
-                                               //svg//use[@*[name()='xlink:href']='#warning']")
-      end
+    it "renders the correct icon for each flash message type" do
+      expect(rendered_alert).to have_xpath(".//div[contains(@class, 'alert-icon')]
+                                              //svg//use[@*[name()='xlink:href']='#check-circle']")
+      expect(rendered_alert).to have_xpath(".//div[contains(@class, 'alert-icon')]
+                                              //svg//use[@*[name()='xlink:href']='#info']")
+      expect(rendered_alert).to have_xpath(".//div[contains(@class, 'alert-icon')]
+                                              //svg//use[@*[name()='xlink:href']='#warning']")
+    end
 
-      it "renders the close button for each flash message" do
-        expect(rendered_alert).to have_css(".close-btn", count: flash.count)
-      end
+    it "renders the close button for each flash message" do
+      expect(rendered_alert).to have_css(".close-btn", count: flash.count)
     end
   end
 
   context "without flash messages" do
-    describe "#render" do
-      it "does not render any alerts" do
-        expect(rendered_alert).not_to have_css(".alert")
-      end
+    it "does not render any alerts" do
+      expect(rendered_alert).to be_blank
     end
   end
 end

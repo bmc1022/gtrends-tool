@@ -1,17 +1,1 @@
-<% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
-      <% resource.errors.messages.each do |field, errors| %>
-        <% errors.each do |error_message| %>
-          <li><%= error_message %></li>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<% provide(:model_errors, render(Alerts::ErrorAlertComponent.new(resource))) %>

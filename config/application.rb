@@ -21,6 +21,9 @@ module GtrendsTool
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # Use Sidekiq as the queuing backend for Active Job.
+    config.active_job.queue_adapter = :sidekiq
+
     # Generator configuration.
     config.generators do |generator|
       generator.assets = false # Skip generating asset files.

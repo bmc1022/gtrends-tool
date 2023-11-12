@@ -6,6 +6,7 @@ RSpec.describe(User, type: :model) do
   subject(:user) { build(:user) }
 
   include_examples "factory", :user
+  include_examples "rolify",  :user
 
   describe "attributes and indexes" do
     # Database columns
@@ -45,13 +46,78 @@ RSpec.describe(User, type: :model) do
   end
 
   describe "associations" do
-    it { is_expected.to have_and_belong_to_many(:roles) }
     it { is_expected.to have_many(:gtrends).dependent(:destroy) }
   end
 
   describe "validations" do
-    it { is_expected.to validate_uniqueness_of(:username).case_insensitive.allow_blank }
-    it { is_expected.to validate_uniqueness_of(:email).case_insensitive.allow_blank }
+    it {
+      is_expected.to validate_uniqueness_of(:username)
+                    .case_insensitive
+                    .allow_blank
+                    .with_message(/The username '.+' is already in use, please try another/)
+    }
+
+    it { is_expected.to validate_length_of(:username)
+                        .is_at_least(2)
+                        .is_at_most(100)
+                        .with_message("Username should be between 2 to 100 characters") }
+
+    it {
+      is_expected.to validate_uniqueness_of(:email)
+                    .case_insensitive
+                    .allow_blank
+                    .with_message(/The email address '.+' is already in use, please try another/)
+    }
+
+    it { is_expected.to validate_length_of(:email)
+                        .is_at_least(4)
+                        .is_at_most(254)
+                        .with_message("Email address should be between 4 to 254 characters") }
+
+    it { is_expected.to validate_length_of(:password)
+                        .is_at_least(6)
+                        .is_at_most(128)
+                        .with_message("Your password should be between 6 to 128 characters") }
+
+    describe "email format validation" do
+      valid_emails = [
+        "email@domain.com",
+        "firstname.lastname@domain.com",
+        "email@subdomain.domain.com",
+        "firstname+lastname@domain.com",
+        "email@123.123.123.123",
+        "1234567890@domain.com",
+        "email@domain-one.com",
+        "_______@domain.com",
+        "email@domain.name",
+        "email@domain.co.jp",
+        "firstname-lastname@domain.com"
+      ]
+
+      invalid_emails = [
+        "plainaddress",
+        '#@%^%#$@#$@#.com',
+        "@domain.com",
+        "email.domain.com",
+        "email@domain@domain.com"
+      ]
+
+      valid_emails.each do |email|
+        it "accepts the valid email format: #{email}" do
+          user.email = email
+          expect(user).to be_valid
+          expect(user.errors[:email]).to be_empty
+        end
+      end
+
+      invalid_emails.each do |email|
+        it "rejects the invalid email format: #{email}" do
+          user.email = email
+          expect(user).not_to be_valid
+          expect(user.errors[:email]).to include(/is not a valid email format/)
+        end
+      end
+    end
 
     describe ":presence_of_username_or_email validation" do
       let(:user) { build(:user, username:, email:) }

@@ -3,33 +3,31 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.0"
+ruby "3.2.2"
 
-gem "rails",             "~> 7.0.2"                    # Web app framework.
-gem "pg",                ">= 1.3.1"                    # Use PostgreSQL as the database.
-gem "redis",             "~> 5.0.6"                    # Use Redis adapter to run ActionCable in production.
-gem "turbo-rails",       "~> 1.4.0"                    # SPA-like functionality without having to write JS.
-gem "cable_ready",       "5.0.0.rc2"                   # Trigger client-side DOM changes from server-side Ruby.
-gem "puma",              "~> 5.6.2"                    # Use Puma as the app server.
-gem "bootsnap",          "~> 1.12.0", require: false   # Boot Ruby/Rails apps faster.
+gem "rails",             "~> 7.1.2"                    # Web app framework.
+gem "pg",                ">= 1.5.4"                    # Use PostgreSQL as the database.
+gem "redis",             "~> 5.0.8"                    # Use Redis adapter to run ActionCable in production.
+gem "turbo-rails",       "~> 1.5.0"                    # SPA-like functionality without having to write JS.
+gem "cable_ready",       "~> 5.0.3"                    # Trigger client-side DOM changes from server-side Ruby.
+gem "puma",              "~> 6.4.0"                    # Use Puma as the app server.
+gem "bootsnap",          "~> 1.17.0", require: false   # Boot Ruby/Rails apps faster.
 gem "sprockets-rails",   "~> 3.4.2"                    # Asset Pipeline.
-gem "jsbundling-rails",  "~> 1.0.2"                    # Bundle and transpile JavaScript.
-gem "cssbundling-rails", "~> 1.1.1"                    # Bundle and process CSS.
+gem "jsbundling-rails",  "~> 1.2.1"                    # Bundle and transpile JavaScript.
+gem "cssbundling-rails", "~> 1.3.3"                    # Bundle and process CSS.
 gem "jbuilder",          "~> 2.11.5"                   # Build JSON APIs with ease.
-gem "slim-rails",        "~> 3.3.0"                    # Compile Slim to HTML.
-gem "view_component",    "~> 3.5.0"                    # Build reusable, testable, and encapsulated view components.
-gem "devise",            "~> 4.9.2"                    # Authentication.
-gem "pundit",            "~> 2.3.0"                    # Authorization.
+gem "slim-rails",        "~> 3.6.3"                    # Compile Slim to HTML.
+gem "view_component",    "~> 3.7.0"                    # Build reusable, testable, and encapsulated view components.
+gem "devise",            "~> 4.9.3"                    # Authentication.
+gem "pundit",            "~> 2.3.1"                    # Authorization.
 gem "rolify",            "~> 6.0.1"                    # Create roles with resource scoping.
-gem "sidekiq",           "~> 7.0.8"                    # Background job processing.
+gem "sidekiq",           "~> 7.2.0"                    # Background job processing.
 gem "whenever",          "~> 1.0.0", require: false    # Cron jobs in Ruby.
 gem "http",              "~> 5.0.4"                    # HTTP client.
 gem "pagy",              "~> 5.10.1"                   # Pagination.
 
 group :development, :test do
   gem "debug", platforms: [:mri, :mingw, :x64_mingw]   # Standard Ruby debugger.
-  gem "debase", require: false                         # Fast implementation of the standard debugger.
-  gem "ruby-debug-ide", require: false                 # An interface between ruby-debug and IDEs.
   gem "solargraph", require: false                     # Code analysis and autocompletion.
   gem "pry-rails"                                      # Use Pry as the Rails console.
   gem "rspec-rails"                                    # Use RSpec testing framework.

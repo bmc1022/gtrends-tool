@@ -16,6 +16,7 @@ require "view_component/test_helpers"
 require "view_component/system_test_helpers"
 require "webmock/rspec"
 require "capybara/rspec"
+require "capybara/cuprite"
 require "vcr"
 require "sidekiq/testing"
 require "pundit/rspec"
@@ -32,40 +33,48 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = Rails.root.join("spec/fixtures")
-
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
   config.use_transactional_fixtures = true
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+  config.filter_gems_from_backtrace("capybara", "cuprite", "ferrum")
 
+  # Enable in-memory caching for tests tagged with the :with_caching metadata option.
+  config.include(CacheHelper)
+  config.around(:each, :with_caching) { |example| with_caching(&example) }
+  config.include(CaptureStdout)
+
+  config.include ActiveJob::TestHelper
+  config.include(FactoryBot::Syntax::Methods)
+  config.include(Shoulda::Callback::Matchers::ActiveModel)
+
+  # Component test preferences:
   config.include(ViewComponent::TestHelpers, type: :component)
   config.include(ViewComponent::SystemTestHelpers, type: :component)
   config.include(Capybara::RSpecMatchers, type: :component)
   config.include(Devise::Test::ControllerHelpers, type: :component)
   config.before(:each, type: :component) { @request = vc_test_controller.request }
 
+  # System test preferences:
+  config.before(:each, type: :system) do
+    driven_by(:cuprite,
+      screen_size: [1200, 800],
+      options: {
+        js_errors: true,
+        process_timeout: 10,
+        timeout: 10,
+        inspector: true,
+        browser_options: {}
+      })
+  end
+  config.after(:each, type: :system) { Sidekiq::Worker.clear_all }
+
   [:system, :request].each do |type|
     config.include(Capybara::RSpecMatchers, type:)
     config.include(Devise::Test::IntegrationHelpers, type:)
     config.include(Warden::Test::Helpers, type:)
   end
-
-  config.include(FactoryBot::Syntax::Methods)
-  config.include(Shoulda::Callback::Matchers::ActiveModel)
-
-  # Enable in-memory caching for tests tagged with the :with_caching metadata option.
-  config.include(CacheHelper)
-  config.around(:each, :with_caching) { |example| with_caching(&example) }
-
-  config.include(CaptureStdout)
-
-  # Driver setup for system tests.
-  config.before(:each, type: :system) { driven_by :selenium_chrome_headless }
 end
 
 Shoulda::Matchers.configure do |config|
@@ -81,12 +90,12 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/support/vcr_cassettes"
   config.hook_into(:webmock)
   config.ignore_localhost = true
+  config.allow_http_connections_when_no_cassette = false
   config.configure_rspec_metadata!
   config.default_cassette_options = {
     record: :new_episodes,
     re_record_interval: 2_592_000 # 1 month
   }
-  config.allow_http_connections_when_no_cassette = true
 end
 
 Sidekiq::Testing.fake!

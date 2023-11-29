@@ -29,7 +29,7 @@ RSpec.describe("Authentication", type: :request) do
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response).to render_template("users/sessions/new")
-        expect(flash[:alert]).to eq("Invalid Login or password.")
+        expect(flash[:alert]).to eq("Invalid Login or Password.")
       end
 
       it "does not log in with invalid email" do
@@ -38,7 +38,7 @@ RSpec.describe("Authentication", type: :request) do
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response).to render_template("users/sessions/new")
-        expect(flash[:alert]).to eq("Invalid Login or password.")
+        expect(flash[:alert]).to eq("Invalid Login or Password.")
       end
 
       it "does not log in with invalid password" do
@@ -46,7 +46,7 @@ RSpec.describe("Authentication", type: :request) do
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response).to render_template("users/sessions/new")
-        expect(flash[:alert]).to eq("Invalid Login or password.")
+        expect(flash[:alert]).to eq("Invalid Login or Password.")
       end
     end
 

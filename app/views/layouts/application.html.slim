@@ -1,6 +1,5 @@
 == render("shared/html_head")
 == render("shared/icons")
-== yield(:icons) if content_for?(:icons)
 body class="#{controller_path.gsub("/", " ")} #{action_name}"
   #main
     .container

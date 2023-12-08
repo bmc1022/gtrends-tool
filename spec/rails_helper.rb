@@ -45,7 +45,7 @@ RSpec.configure do |config|
   config.around(:each, :with_caching) { |example| with_caching(&example) }
   config.include(CaptureStdout)
 
-  config.include ActiveJob::TestHelper
+  config.include(ActiveJob::TestHelper)
   config.include(FactoryBot::Syntax::Methods)
   config.include(Shoulda::Callback::Matchers::ActiveModel)
 

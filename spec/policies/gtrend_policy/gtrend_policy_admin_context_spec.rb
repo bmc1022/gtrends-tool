@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe(GtrendPolicy, type: :policy) do
-  context "as an administrator" do
+  context "when user is an administrator" do
     subject { described_class.new(@admin, @gtrend) }
 
     before_all do

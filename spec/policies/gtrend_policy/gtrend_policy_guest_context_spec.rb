@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe(GtrendPolicy, type: :policy) do
-  context "as a guest" do
+  context "when user is a guest" do
     subject { described_class.new(@guest, @gtrend) }
 
     before_all do

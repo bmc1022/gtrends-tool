@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe(GtrendPolicy, type: :policy) do
-  context "as a registered user" do
+  context "when user is a registered user" do
     subject { described_class.new(@user, @gtrend) }
 
     before_all do

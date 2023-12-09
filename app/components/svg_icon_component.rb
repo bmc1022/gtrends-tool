@@ -9,12 +9,12 @@ class SvgIconComponent < ApplicationComponent
   def initialize(reference:, additional_classes: "")
     super()
     @reference = reference
-    @additional_classes = Array.wrap(additional_classes)
+    @additional_classes = Array(additional_classes)
   end
 
   private
 
   def svg_classes
-    "icon #{@additional_classes.join(' ')}".strip
+    (["icon"] + @additional_classes).join(" ").strip
   end
 end

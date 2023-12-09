@@ -147,21 +147,30 @@ RSpec.describe(User, type: :model) do
         let(:username) { "testuser" }
         let(:email)    { "test@email.com" }
 
-        it { expect(user.errors).to be_empty }
+        it "is valid" do
+          expect(user).to be_valid
+          expect(user.errors).to be_empty
+        end
       end
 
-      context "when a username is present" do
+      context "when only a username is present" do
         let(:username) { "testuser" }
         let(:email)    { nil }
 
-        it { expect(user.errors).to be_empty }
+        it "is valid" do
+          expect(user).to be_valid
+          expect(user.errors).to be_empty
+        end
       end
 
-      context "when an email is present" do
+      context "when only an email is present" do
         let(:username) { nil }
         let(:email)    { "test@email.com" }
 
-        it { expect(user.errors).to be_empty }
+        it "is valid" do
+          expect(user).to be_valid
+          expect(user.errors).to be_empty
+        end
       end
 
       context "when a username or email are not provided" do
@@ -169,6 +178,7 @@ RSpec.describe(User, type: :model) do
         let(:email)    { nil }
 
         it "adds an error to the user" do
+          expect(user).to be_invalid
           expect(user.errors[:base]).to include("A user must have either a username or an email.")
         end
       end

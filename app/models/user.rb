@@ -16,14 +16,17 @@ class User < ApplicationRecord
                     allow_blank: true,
                     message: "The username '%{value}' is already in use, please try another" },
     length:       { in: 2..100,
+                    allow_nil: true,
                     message: "Username should be between 2 to 100 characters" }
   validates :email,
     uniqueness:   { case_sensitive: false,
                     allow_blank: true,
                     message: "The email address '%{value}' is already in use, please try another" },
     length:       { in: 4..254,
+                    allow_nil: true,
                     message: "Email address should be between 4 to 254 characters" },
     format:       { with: URI::MailTo::EMAIL_REGEXP,
+                    allow_nil: true,
                     message: "'%{value}' is not a valid email format" }
   validates :password,
     presence:     { message: "A password is required" },
@@ -61,8 +64,8 @@ class User < ApplicationRecord
   end
 
   def presence_of_username_or_email
-    return if username.present? || email.present?
-
-    errors.add(:base, "A user must have either a username or an email.")
+    if username.blank? && email.blank?
+      errors.add(:base, "A user must have either a username or an email.")
+    end
   end
 end

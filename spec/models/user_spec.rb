@@ -175,6 +175,21 @@ RSpec.describe(User, type: :model) do
     end
   end
 
+  describe "role assignment" do
+    context "when adding a new role to user" do
+      let(:default_role) { Role.find_by(name: :registered) }
+      let(:new_role)     { create(:role)                   }
+
+      it "removes any existing roles before adding a new role" do
+        expect(user.roles).to contain_exactly(default_role)
+
+        user.add_role(new_role.name)
+        expect(user.roles).not_to include(default_role)
+        expect(user.roles).to contain_exactly(new_role)
+      end
+    end
+  end
+
   describe ".find_first_by_auth_conditions" do
     let!(:user_1) { create(:user, username: "user1", email: "u1@email.com") }
     let!(:user_2) { create(:user, username: "user2", email: "u2@email.com") }

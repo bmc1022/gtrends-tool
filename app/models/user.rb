@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  rolify
+  # Allow only a single role assignment.
+  rolify before_add: :remove_existing_roles
 
   # Enable specified Devise modules.
   devise :database_authenticatable, :rememberable
@@ -54,6 +55,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def remove_existing_roles(_)
+    roles.delete_all
+  end
 
   def presence_of_username_or_email
     return if username.present? || email.present?

@@ -45,6 +45,10 @@ RSpec.describe(User, type: :model) do
     end
   end
 
+  describe "callbacks" do
+    it { is_expected.to callback(:assign_default_role).before(:create) }
+  end
+
   describe "associations" do
     it { is_expected.to have_many(:gtrends).dependent(:destroy) }
   end
@@ -186,6 +190,27 @@ RSpec.describe(User, type: :model) do
   end
 
   describe "role assignment" do
+    describe "#assign_default_role :before_create callback" do
+      let(:new_user) do
+        described_class.build(
+          email: "test@email.com", password: "password", password_confirmation: "password"
+        )
+      end
+
+      it "assigns a default :registered role on user creation" do
+        expect(new_user.roles).to be_empty
+        new_user.save!
+        expect(new_user.roles.pluck(:name)).to contain_exactly("registered")
+      end
+
+      it "does not assign the default :registered role if a role is already present on user" do
+        new_user.add_role(:admin)
+        expect(new_user.roles.map(&:name)).to contain_exactly("admin")
+        new_user.save!
+        expect(new_user.roles.pluck(:name)).to contain_exactly("admin")
+      end
+    end
+
     context "when adding a new role to user" do
       let(:default_role) { Role.find_by(name: :registered) }
       let(:new_role)     { create(:role)                   }

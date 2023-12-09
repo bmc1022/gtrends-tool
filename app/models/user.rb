@@ -7,6 +7,8 @@ class User < ApplicationRecord
   # Enable specified Devise modules.
   devise :database_authenticatable, :rememberable
 
+  before_create :assign_default_role
+
   has_many :gtrends, dependent: :destroy
 
   attr_writer :login
@@ -61,6 +63,10 @@ class User < ApplicationRecord
 
   def remove_existing_roles(_)
     roles.delete_all
+  end
+
+  def assign_default_role
+    add_role(:registered) if roles.blank?
   end
 
   def presence_of_username_or_email

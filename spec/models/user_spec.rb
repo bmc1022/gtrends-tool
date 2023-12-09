@@ -187,6 +187,29 @@ RSpec.describe(User, type: :model) do
         end
       end
     end
+
+    describe ":role_assigned validation" do
+      let(:new_user) do
+        described_class.build(
+          email: "test@email.com", password: "password", password_confirmation: "password"
+        )
+      end
+
+      it "ensures that a role is assigned to a user on update" do
+        new_user.save!
+        expect(new_user.roles).to be_present
+        new_user.update!(email: "new@email.com")
+        expect(new_user).to be_valid
+        new_user.roles.delete_all
+        expect { new_user.update!(email: "ab@c.com") }.to raise_error(ActiveRecord::RecordInvalid)
+        expect(new_user.errors[:user]).to include("User must be assigned a role")
+      end
+
+      it "does not apply the validation to newly created users" do
+        expect(new_user.roles).to be_empty
+        expect(new_user).to be_valid
+      end
+    end
   end
 
   describe "role assignment" do

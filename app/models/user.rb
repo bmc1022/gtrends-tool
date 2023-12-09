@@ -40,6 +40,7 @@ class User < ApplicationRecord
     length:       { maximum: 128,
                     message: "Password confirmation should not exceed 128 characters" }
   validate  :presence_of_username_or_email
+  validate  :role_assigned, on: :update
 
   # Monkeypatched Devise method.
   def self.find_first_by_auth_conditions(warden_conditions)
@@ -67,6 +68,10 @@ class User < ApplicationRecord
 
   def assign_default_role
     add_role(:registered) if roles.blank?
+  end
+
+  def role_assigned
+    errors.add(:user, "User must be assigned a role") if roles.blank?
   end
 
   def presence_of_username_or_email

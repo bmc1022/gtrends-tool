@@ -5,6 +5,11 @@ body {
   overflow-x: hidden;
 }
 
+.row > * {
+  padding-right: calc(var(--bs-gutter-x) * 0.7);
+  padding-left: calc(var(--bs-gutter-x) * 0.7);
+}
+
 a {
   color: #52A0E6;
   text-decoration: none;

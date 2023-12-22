@@ -14,12 +14,19 @@ a {
 
 input:focus::placeholder { color: transparent !important; }
 
-svg {
-  &.icon {
-    height: 1em;
-    width: 1em;
-  }
-  &:active { filter: drop-shadow(0 0.09em 0.03em rgb(0 0 0 / 40%)); }
+.icon {
+  height: 1rem;
+  width: 1rem;
+}
+
+.icon-small {
+  width: 0.8rem !important;
+  height: 0.8rem !important;
+}
+
+.icon-large {
+  height: 1.75rem !important;
+  width: 1.75rem !important;
 }
 
 .callout {
@@ -141,7 +148,7 @@ $alert-icon-colors: (
       background-color: alert-bg-color($alert-type);
       color: alert-text-color($alert-type);
       border: 1px solid desaturate(darken(alert-bg-color($alert-type), 5%), 15%);
-      h3 { color: darken(alert-text-color($alert-type), 5%) }
+      h3 { color: darken(alert-text-color($alert-type), 5%); }
       svg.icon { color: alert-icon-color($alert-type); }
       .close-alert button.close-btn:hover {
         background-color: darken(alert-bg-color($alert-type), 5%);

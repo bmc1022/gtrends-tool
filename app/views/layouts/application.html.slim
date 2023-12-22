@@ -1,6 +1,8 @@
 == render("shared/html_head")
 == render("shared/icons")
 body class="#{controller_path.gsub("/", " ")} #{action_name}"
-  #main
+  main
     .container
-      == content_for?(:main) ? yield(:main) : yield
+      == render("shared/alerts")
+      section#content
+        == content_for?(:main) ? yield(:main) : yield

@@ -3,7 +3,7 @@
 require "simplecov"
 SimpleCov.start("rails") do
   coverage_dir "reports/coverage"
-  minimum_coverage 90 # Set the minimum coverage percentage
+  minimum_coverage 100 # Set the minimum coverage percentage
 end
 
 require "spec_helper"

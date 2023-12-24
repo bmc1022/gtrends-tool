@@ -10,6 +10,11 @@ body {
   padding-left: calc(var(--bs-gutter-x) * 0.7);
 }
 
+::selection {
+  color: #fff;
+  background: #186acc;
+}
+
 a {
   color: #52A0E6;
   text-decoration: none;

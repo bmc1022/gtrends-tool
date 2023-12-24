@@ -9,8 +9,8 @@ RSpec.describe(GtrendPolicy, type: :policy) do
     before_all do
       @user = create(:user)
       @gtrend = create(:gtrend, user: @user)
-      @other_user_gtrend = create(:gtrend, :created_by_user)
-      @guest_gtrend = create(:gtrend, :created_by_guest)
+      @other_user_trend = create(:gtrend, :created_by_user)
+      @guest_trend = create(:gtrend, :created_by_guest)
       @seeded_trend = create(:gtrend, :seeded)
     end
 
@@ -26,11 +26,11 @@ RSpec.describe(GtrendPolicy, type: :policy) do
       end
 
       it "does not include other user's gtrends" do
-        expect(resolved_scope).not_to include(@other_user_gtrend)
+        expect(resolved_scope).not_to include(@other_user_trend)
       end
 
       it "does not include guest created gtrends" do
-        expect(resolved_scope).not_to include(@guest_gtrend)
+        expect(resolved_scope).not_to include(@guest_trend)
       end
 
       it "does not include seeded gtrends" do
@@ -58,7 +58,7 @@ RSpec.describe(GtrendPolicy, type: :policy) do
       end
 
       it "denies any guest from destroying the user's gtrend" do
-        guest = Guest.new(SecureRandom.uuid)
+        guest = build(:guest)
         subject = described_class.new(guest, @gtrend)
 
         expect(subject).to forbid_action(:destroy)

@@ -9,8 +9,8 @@ RSpec.describe(GtrendPolicy, type: :policy) do
     before_all do
       @admin = create(:user, :admin)
       @gtrend = create(:gtrend, user: @admin)
-      @user_gtrend  = create(:gtrend, :created_by_user)
-      @guest_gtrend = create(:gtrend, :created_by_guest)
+      @user_trend   = create(:gtrend, :created_by_user)
+      @guest_trend  = create(:gtrend, :created_by_guest)
       @seeded_trend = create(:gtrend, :seeded)
     end
 
@@ -22,7 +22,7 @@ RSpec.describe(GtrendPolicy, type: :policy) do
       end
 
       it "returns all gtrends" do
-        expect(resolved_scope).to contain_exactly(@gtrend, @user_gtrend, @guest_gtrend, @seeded_trend)
+        expect(resolved_scope).to contain_exactly(@gtrend, @user_trend, @guest_trend, @seeded_trend)
         expect(resolved_scope).to eq(Gtrend.all)
       end
     end
@@ -33,13 +33,13 @@ RSpec.describe(GtrendPolicy, type: :policy) do
       it { is_expected.to permit_action(:destroy) }
 
       it "allows an admin to destroy a user's gtrend" do
-        subject = described_class.new(@admin, @user_gtrend)
+        subject = described_class.new(@admin, @user_trend)
 
         expect(subject).to permit_action(:destroy)
       end
 
       it "allows an admin to destroy a guest's gtrend" do
-        subject = described_class.new(@admin, @guest_gtrend)
+        subject = described_class.new(@admin, @guest_trend)
 
         expect(subject).to permit_action(:destroy)
       end

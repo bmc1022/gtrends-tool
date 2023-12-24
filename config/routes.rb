@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: "/sidekiq", constraints: AdminConstraint
   get "sidekiq", to: redirect("login")
 
+  namespace :admin do
+    get "dashboard", to: "dashboard#dashboard"
+  end
+
   # Skip creation of the default :sessions Devise routes to avoid path duplication with the
   # custom paths in the devise_scope block below.
   # Use the specified custom user controllers instead of the default Devise controllers.

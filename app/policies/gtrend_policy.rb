@@ -11,7 +11,7 @@ class GtrendPolicy < ApplicationPolicy
 
   def destroy?
     case @user
-    when User  then @user.admin? || @record.user == @user
+    when User  then @user.has_role?(:admin) || @record.user == @user
     when Guest then @record.guest_id == @user.guest_id
     else false
     end
@@ -20,7 +20,7 @@ class GtrendPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       case @user
-      when User  then @user.admin? ? @scope.all : @scope.where(user: @user)
+      when User  then @user.has_role?(:admin) ? @scope.all : @scope.where(user: @user)
       when Guest then @scope.where(guest_id: @user.guest_id).or(Gtrend.seeded_trends)
       else @scope.none
       end

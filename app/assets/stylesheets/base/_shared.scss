@@ -5,7 +5,7 @@ body {
   overflow-x: hidden;
 }
 
-.row > * {
+.container {
   padding-right: calc(var(--bs-gutter-x) * 0.7);
   padding-left: calc(var(--bs-gutter-x) * 0.7);
 }

@@ -40,4 +40,8 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You are not authorized to perform this action."
     redirect_back(fallback_location: root_path)
   end
+
+  def after_sign_in_path_for(resource)
+    resource.has_role?(:admin) ? admin_dashboard_path : root_path
+  end
 end

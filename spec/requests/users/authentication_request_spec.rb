@@ -7,20 +7,42 @@ RSpec.describe("Authentication", type: :request) do
     let(:user) { create(:user, username: "test", email: "test@email.com", password: "password") }
 
     context "when logging in" do
-      it "successfully logs in with valid username and password" do
-        post(new_user_session_path,
-             params: { user: { login: user.username, password: user.password } })
+      context "when an administrator logs in" do
+        let(:user) { create(:user, :admin) }
 
-        expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to eq("Signed in successfully.")
+        it "logs in with valid username and password and redirects to admin dashboard" do
+          post(new_user_session_path,
+              params: { user: { login: user.username, password: user.password } })
+
+          expect(response).to redirect_to(admin_dashboard_path)
+          expect(flash[:notice]).to eq("Signed in successfully.")
+        end
+
+        it "logs in with valid email and password and redirects to admin dashboard" do
+          post(new_user_session_path,
+              params: { user: { login: user.email, password: user.password } })
+
+          expect(response).to redirect_to(admin_dashboard_path)
+          expect(flash[:notice]).to eq("Signed in successfully.")
+        end
       end
 
-      it "successfully logs in with valid email and password" do
-        post(new_user_session_path,
-             params: { user: { login: user.email, password: user.password } })
+      context "when a registered user logs in" do
+        it "logs in with valid username and password and redirects to root path" do
+          post(new_user_session_path,
+              params: { user: { login: user.username, password: user.password } })
 
-        expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to eq("Signed in successfully.")
+          expect(response).to redirect_to(root_path)
+          expect(flash[:notice]).to eq("Signed in successfully.")
+        end
+
+        it "logs in with valid email and password and redirects to root path" do
+          post(new_user_session_path,
+              params: { user: { login: user.email, password: user.password } })
+
+          expect(response).to redirect_to(root_path)
+          expect(flash[:notice]).to eq("Signed in successfully.")
+        end
       end
 
       it "does not log in with invalid username" do

@@ -69,7 +69,9 @@ Naming/PredicateName:
     - "is_"
     - "has_"
     - "have_"
-  AllowedMethods: is_a?
+  AllowedMethods:
+    - is_a?
+    - has_role?
 
 Naming/RescuedExceptionsVariableName:
   Enabled: true

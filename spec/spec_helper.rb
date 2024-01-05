@@ -52,5 +52,4 @@ RSpec.configure do |config|
   # Requires supporting ruby files with custom matchers and macros, etc, in
   # spec/support/ and its subdirectories.
   Dir[File.join(__dir__, "/support/**/*.rb")].each { |f| require f }
-  Dir[File.join(__dir__, "/models/shared_examples/**/*.rb")].each { |f| require f }
 end

@@ -5,10 +5,12 @@ class Gtrend < ApplicationRecord
 
   after_update_commit :broadcast_update, if: -> { saved_change_to_job_status? }
 
+  attribute :kws, :text
+
+  enum :job_status, { queued: 0, failed: 1, completed: 2 }, prefix: true
+
   has_many :keywords, dependent: :destroy, inverse_of: :gtrend
   belongs_to :user, optional: true
-
-  attribute :kws, :text
 
   validates :name, presence: true, length: { in: 2..25 }, uniqueness: { case_sensitive: false }
   # :kws is a virtual/non-persisted attribute and validations on it should be skipped on updates to

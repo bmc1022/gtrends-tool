@@ -15,12 +15,7 @@ class GtrendsApi::CreateKeywords < ApplicationService
 
   def create_keywords
     @gtrend.keywords.build(keyword_params)
-
-    # Create all keywords using the same database connection.
-    Gtrend.transaction do
-      @gtrend.job_status = "done"
-      @gtrend.save!
-    end
+    @gtrend.job_status_completed!
   end
 
   def keyword_params

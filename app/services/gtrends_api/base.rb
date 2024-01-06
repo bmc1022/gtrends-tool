@@ -21,7 +21,7 @@ module GtrendsApi::Base
 
   def job_failed(message, return_value: nil)
     Rails.logger.error { message }
-    @gtrend.update!(job_status: "failed")
+    @gtrend.job_status_failed!
     return_value
   end
 end

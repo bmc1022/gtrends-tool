@@ -17,7 +17,7 @@
                     "tooltip-target"=>"tooltip", "bs-toggle": "tooltip"}) do
             = svg_icon("#close-square")
     .trend-list.simplebar-init*{"data-simplebar-target"=>"scrollbar"}
-      - if gtrend.job_status == "done"
+      - if gtrend.job_status_completed?
         .list-wrapper
           table.table.table-sm.table-borderless
             tbody

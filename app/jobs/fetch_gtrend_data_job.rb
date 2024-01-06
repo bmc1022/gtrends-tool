@@ -6,9 +6,7 @@ class FetchGtrendDataJob < ApplicationJob
   # 'failed' or 'done' status is set within services/gtrends_api
 
   after_enqueue do |job|
-    gtrend = job.arguments.first
-    gtrend.job_status = "queued"
-    gtrend.save!
+    gtrend.job_status_queued!
   end
 
   def perform(gtrend, keywords)

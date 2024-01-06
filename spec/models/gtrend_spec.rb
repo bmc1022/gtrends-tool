@@ -18,12 +18,19 @@ RSpec.describe(Gtrend, type: :model) do
     it { is_expected.to have_db_column(:user_id).of_type(:integer) }
     it { is_expected.to have_db_column(:guest_id).of_type(:string) }
     it { is_expected.to have_db_column(:name).of_type(:string) }
-    it { is_expected.to have_db_column(:job_status).of_type(:string).with_options(default: "") }
+    it { is_expected.to have_db_column(:job_status).of_type(:integer) }
 
     # Database indexes
     it { is_expected.to have_db_index([:user_id]) }
     it { is_expected.to have_db_index([:job_status]) }
     it { is_expected.to have_db_index([:name]).unique }
+  end
+
+  describe "enums" do
+    it { is_expected.to define_enum_for(:job_status)
+                        .with_values(queued: 0, failed: 1, completed: 2)
+                        .backed_by_column_of_type(:integer)
+                        .with_prefix }
   end
 
   describe "associations" do

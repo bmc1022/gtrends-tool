@@ -2,6 +2,7 @@
 
 class FetchGtrendDataJob < ApplicationJob
   queue_as :default
+  sidekiq_options retry: false # Retry logic is built into the service being called.
 
   # 'failed' or 'done' status is set within services/gtrends_api
 

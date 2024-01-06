@@ -15,7 +15,7 @@
           = link_to(gtrend_path(gtrend), class: "close-btn", title: "Delete Trend",
               data: {remote: true, turbo_method: :delete, turbo_confirm: "Are you sure?",
                     "tooltip-target"=>"tooltip", "bs-toggle": "tooltip"}) do
-            = svg_icon("#close")
+            = svg_icon("#close-square")
     .trend-list.simplebar-init*{"data-simplebar-target"=>"scrollbar"}
       - if gtrend.job_status == "done"
         .list-wrapper

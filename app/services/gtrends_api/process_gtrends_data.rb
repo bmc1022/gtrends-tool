@@ -9,9 +9,9 @@
 class GtrendsApi::ProcessGtrendsData < ApplicationService
   include GtrendsApi::Base
 
-  def initialize(gtrend, keywords)
+  def initialize(gtrend_id, keywords)
     super()
-    @gtrend = gtrend
+    @gtrend = Gtrend.find(gtrend_id)
     @keywords = keywords
   end
 

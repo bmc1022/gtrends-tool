@@ -16,7 +16,7 @@ class GtrendsController < ApplicationController
 
     respond_to do |format|
       if @gtrend.save
-        FetchGtrendDataJob.perform_later(@gtrend, @gtrend.kws)
+        FetchGtrendDataJob.perform_later(@gtrend.id, @gtrend.kws)
         format.html { redirect_to(gtrends_url) }
       else
         format.json { render(json: @gtrend.errors.messages, status: :unprocessable_entity) }

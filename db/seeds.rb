@@ -5,6 +5,7 @@ class DataGenerator
     user = User.find_or_create_by!(username: "admin") do |admin|
       admin.email = ENV["ADMIN_EMAIL"]
       admin.password = ENV["ADMIN_PASSWORD"]
+      admin.password_confirmation = ENV["ADMIN_PASSWORD"]
     end
     user.add_role(:admin) unless user.has_role?(:admin)
   end
@@ -12,6 +13,7 @@ class DataGenerator
   def demo_user
     User.find_or_create_by!(username: "demo_user") do |user|
       user.password = "123demo"
+      user.password_confirmation = "123demo"
     end
   end
 

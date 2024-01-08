@@ -1,75 +1,79 @@
-body { background: #f9f9f9; }
+#auth {
+  background: #f9f9f9;
 
-#auth-header {
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: 300;
-  text-align: center;
+  #alerts {
+    position: relative;
+    top: unset;
+    left: unset;
+    transform: unset;
+    width: 100%;
 
-  .auth-logo {
-    display: block;
-    padding: 30px 20px 20px;
+    .alert {
+      margin-top: 1rem;
 
-    .icon {
-      display: block;
-      margin: auto;
-      width: 60px;
-      height: 60px;
-    }
-  }
-}
-
-#auth-main {
-  .alert.alert-alert {
-    width: 300px;
-    background: #fff6f0;
-    color: #ec984b;
-    font-size: 14px;
-    border: 3px solid #ffb784;
-  }
-
-  .alert .close {
-    color: rgb(255 109 17 / 75%);
-  }
-
-  .auth-form {
-    background: #fff;
-    padding: 20px;
-    min-width: 300px;
-    font-size: 15px;
-    border: 1px solid #d8dee2;
-    border-radius: 5px;
-    input#user_password { letter-spacing: 0.1em; }
-
-    .password-reset {
-      font-size: 13px;
-      line-height: 23px;
+      --bs-alert-margin-bottom: 0;
     }
   }
 
-  label {
-    margin-bottom: 0.35rem;
-    font-weight: 600;
-  }
-
-  .form-control {
-    height: calc(1.5em + 0.5rem + 2px);
-    font-size: 0.9rem;
-  }
-  .form-check { font-size: 14px; }
-  .form-check-label { font-weight: 400 !important; }
-
-  .form-callout {
-    padding: 15px 20px;
-    border: 1px solid #d8dee2;
-    border-radius: 5px;
+  #auth-header {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 300;
     text-align: center;
+
+    .auth-logo {
+      display: block;
+      padding: 30px 20px 20px;
+
+      .icon {
+        display: block;
+        margin: auto;
+        width: 60px;
+        height: 60px;
+      }
+    }
   }
 
-  .btn-success {
-    background: #39bebe;
-    border: 2px solid #39afaf;
-    &:hover { background: #39afaf; }
-    &:focus { box-shadow: 0 0 0 0.2rem rgb(99 204 204 / 50%); }
+  #auth-main {
+    .auth-form {
+      background: #fff;
+      padding: 20px;
+      min-width: 300px;
+      font-size: 15px;
+      border: 1px solid #d8dee2;
+      border-radius: 5px;
+      input#user_password { letter-spacing: 0.1em; }
+
+      .password-reset {
+        font-size: 13px;
+        line-height: 23px;
+      }
+    }
+
+    label {
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    .form-control {
+      height: calc(1.5em + 0.5rem + 2px);
+      font-size: 0.9rem;
+    }
+    .form-check { font-size: 14px; }
+    .form-check-label { font-weight: 400 !important; }
+
+    .form-callout {
+      padding: 15px 20px;
+      border: 1px solid #d8dee2;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .btn-success {
+      background: #39bebe;
+      border: 2px solid #39afaf;
+      &:hover { background: #39afaf; }
+      &:focus { box-shadow: 0 0 0 0.2rem rgb(99 204 204 / 50%); }
+    }
   }
 }

@@ -1,3 +1,5 @@
+- provide(:model_errors, render(Alerts::ErrorAlertComponent.new(@gtrend)))
+
 #main-head.pb-2
   .callout.mt-4
     h1 GoogleTrends Keyword Planner
@@ -7,7 +9,6 @@
         =< link_to("GoogleTrends", "https://trends.google.com/trends", target: "_blank")
         | .
       span Input up to 100 keywords to see how they rank relative to each other.
-== render("shared/alerts")
 #trends-container.row.my-4*{"data-controller"=>"simplebar tooltip"}
   #new-trend.col-md-15.col-lg-10
     == render("gtrends/new", gtrend: @gtrend)
@@ -19,6 +20,7 @@
                     justify-content-center justify-content-lg-start align-items-center"
     span GoogleTrends Keyword Planner © #{Date.today.year} |
     - if user_signed_in?
-      =< button_to("Sign Out", logout_path, method: :delete, data: { turbo_method: :delete })
+      = button_to("Sign Out", destroy_user_session_path, class: "ps-1",
+                              method: :delete, data: { turbo_method: :delete })
     - else
       =< link_to("Sign In", new_user_session_path)

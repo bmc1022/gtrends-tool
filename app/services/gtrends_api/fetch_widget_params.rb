@@ -7,7 +7,7 @@ class GtrendsApi::FetchWidgetParams < ApplicationService
     super()
     @gtrend = gtrend
     @query = query
-    @cookie = GtrendsApi::GoogleAuth.new(@gtrend).cookie
+    @cookie = GtrendsApi::GoogleAuth.new.cookie
   end
 
   def call

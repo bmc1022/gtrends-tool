@@ -5,10 +5,6 @@ class GtrendsApi::GoogleAuth
 
   COOKIE_EXPIRATION = 2_592_000 # 1 month
 
-  def initialize(gtrend)
-    @gtrend = gtrend
-  end
-
   def cookie
     fetch_google_cookie if cookie_expired?
     Rails.cache.read("google_auth_cookie")

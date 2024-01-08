@@ -3,9 +3,8 @@
 class GtrendsApi::FetchGtrendsData < ApplicationService
   include GtrendsApi::Base
 
-  def initialize(gtrend, keywords)
+  def initialize(keywords)
     super()
-    @gtrend = gtrend
     @keywords = keywords
   end
 

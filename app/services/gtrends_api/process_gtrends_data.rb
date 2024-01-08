@@ -23,7 +23,7 @@ class GtrendsApi::ProcessGtrendsData < ApplicationService
 
   def find_top_three(keywords)
     # Compare first five.
-    first_five = GtrendsApi::FetchGtrendsData.call(@gtrend, keywords.take(5))
+    first_five = GtrendsApi::FetchGtrendsData.call(keywords.take(5))
     top_keywords = first_five.max_by(3) { |_k, v| v }.to_h
 
     # Cycle through each consecutive slice of two keywords, comparing to and overwriting the
@@ -31,7 +31,7 @@ class GtrendsApi::ProcessGtrendsData < ApplicationService
     # There's a 1 second pause between each request to avoid rate limit.
     keywords.drop(5).each_slice(2) do |slice|
       sleep(1)
-      response = GtrendsApi::FetchGtrendsData.call(@gtrend, top_keywords.keys + slice)
+      response = GtrendsApi::FetchGtrendsData.call(top_keywords.keys + slice)
       top_keywords = response.max_by(3) { |_k, v| v }.to_h
     end
 
@@ -49,10 +49,10 @@ class GtrendsApi::ProcessGtrendsData < ApplicationService
 
       remaining_keywords.each_slice(2) do |slice|
         sleep(1)
-        results.merge!(GtrendsApi::FetchGtrendsData.call(@gtrend, top_keywords.keys + slice))
+        results.merge!(GtrendsApi::FetchGtrendsData.call(top_keywords.keys + slice))
       end
     else
-      results.merge!(GtrendsApi::FetchGtrendsData.call(@gtrend, @keywords))
+      results.merge!(GtrendsApi::FetchGtrendsData.call(@keywords))
     end
 
     GtrendsApi::CreateKeywords.call(@gtrend, results)

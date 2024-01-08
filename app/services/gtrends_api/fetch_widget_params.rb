@@ -3,9 +3,8 @@
 class GtrendsApi::FetchWidgetParams < ApplicationService
   include GtrendsApi::Base
 
-  def initialize(gtrend, query)
+  def initialize(query)
     super()
-    @gtrend = gtrend
     @query = query
     @cookie = GtrendsApi::GoogleAuth.new.cookie
   end

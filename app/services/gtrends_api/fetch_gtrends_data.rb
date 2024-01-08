@@ -17,7 +17,7 @@ class GtrendsApi::FetchGtrendsData < ApplicationService
 
   def interest_over_time_data
     widget_query = GtrendsApi::GenerateQuery.call(@keywords)
-    params_with_token = GtrendsApi::FetchWidgetParams.call(@gtrend, widget_query)
+    params_with_token = GtrendsApi::FetchWidgetParams.call(widget_query)
     data_query = GtrendsApi::GenerateQuery.new(@keywords).build_query(params_with_token)
     response = rescue_retry(HTTP.timeout(5).get(OVER_TIME_URL + data_query))
     job_failed("Error fetching trend data", return_value: {}) unless response.is_a?(HTTP::Response)

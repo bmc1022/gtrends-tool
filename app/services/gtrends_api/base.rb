@@ -3,9 +3,9 @@
 module GtrendsApi::Base
   require "json"
 
-  GTRENDS_URL = "https://trends.google.com/trends"
+  GTRENDS_URL     = "https://trends.google.com/trends"
   GENERAL_API_URL = "https://trends.google.com/trends/api/explore"
-  OVER_TIME_URL = "https://trends.google.com/trends/api/widgetdata/multiline"
+  OVER_TIME_URL   = "https://trends.google.com/trends/api/widgetdata/multiline"
 
   private
 

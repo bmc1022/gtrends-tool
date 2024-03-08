@@ -2,6 +2,9 @@ detectors:
   Attribute:
     exclude:
       - "User#login"
+  BooleanParameter:
+    exclude:
+      - "Nav::NavDropdownComponent#initialize"
   InstanceVariableAssumption:
     exclude:
       - "RejectBlankNestedAttributesForMatcher"
@@ -18,6 +21,11 @@ detectors:
       - "RejectBlankNestedAttributesForMatcher#reject_blank_nested_attributes_for"
 
 directories:
+  "app/components/**":
+    FeatureEnvy:
+      enabled: false
+    UtilityFunction:
+      enabled: false
   "app/helpers/**":
     UtilityFunction:
       enabled: false
@@ -39,5 +47,8 @@ directories:
       enabled: false
     UncommunicativeVariableName:
       enabled: false
+    UtilityFunction:
+      enabled: false
+  "spec/support/**":
     UtilityFunction:
       enabled: false

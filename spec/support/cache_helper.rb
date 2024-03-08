@@ -16,6 +16,6 @@ module CacheHelper
 
   def change_cache_store(store)
     Rails.configuration.cache_store = store
-    Rails.cache = ActiveSupport::Cache.lookup_store(Rails.configuration.cache_store)
+    Rails.cache = ActiveSupport::Cache.lookup_store(store)
   end
 end

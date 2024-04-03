@@ -3,13 +3,12 @@
 require "rails_helper"
 require "rake"
 
+Rails.application.load_tasks if Rake::Task.tasks.empty?
+
 RSpec.describe("cleanup:expired_gtrends", type: :task) do
   let(:task) { Rake::Task["cleanup:expired_gtrends"] }
 
   before do
-    Rake::Task.define_task(:environment)
-    Rails.application.load_tasks
-
     @expired_gtrend = create(:gtrend, :created_by_guest, created_at: 2.days.ago)
     @active_gtrend  = create(:gtrend, :created_by_guest, created_at: 1.hour.ago)
     @user_gtrend    = create(:gtrend, :created_by_user,  created_at: 2.days.ago)

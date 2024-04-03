@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "rake"
 
-Rails.application.load_tasks
+Rails.application.load_tasks if Rake::Task.tasks.empty?
 
 RSpec.describe("rubocop:sync_rules task", type: :task) do
   subject(:rubocop_sync_task) { Rake::Task["rubocop:sync_rules"] }

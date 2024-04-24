@@ -96,8 +96,9 @@ class DataGenerator
   end
 end
 
-DataGenerator.new.admin
-DataGenerator.new.demo_user
 Gtrend.destroy_all
-DataGenerator.new.pestcontrol_trend_lists if Rails.env.development?
-DataGenerator.new.trend_lists
+generate = DataGenerator.new
+generate.admin
+generate.demo_user
+generate.pestcontrol_trend_lists if Rails.env.development?
+generate.trend_lists

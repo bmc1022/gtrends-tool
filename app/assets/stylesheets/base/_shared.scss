@@ -113,9 +113,11 @@ $alert-icon-colors: (
 @function alert-bg-color($type) {
   @return map-get($alert-bg-colors, $type);
 }
+
 @function alert-text-color($type) {
   @return map-get($alert-text-colors, $type);
 }
+
 @function alert-icon-color($type) {
   @return map-get($alert-icon-colors, $type);
 }
@@ -127,39 +129,49 @@ $alert-icon-colors: (
   transform: translate(-50%, -50%);
   width: 600px;
   z-index: 999;
+
   .alert {
     --bs-alert-padding-x: 1rem;
     --bs-alert-padding-y: 0.75rem;
+
     font-size: 0.85rem;
+
     h3 {
       font-size: 0.875rem;
       font-weight: 600;
     }
     span { font-weight: 500; }
+
     ul {
       margin: 0;
       padding: 0 0 0 1.25rem;
     }
+
     .alert-icon {
       padding-right: 1rem;
+
       svg.icon {
         height: 1.2rem;
         width: 1.2rem;
         vertical-align: top;
       }
     }
+
     .close-alert {
       padding: 0 0 0 1rem;
+
       button.close-btn {
         background: transparent;
         padding: 0;
         border: none;
         opacity: 0.5;
+
         &:hover {
           border-radius: 0.25rem;
           opacity: 1;
           box-sizing: border-box;
         }
+
         svg.icon {
           height: 1.35rem;
           width: 1.35rem;
@@ -168,6 +180,7 @@ $alert-icon-colors: (
       }
     }
   }
+
   @each $alert-type, $color in $alert-bg-colors {
     .alert-#{$alert-type} {
       background-color: alert-bg-color($alert-type);
@@ -175,6 +188,7 @@ $alert-icon-colors: (
       border: 1px solid desaturate(darken(alert-bg-color($alert-type), 5%), 15%);
       h3 { color: darken(alert-text-color($alert-type), 5%); }
       svg.icon { color: alert-icon-color($alert-type); }
+
       .close-alert button.close-btn:hover {
         background-color: darken(alert-bg-color($alert-type), 5%);
       }

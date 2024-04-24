@@ -7,4 +7,5 @@ ignoreFiles:
 
 rules:
   no-descending-specificity: null
+  selector-id-pattern: null
   scss/no-global-function-names: null

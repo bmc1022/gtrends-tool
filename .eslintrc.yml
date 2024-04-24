@@ -4,6 +4,9 @@ env:
 extends:
   - google
   - prettier
+ignorePatterns:
+  - "**/reports/**"
+  - "**/assets/builds/**"
 overrides: []
 parserOptions:
   ecmaVersion: latest

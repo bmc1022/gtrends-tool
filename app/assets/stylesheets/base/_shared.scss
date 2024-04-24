@@ -16,13 +16,18 @@ body {
 }
 
 a {
-  color: #52A0E6;
+  color: #52a0e6;
   text-decoration: none;
   transition: all 0.3s ease;
-  &:hover, &:focus { text-decoration: none; }
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 }
 
-input:focus::placeholder { color: transparent !important; }
+input:focus::placeholder {
+  color: transparent !important;
+}
 
 .icon {
   height: 1rem;
@@ -62,14 +67,18 @@ input:focus::placeholder { color: transparent !important; }
   h1 {
     font-size: 28px;
     font-weight: 800;
-    color: #38BEBE;
+    color: #38bebe;
   }
 
   .callout-body {
-    color: #6D6D6D;
-    span { display: block; }
+    color: #6d6d6d;
+    span {
+      display: block;
+    }
   }
-  .callout-warning { color: #f9965c; }
+  .callout-warning {
+    color: #f9965c;
+  }
 }
 
 .tooltip {
@@ -79,12 +88,16 @@ input:focus::placeholder { color: transparent !important; }
     color: #52a0e6;
     border: 2px solid #52a0e6;
   }
-  .tooltip-arrow::before { border-top-color: #52a0e6 !important; }
+  .tooltip-arrow::before {
+    border-top-color: #52a0e6 !important;
+  }
 }
 
 .simplebar-init {
   overflow: hidden !important;
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* ==== Alerts & Notices ======================================================================== */
@@ -140,7 +153,9 @@ $alert-icon-colors: (
       font-size: 0.875rem;
       font-weight: 600;
     }
-    span { font-weight: 500; }
+    span {
+      font-weight: 500;
+    }
 
     ul {
       margin: 0;
@@ -186,8 +201,12 @@ $alert-icon-colors: (
       background-color: alert-bg-color($alert-type);
       color: alert-text-color($alert-type);
       border: 1px solid desaturate(darken(alert-bg-color($alert-type), 5%), 15%);
-      h3 { color: darken(alert-text-color($alert-type), 5%); }
-      svg.icon { color: alert-icon-color($alert-type); }
+      h3 {
+        color: darken(alert-text-color($alert-type), 5%);
+      }
+      svg.icon {
+        color: alert-icon-color($alert-type);
+      }
 
       .close-alert button.close-btn:hover {
         background-color: darken(alert-bg-color($alert-type), 5%);
@@ -198,5 +217,7 @@ $alert-icon-colors: (
 
 /* ==== Forms =================================================================================== */
 form {
-  .form-control+.form-control { margin-top: 0.5rem; }
+  .form-control + .form-control {
+    margin-top: 0.5rem;
+  }
 }

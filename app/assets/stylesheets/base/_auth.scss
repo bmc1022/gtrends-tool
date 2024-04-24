@@ -42,7 +42,9 @@
       font-size: 15px;
       border: 1px solid #d8dee2;
       border-radius: 5px;
-      input#user_password { letter-spacing: 0.1em; }
+      input#user_password {
+        letter-spacing: 0.1em;
+      }
 
       .password-reset {
         font-size: 13px;
@@ -59,8 +61,12 @@
       height: calc(1.5em + 0.5rem + 2px);
       font-size: 0.9rem;
     }
-    .form-check { font-size: 14px; }
-    .form-check-label { font-weight: 400 !important; }
+    .form-check {
+      font-size: 14px;
+    }
+    .form-check-label {
+      font-weight: 400 !important;
+    }
 
     .form-callout {
       padding: 15px 20px;
@@ -72,8 +78,12 @@
     .btn-success {
       background: #39bebe;
       border: 2px solid #39afaf;
-      &:hover { background: #39afaf; }
-      &:focus { box-shadow: 0 0 0 0.2rem rgb(99 204 204 / 50%); }
+      &:hover {
+        background: #39afaf;
+      }
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgb(99 204 204 / 50%);
+      }
     }
   }
 }

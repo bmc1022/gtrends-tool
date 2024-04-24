@@ -4,10 +4,10 @@
 //// TABLETS, MOBILE LANDSCAPE & DOWN (< 767px) ////////////////////////////////////////////////////
 @include media-breakpoint-down(md) {
   /* ==== Misc ================================================================================== */
-  .profiler-results { display: none; }
+  .profiler-results {
+    display: none;
+  }
 }
 
 //// SMALL MOBILE ONLY (< 479px) ///////////////////////////////////////////////////////////////////
-@include media-breakpoint-only(xs) {
-
-}
+@include media-breakpoint-only(xs);

@@ -7,12 +7,20 @@ $grid-breakpoints: (
   lg: 1020px
 );
 $container-max-widths: (
-  sm: (600px + $grid-gutter-width),
-  md: (730px + $grid-gutter-width),
-  lg: (940px + $grid-gutter-width)
+  sm: (
+    600px + $grid-gutter-width
+  ),
+  md: (
+    730px + $grid-gutter-width
+  ),
+  lg: (
+    940px + $grid-gutter-width
+  )
 );
 $body-color: #111827;
-$font-family-base: inter, ui-sans-serif, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-base: inter, ui-sans-serif, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI",
+  roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
 
 // $font-size-base: 0.85rem;
 // $h1-font-size: $font-size-base * 2.2;
@@ -25,12 +33,25 @@ $font-family-base: inter, ui-sans-serif, system-ui, -apple-system, blinkmacsyste
 
 $spacer: 1rem;
 $spacers: ();
-$spacers: map-merge((
-  0: 0,
-  1: ($spacer * 0.25),
-  2: ($spacer * 0.5),
-  3: $spacer,
-  4: ($spacer * 1.5),
-  5: ($spacer * 3),
-  6: ($spacer * 7)
-), $spacers);
+$spacers: map-merge(
+  (
+    0: 0,
+    1: (
+      $spacer * 0.25
+    ),
+    2: (
+      $spacer * 0.5
+    ),
+    3: $spacer,
+    4: (
+      $spacer * 1.5
+    ),
+    5: (
+      $spacer * 3
+    ),
+    6: (
+      $spacer * 7
+    )
+  ),
+  $spacers
+);

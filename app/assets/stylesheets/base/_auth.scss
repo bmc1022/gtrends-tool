@@ -5,8 +5,8 @@
     position: relative;
     top: unset;
     left: unset;
-    transform: unset;
     width: 100%;
+    transform: unset;
 
     .alert {
       margin-top: 1rem;
@@ -27,21 +27,21 @@
 
       .icon {
         display: block;
-        margin: auto;
         width: 60px;
         height: 60px;
+        margin: auto;
       }
     }
   }
 
   #auth-main {
     .auth-form {
-      background: #fff;
-      padding: 20px;
       min-width: 300px;
-      font-size: 15px;
+      padding: 20px;
       border: 1px solid #d8dee2;
       border-radius: 5px;
+      background: #fff;
+      font-size: 15px;
 
       input#user_password {
         letter-spacing: 0.1em;
@@ -79,8 +79,8 @@
     }
 
     .btn-success {
-      background: #39bebe;
       border: 2px solid #39afaf;
+      background: #39bebe;
 
       &:hover {
         background: #39afaf;

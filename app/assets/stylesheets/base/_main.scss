@@ -7,10 +7,10 @@
       width: 100%;
       height: 202px;
       padding: 8px 14px;
-      font-size: 12px;
       border: 1px solid rgb(0 0 0 / 12%);
       border-top: none;
       border-radius: 0 0 8px 8px;
+      font-size: 12px;
       resize: unset;
 
       &::placeholder {
@@ -25,8 +25,8 @@
       }
 
       &:focus {
-        outline: none;
         border: 1px solid #81caca;
+        outline: none;
         box-shadow: inset 0 0 0 0.1rem rgb(57 190 190 / 35%);
       }
     }
@@ -38,11 +38,11 @@
       input {
         width: 100%;
         padding: 8px 14px 4px;
-        background: #fff;
         border: 1px solid rgb(0 0 0 / 12%);
         border-right: none;
         border-bottom: 3px solid #f1f1f1;
         border-radius: 8px 0 0;
+        background: #fff;
         font-weight: 800;
         text-transform: uppercase;
 
@@ -53,48 +53,48 @@
 
         &:focus {
           padding: 8px 10px 6px;
-          outline: none;
           border: 1px solid #81caca;
           border-bottom: none;
+          outline: none;
           box-shadow: inset 0 0 0 0.1rem rgb(57 190 190 / 35%);
         }
       }
     }
 
     .submit-btn {
-      float: right;
       width: 25%;
+      float: right;
 
       input {
         width: 100%;
-        background: #39bebe;
         border: 1px solid #53b5b5;
         border-bottom: 3px solid #39afaf;
         border-radius: 0 8px 0 0;
-        color: #fff;
+        box-shadow: inset 0 1px #75dada;
+        background: #39bebe;
         font-size: 34px;
         line-height: 34px;
+        color: #fff;
         text-align: center;
-        box-shadow: inset 0 1px #75dada;
 
         &:hover {
           background: #38b1b1;
         }
 
         &:active {
-          box-shadow: inset 0 2px #2f9494;
           border-bottom: 2px solid #90d6d6;
+          box-shadow: inset 0 2px #2f9494;
         }
       }
     }
   }
 
   .trend-wrapper {
-    background: #fff;
     margin: 10px 0;
     padding: 8px 14px 14px;
     border: 1px solid rgb(0 0 0 / 12%);
     border-radius: 8px;
+    background: #fff;
 
     .trend-header {
       margin-bottom: 5px;
@@ -102,18 +102,18 @@
       border-bottom: 3px solid #f1f1f1;
 
       span {
-        color: #595a5a;
         font-weight: 700;
+        color: #595a5a;
         text-transform: uppercase;
       }
 
       .options {
-        float: right;
         line-height: 20px;
+        float: right;
 
         .clipboard {
-          background: none;
           border: none;
+          background: none;
           opacity: 0.7;
 
           &:hover {
@@ -154,10 +154,10 @@
       }
 
       .trend-avg {
-        padding-right: 10px;
         width: 25px;
-        color: #444;
+        padding-right: 10px;
         font-weight: 600;
+        color: #444;
         text-align: right;
 
         &.high-avg {
@@ -202,10 +202,10 @@
 
     [type="submit"] {
       padding-left: 2px;
+      border: none;
       background: transparent;
       font-size: 0.9rem;
       color: #52a0e6;
-      border: none;
 
       &:hover {
         text-decoration: underline;
@@ -235,10 +235,10 @@
     }
 
     .page-item.active .page-link {
-      background-color: #39bebe;
-      border-color: #39afaf;
-      color: #fff;
       box-shadow: inset 0 1px #75dada;
+      background-color: #39bebe;
+      color: #fff;
+      border-color: #39afaf;
     }
   }
 }

@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.2"
+ruby file: ".ruby-version"
 
 gem "rails",             "~> 7.1.2"                    # Web app framework.
 gem "pg",                ">= 1.5.4"                    # Use PostgreSQL as the database.

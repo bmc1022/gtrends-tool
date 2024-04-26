@@ -75,8 +75,8 @@ class User < ApplicationRecord
   end
 
   def presence_of_username_or_email
-    if username.blank? && email.blank?
-      errors.add(:base, "A user must have either a username or an email.")
-    end
+    return if username.present? || email.present?
+
+    errors.add(:base, "A user must have either a username or an email.")
   end
 end

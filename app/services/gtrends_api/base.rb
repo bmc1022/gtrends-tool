@@ -9,6 +9,8 @@ module GtrendsApi::Base
 
   private
 
+  # TODO: Retry logic for unsuccessful requests.
+  # TODO: Display "retry" button on failed trends.
   def rescue_retry(request, max_retries = 3)
     retries = 0
     begin

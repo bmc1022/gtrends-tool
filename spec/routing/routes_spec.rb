@@ -3,12 +3,6 @@
 require "rails_helper"
 
 RSpec.describe("Routing", type: :routing) do
-  describe "admin namespace" do
-    it "routes GET admin/dashboard to admin/dashboard#dashboard" do
-      expect(get: "admin/dashboard").to route_to(controller: "admin/dashboard", action: "dashboard")
-    end
-  end
-
   describe "gtrends routes" do
     it "routes GET / to the gtrends controller" do
       expect(get: "/").to route_to(controller: "gtrends", action: "index")

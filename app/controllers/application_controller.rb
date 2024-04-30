@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
     redirect_back(fallback_location: root_path)
   end
 
-  def after_sign_in_path_for(resource)
-    resource.has_role?(:admin) ? admin_dashboard_path : root_path
+  def after_sign_in_path_for(_resource)
+    root_path
   end
 end

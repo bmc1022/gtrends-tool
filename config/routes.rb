@@ -23,5 +23,5 @@ Rails.application.routes.draw do
     delete "logout", to: "users/sessions#destroy", as: :destroy_user_session
   end
 
-  resources :gtrends, only: [:index, :create, :destroy], path: "/"
+  resources :gtrends, only: [:create, :destroy], path: "/"
 end

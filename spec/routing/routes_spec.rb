@@ -14,8 +14,8 @@ RSpec.describe("Routing", type: :routing) do
   # spec/requests/sidekiq_ui_request_spec.rb.
 
   describe "gtrends resource routes" do
-    it "routes GET /gtrends/:id to gtrends#create" do
-      expect(get: "/").to route_to(controller: "gtrends", action: "create")
+    it "routes POST /gtrends to gtrends#create" do
+      expect(post: "/").to route_to(controller: "gtrends", action: "create")
     end
 
     it "routes DELETE /gtrends/:id to gtrends#destroy" do

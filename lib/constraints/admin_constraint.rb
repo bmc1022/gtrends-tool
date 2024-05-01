@@ -2,10 +2,7 @@
 
 class AdminConstraint
   def self.matches?(request)
-    warden_key = request.session["warden.user.user.key"]
-    return false unless warden_key
-
-    user_id = warden_key[0][0]
-    User.find(user_id)&.has_role?(:admin)
+    user = request.env["warden"].user
+    user&.has_role?(:admin) || false
   end
 end

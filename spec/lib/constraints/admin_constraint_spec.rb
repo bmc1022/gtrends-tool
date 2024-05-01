@@ -4,10 +4,12 @@ require "rails_helper"
 
 RSpec.describe(AdminConstraint, type: :constraint) do
   describe ".matches?" do
-    let(:request)      { instance_double(ActionDispatch::Request, session: session_hash) }
-    let(:session_hash) { { "warden.user.user.key" => [[user.id]] }                       }
+    let(:request) { instance_double(ActionDispatch::Request, env: { "warden" => warden }) }
+    let(:warden)  { instance_double(Warden::Proxy)                                        }
 
-    context "when the warden user key in the session matches an admin account" do
+    before { allow(warden).to receive(:user).and_return(user) }
+
+    context "when the user is an administrator" do
       let(:user) { create(:user, :admin) }
 
       it "returns true" do
@@ -15,7 +17,7 @@ RSpec.describe(AdminConstraint, type: :constraint) do
       end
     end
 
-    context "when the warden user key in the session matches a non-admin account" do
+    context "when the user is not an administrator" do
       let(:user) { create(:user) }
 
       it "returns false" do
@@ -23,8 +25,8 @@ RSpec.describe(AdminConstraint, type: :constraint) do
       end
     end
 
-    context "when there is no warden user key in the session" do
-      let(:session_hash) { {} }
+    context "when there is no user logged in" do
+      let(:user) { nil }
 
       it "returns false" do
         expect(described_class.matches?(request)).to be(false)

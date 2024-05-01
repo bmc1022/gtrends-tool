@@ -5,9 +5,7 @@ require "rails_helper"
 RSpec.describe(AdminConstraint, type: :constraint) do
   describe ".matches?" do
     let(:request) { instance_double(ActionDispatch::Request, env: { "warden" => warden }) }
-    let(:warden)  { instance_double(Warden::Proxy)                                        }
-
-    before { allow(warden).to receive(:user).and_return(user) }
+    let(:warden)  { instance_double(Warden::Proxy, user:)                                 }
 
     context "when the user is an administrator" do
       let(:user) { create(:user, :admin) }

@@ -223,4 +223,8 @@ form {
   .form-control + .form-control {
     margin-top: 0.5rem;
   }
+
+  input:focus::placeholder {
+    color: transparent !important;
+  }
 }

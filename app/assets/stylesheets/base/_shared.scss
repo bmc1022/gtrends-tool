@@ -19,11 +19,6 @@ a {
   color: #52a0e6;
   text-decoration: none;
   transition: all 0.3s ease;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
 }
 
 input:focus::placeholder {

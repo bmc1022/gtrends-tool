@@ -2,10 +2,11 @@
 .auth-form
   = form_with(scope: resource, url: session_path(resource_name), local: true) do |f|
     == render("users/shared/error_messages", resource: resource)
-    .form-group
-      = f.label :username
-      = f.text_field :login, class: "form-control", value: "demo_user"
-    .form-group
-      = f.label :password
-      = f.password_field :password, class: "form-control", value: "123demo"
-    = f.submit "Sign in", class: "btn btn-success btn-block"
+    .form-group.mb-3
+      = f.label(:username, class: "form-label fw-medium")
+      = f.text_field(:login, class: "form-control", value: "demo_user")
+    .form-group.mb-3
+      = f.label(:password, class: "form-label fw-medium")
+      = f.password_field(:password, class: "form-control", value: "123demo")
+    .d-flex.justify-content-center
+      = f.submit("Sign in", class: "w-50 btn btn-success btn-block fw-semibold")

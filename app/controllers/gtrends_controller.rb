@@ -25,7 +25,6 @@ class GtrendsController < ApplicationController
   end
 
   def destroy
-    authorize(@gtrend)
     @gtrend.destroy!
     redirect_to(gtrends_url, status: :see_other, notice: "Trend was successfully removed.")
   end
@@ -34,6 +33,7 @@ class GtrendsController < ApplicationController
 
   def set_gtrend
     @gtrend = Gtrend.find(params[:id])
+    authorize(@gtrend)
   end
 
   def load_gtrends

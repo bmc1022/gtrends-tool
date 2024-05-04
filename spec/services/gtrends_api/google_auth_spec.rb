@@ -5,8 +5,7 @@ require "rails_helper"
 RSpec.describe(GtrendsApi::GoogleAuth, type: :service) do
   subject { described_class }
 
-  let(:gtrend)              { build(:gtrend)              }
-  let(:google_auth_service) { described_class.new(gtrend) }
+  let(:google_auth_service) { described_class.new }
 
   it { is_expected.to have_constant(:COOKIE_EXPIRATION).with_value(2_592_000) }
 

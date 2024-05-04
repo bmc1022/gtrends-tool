@@ -17,7 +17,7 @@ class GtrendsController < ApplicationController
     respond_to do |format|
       if @gtrend.save
         FetchGtrendDataJob.perform_later(@gtrend.id, @gtrend.kws)
-        format.html { redirect_to(gtrends_url) }
+        format.html { redirect_to(gtrends_url, notice: "Trend was successfully created.") }
       else
         format.json { render(json: @gtrend.errors.messages, status: :unprocessable_entity) }
       end
@@ -27,7 +27,7 @@ class GtrendsController < ApplicationController
   def destroy
     authorize(@gtrend)
     @gtrend.destroy!
-    redirect_to(gtrends_url, status: :see_other)
+    redirect_to(gtrends_url, status: :see_other, notice: "Trend was successfully removed.")
   end
 
   private

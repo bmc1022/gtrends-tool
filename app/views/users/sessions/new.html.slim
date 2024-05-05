@@ -1,4 +1,4 @@
-- content_for(:header_title, "<h2>GoogleTrends Keyword Planner</h2>".html_safe)
+- provide(:header_title, "GoogleTrends Keyword Planner")
 .auth-form
   = form_with(scope: resource, url: session_path(resource_name), local: true) do |f|
     == render("users/shared/error_messages", resource: resource)

@@ -5,7 +5,7 @@ body#auth.d-flex.justify-content-center
     #auth-header
       = link_to("/", class: "auth-logo") do
         = svg_icon("#logo")
-      == yield(:header_title) if content_for?(:header_title)
+      h3 == yield(:header_title) if content_for?(:header_title)
       == render("shared/alerts")
     #auth-main
       == yield

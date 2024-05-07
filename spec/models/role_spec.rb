@@ -24,7 +24,9 @@ RSpec.describe(Role, type: :model) do
   end
 
   describe "validations" do
-    it { is_expected.to validate_inclusion_of(:resource_type)
-                        .in_array(Rolify.resource_types).allow_nil }
+    describe ":resource_type validations" do
+      it { is_expected.to validate_inclusion_of(:resource_type)
+                          .in_array(Rolify.resource_types).allow_nil }
+    end
   end
 end

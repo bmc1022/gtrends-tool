@@ -2,7 +2,7 @@
 
 RSpec.shared_examples("rolify") do |model_factory|
   describe "roles" do
-    let(:resource) { create(model_factory)       }
+    let(:resource) { create(model_factory) }
     let(:role)     { create(:role, name: "test") }
 
     before { resource.roles.delete_all }

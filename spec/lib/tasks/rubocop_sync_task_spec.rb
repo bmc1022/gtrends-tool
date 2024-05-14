@@ -8,9 +8,9 @@ Rails.application.load_tasks if Rake::Task.tasks.empty?
 RSpec.describe("rubocop:sync_rules task", type: :task) do
   subject(:rubocop_sync_task) { Rake::Task["rubocop:sync_rules"] }
 
-  let(:rubocop_sync_instance) { RubocopSync.new                   }
+  let(:rubocop_sync_instance) { RubocopSync.new }
   let(:mock_official_rules)   { ["Rule1", "Rule2", "MissingRule"] }
-  let(:mock_active_rules)     { ["Rule1", "Rule2"]                }
+  let(:mock_active_rules)     { ["Rule1", "Rule2"] }
 
   before do
     allow(RubocopSync).to receive(:new).and_return(rubocop_sync_instance)

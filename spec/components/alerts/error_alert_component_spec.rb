@@ -6,7 +6,7 @@ RSpec.describe(Alerts::ErrorAlertComponent, type: :component) do
   subject(:rendered_alert) { render_inline(described_class.new(resource)).to_html }
 
   let(:errors_double) { instance_double(ActiveModel::Errors, any?: true, messages: error_messages) }
-  let(:resource)      { instance_double(User, errors: errors_double)                               }
+  let(:resource)      { instance_double(User, errors: errors_double) }
 
   context "when multiple errors are present" do
     let(:error_messages) do

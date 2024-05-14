@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe(FetchGtrendDataJob, type: :job) do
   include ActiveJob::TestHelper
 
-  let(:gtrend)   { create(:gtrend)          }
+  let(:gtrend)   { create(:gtrend) }
   let(:keywords) { ["keyword1", "keyword2"] }
 
   before { @job_arguments = [gtrend.id, keywords] }

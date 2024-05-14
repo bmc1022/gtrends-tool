@@ -9,7 +9,7 @@ RSpec.describe(Alerts::FlashAlertComponent, type: :component) do
 
   context "with flash messages" do
     let(:flash)           { { success: "Success", notice: "Notice", warning: "Warning" } }
-    let(:mock_controller) { instance_double(ApplicationController, flash:)               }
+    let(:mock_controller) { instance_double(ApplicationController, flash:) }
 
     before { allow(component_instance).to receive(:controller).and_return(mock_controller) }
 

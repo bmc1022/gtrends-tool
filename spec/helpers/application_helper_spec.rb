@@ -28,7 +28,7 @@ RSpec.describe(ApplicationHelper, type: :helper) do
   end
 
   describe "#asset_exists?" do
-    let(:existing_asset_path)     { "application.js"   }
+    let(:existing_asset_path)     { "application.js" }
     let(:non_existing_asset_path) { "non_existing.png" }
 
     context "when assets are precompiled" do

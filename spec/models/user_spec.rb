@@ -236,7 +236,7 @@ RSpec.describe(User, type: :model) do
 
     context "when adding a new role to user" do
       let(:default_role) { Role.find_by(name: :registered) }
-      let(:new_role)     { create(:role)                   }
+      let(:new_role)     { create(:role) }
 
       it "removes any existing roles before adding a new role" do
         expect(user.roles).to contain_exactly(default_role)

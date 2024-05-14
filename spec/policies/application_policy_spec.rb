@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe(ApplicationPolicy, type: :policy) do
   subject(:application_policy) { described_class.new(user, record) }
 
-  let(:user)   { build(:user)          }
+  let(:user)   { build(:user) }
   let(:record) { instance_double(User) }
 
   describe "default permissions" do

@@ -6,7 +6,7 @@ RSpec.describe(SvgIconComponent, type: :component) do
   subject(:rendered_icon) { render_inline(described_class.new(reference:, additional_classes:)) }
 
   let(:reference)          { "#icon-reference" }
-  let(:additional_classes) { ""                }
+  let(:additional_classes) { "" }
 
   context "with an icon reference only" do
     it "renders the SVG icon" do

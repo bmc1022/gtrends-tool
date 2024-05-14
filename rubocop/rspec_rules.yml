@@ -2,7 +2,7 @@ RSpec/AlignLeftLetBrace:
   Enabled: true
 
 RSpec/AlignRightLetBrace:
-  Enabled: true
+  Enabled: false
 
 RSpec/AnyInstance:
   Enabled: true

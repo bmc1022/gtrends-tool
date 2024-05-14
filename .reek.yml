@@ -19,6 +19,7 @@ detectors:
   UtilityFunction:
     exclude:
       - "RejectBlankNestedAttributesForMatcher#reject_blank_nested_attributes_for"
+      - "SidekiqAuth#authorized?"
 
 directories:
   "app/components/**":

@@ -3,6 +3,10 @@
 class MockRackApp
   attr_reader :env, :request_body
 
+  def initialize
+    @env = {}
+  end
+
   def call(env)
     @env = env
     @request_body = env["rack.input"]&.read

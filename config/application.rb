@@ -4,6 +4,8 @@ require_relative "boot"
 
 require "rails/all"
 
+require_relative "../lib/middleware/sidekiq_auth"
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -21,14 +23,15 @@ module GtrendsTool
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Use Sidekiq as the queuing backend for Active Job.
-    config.active_job.queue_adapter = :sidekiq
-
     # Generator configuration.
     config.generators do |generator|
       generator.assets = false # Skip generating asset files.
       generator.test_framework(:rspec)
       generator.fixture_replacement(:factory_bot, dir: "spec/factories")
     end
+
+    # Use Sidekiq as the queuing backend for Active Job.
+    config.active_job.queue_adapter = :sidekiq
+    config.middleware.use(::Middleware::SidekiqAuth)
   end
 end
